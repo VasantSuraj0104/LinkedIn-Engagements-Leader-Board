@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Factors &middot; Weekly LinkedIn Leaderboard</title>
+<meta name="description" content="Weekly ICP engagement leaderboard for the Factors GTM team." />
+<style>
+  html,body{margin:0;padding:0;background:#FFF8F2;-webkit-font-smoothing:antialiased}
+  #root{min-height:100vh}
+  #boot{font:14px/1.6 ui-sans-serif,system-ui,sans-serif;color:#4A6B84;padding:48px 24px;text-align:center}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js" crossorigin></script>
+</head>
+<body>
+<div id="root"><div id="boot">Loading the pool&hellip;</div></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useCallback } = React;
+
+/* ────────────────────────────────────────────────────────────
+   DATA — replace with a Supabase fetch. Shape matches the
+   leaderboard table: name, icp_engagements, total_engagements,
+   previous_rank. `photo` takes a headshot URL when you have them.
+   ──────────────────────────────────────────────────────────── */
+const PHOTOS = {
+  amith: "data:image/jpeg;base64,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",
+  darshan: "data:image/jpeg;base64,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",
+  aditi: "data:image/jpeg;base64,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",
+  mansi: "data:image/jpeg;base64,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",
+  subiksha: "data:image/jpeg;base64,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",
+  ganesh: "data:image/jpeg;base64,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",
+};
+
+const PEOPLE = [
+  { id: "amith",    name: "Amith",    icp: 12, total: 214, prevRank: 3, photo: PHOTOS.amith, skin: "#E0BB95", skin2: "#C48E6A", skinDk: "#BA8F63", cap: "#F5423A", shade: "#AB872F" },
+  { id: "darshan",  name: "Darshan",  icp:  9, total: 186, prevRank: 1, photo: PHOTOS.darshan, skin: "#C48E6A", skin2: "#A9714B", skinDk: "#9A6A45", cap: "#1D9E75", shade: "#8A6A3A" },
+  { id: "aditi",    name: "Aditi",    icp:  7, total: 143, prevRank: 2, photo: PHOTOS.aditi, skin: "#F9DDBD", skin2: "#EDC391", skinDk: "#DBA689", cap: "#7F77DD", shade: "#C9A46F" },
+  { id: "mansi",    name: "Mansi",    icp:  5, total: 121, prevRank: 5, photo: PHOTOS.mansi, skin: "#EDC391", skin2: "#DBA689", skinDk: "#C9926A", cap: "#FFD84D", shade: "#B58A50" },
+  { id: "subiksha", name: "Subiksha", icp:  4, total:  98, prevRank: 4, photo: PHOTOS.subiksha, skin: "#BA8D68", skin2: "#99674F", skinDk: "#8A5A45", cap: "#2BA9E0", shade: "#7E5C38" },
+  { id: "ganesh",   name: "Ganesh",   icp:  2, total:  61, prevRank: 6, photo: PHOTOS.ganesh, skin: "#70534A", skin2: "#4A2F27", skinDk: "#3C2B24", cap: "#F58C3A", shade: "#33251F" },
+];
+
+const ENGAGERS = [
+  { name: "Neha Rao",       title: "VP Marketing",              co: "Zluri",      fn: "Marketing",         on: "Amith" },
+  { name: "Divya Prakash",  title: "Head of Demand Generation", co: "Chargebee",  fn: "Demand Generation", on: "Amith" },
+  { name: "Karan Shetty",   title: "Co-Founder",                co: "Sprinto",    fn: "Revenue",           on: "Darshan" },
+  { name: "Aarti Menon",    title: "Director of ABM",           co: "Postman",    fn: "ABM",               on: "Darshan" },
+  { name: "Rohit Nair",     title: "CMO",                       co: "Rocketlane", fn: "Marketing",         on: "Aditi" },
+  { name: "Sneha Iyer",     title: "Marketing Ops Manager",     co: "Everstage",  fn: "Marketing Ops",     on: "Mansi" },
+  { name: "Vikram Bose",    title: "SVP Growth",                co: "Freshworks", fn: "Growth",            on: "Subiksha" },
+  { name: "Leena Kapoor",   title: "Head of Marketing",         co: "Descope",    fn: "Marketing",         on: "Ganesh" },
+];
+
+const LANES = 6;
+const RIVAL_GAP = 2;
+
+/* ────────────────────────────────────────────────────────────
+   SWIMMER — the prepped SVG, limbs driven by props.
+   Source art flipped so the swimmer faces right.
+   ──────────────────────────────────────────────────────────── */
+function Swimmer({ p, arm, roll, lit, fighting }) {
+  const uid = p.id;
+  return (
+    <svg viewBox="2.7 30.4 112.5 89.2" width="96" height="76" aria-hidden="true"
+         style={{ transform: "scaleX(-1)", overflow: "visible",
+                  opacity: lit ? 1 : 0.22, transition: "opacity .45s ease" }}>
+      <defs>
+        <linearGradient id={`body-${uid}`} gradientUnits="userSpaceOnUse"
+                        x1="4.7" y1="75" x2="113.1" y2="75">
+          <stop offset="0" stopColor={p.skin} />
+          <stop offset="1" stopColor={p.skin2} />
+        </linearGradient>
+        <clipPath id={`head-${uid}`}>
+          <circle cx="38" cy="71" r="19.5" />
+        </clipPath>
+      </defs>
+
+      <g transform={`rotate(${roll} 60 75)`}>
+        <path d="M21.18 42.61l11.72-2.09a2.913 2.913 0 0 0-1.25-5.69l-11.61 3.23c-1.57.35-2.63 1.38-2.29 2.95c.35 1.57 1.86 1.95 3.43 1.6z" fill={p.skinDk} />
+        <path d="M89.56 70.81c-5.78-3.45-9.55-5.88-13.17-10.52L59.64 38.85a7.14 7.14 0 0 0-4.49-3.26c-.08-.02-.16-.03-.24-.05l.01-.07l-34.28-2.99c-1.07-.09-2.14.02-3.17.34l-5.32 1.66c-.7.22-1.37.53-2 .93c-1.24.79-3.47 2.26-4.5 3.16c-.57.5-.95 1.01-.95 1.92c0 .74.3 1.4.86 1.86c.61.51 1.47.71 2.35.55c1.11-.2 2.34-1.27 3.18-2.13c.23-.24.53-.39.86-.43l5.63-.74c.43-.06.85-.04 1.25.05c.75.17 1.63.32 2.66.51c1.33.24 2.99.53 4.93.96c2.4.53 20.25 6.29 20.42 6.34c1.21.42 2.27 1.23 2.98 2.3l6.72 10.1c2.53 3.8 2.5 8.81-.06 12.47l-.1.14c-2.71 3.91-5.94 10.83-7.19 15.43c-2.69 9.87-1.06 16.29 4.87 19.09l22.64 10.69l26.58-15.87l9.89-17.48l-23.61-13.52z" fill={`url(#body-${uid})`} />
+        <path d="M19.95 60.96s.13-.21.19-.3l.2-.3c8-10.58 15.78-8.85 20.52-6.69c5.14 2.33 8.71 4.42 8.71 4.42s-.31.06-.81.22c-.52.18-.95.47-.95.47l3.54 3.19l-10.64-1.48a.148.148 0 0 0-.16.08l-1.26 2.46a79.334 79.334 0 0 1-4.2 7.19h.01c-.07.1-.13.2-.2.3c-.07.1-.13.2-.2.3h-.01a78.76 78.76 0 0 1-4.98 6.68l-1.77 2.12a.15.15 0 0 0-.01.18l5.52 9.22L29.13 87s-.11.51-.07 1.06c.04.52.11.83.11.83s-3.68-2.35-7.62-6.39c-3.73-3.83-8.05-10.36-1.6-21.54z" fill={p.shade} />
+
+        <g transform={`rotate(${arm} 52 59)`}>
+          <path d="M52.1 58.71c-2.69-1.78-4.77.43-4.77.43l-.76 1.15l-16.51 24.93l-.76 1.15s-1.22 2.78 1.47 4.56c2.37 1.57 4.51.37 5.72-1.45L53 64.54c1.2-1.82 1.47-4.26-.9-5.83z" fill={p.skin2} />
+          <path d="M61.14 87.92a6.19 6.19 0 0 0-1.74-8.58l-4.41-2.92l-6.83 10.32l4.41 2.92c2.84 1.89 6.68 1.11 8.57-1.74z" fill={p.skin2} transform="translate(-24 -22)" />
+        </g>
+
+        <g transform="scale(-1,1) translate(-76,0)">
+          <circle cx="38" cy="71" r="22" fill={p.cap} />
+          {p.photo
+            ? <image href={p.photo} x="18.5" y="51.5" width="39" height="39"
+                     clipPath={`url(#head-${uid})`} preserveAspectRatio="xMidYMid slice" />
+            : <circle cx="38" cy="71" r="19.5" fill={p.skin} />}
+        </g>
+        {fighting && (
+          <g opacity="0.9">
+            <circle cx="8" cy="62" r="4" fill="#fff" opacity=".7" />
+            <circle cx="2" cy="72" r="2.6" fill="#fff" opacity=".55" />
+          </g>
+        )}
+      </g>
+    </svg>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────
+   LIGHTHOUSE — three.js. Two opposed beams sweeping.
+   `sweep` is a ref the race loop reads to know the beam angle.
+   ──────────────────────────────────────────────────────────── */
+function Lighthouse({ spinRef, intensity = 1 }) {
+  const mount = useRef(null);
+
+  useEffect(() => {
+    const el = mount.current;
+    if (!el) return;
+    const W = el.clientWidth, H = el.clientHeight;
+
+    const scene = new THREE.Scene();
+    const TOWER_X = 3.6, DIST = 40, FOV = 16, PLACE = 0.78;
+    const aimX = (aspect) => {
+      const visW = 2 * DIST * Math.tan((FOV * Math.PI / 180) / 2) * aspect;
+      return TOWER_X + visW * (0.5 - PLACE);
+    };
+    const cam = new THREE.PerspectiveCamera(FOV, W / H, 0.1, 100);
+    const aim0 = aimX(W / H);
+    cam.position.set(aim0, 5.4, DIST);
+    cam.lookAt(aim0, 2.1, 0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(W, H);
+    el.appendChild(renderer.domElement);
+
+    const RED = 0xf5423a, RED_D = 0xc8291f, CREAM = 0xfff6ec, YELLOW = 0xffd84d;
+    const mat = (c, r = 0.85) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: 0.04 });
+
+    const tower = new THREE.Group();
+
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(1.55, 1.75, 0.42, 32), mat(0xf98a7e));
+    base.position.y = 0.21; tower.add(base);
+
+    const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 1.18, 3.5, 32), mat(RED));
+    shaft.position.y = 2.16; tower.add(shaft);
+
+    [{ y: 1.00, r: 0.97 }, { y: 3.45, r: 0.71 }].forEach(({ y, r }) => {
+      const band = new THREE.Mesh(new THREE.CylinderGeometry(r, r + 0.055, 0.3, 32), mat(CREAM));
+      band.position.y = y; tower.add(band);
+    });
+
+    /* Factors mark — drawn to a canvas texture, applied to the tower face */
+    const lc = document.createElement("canvas");
+    lc.width = 340; lc.height = 580;
+    const g2 = lc.getContext("2d");
+    g2.clearRect(0, 0, 340, 580);
+    g2.fillStyle = "#FFFFFF";
+    const HP = Math.PI / 2;
+
+    // top bar — leaf: quarter arc off the top-left AND the bottom-right
+    g2.beginPath();
+    g2.moveTo(170, 0);
+    g2.lineTo(340, 0);
+    g2.arc(170, 0, 170, 0, HP);
+    g2.lineTo(0, 170);
+    g2.arc(170, 170, 170, Math.PI, Math.PI * 1.5);
+    g2.closePath(); g2.fill();
+
+    // middle bar — square left, quarter arc off the bottom-right
+    g2.beginPath();
+    g2.moveTo(0, 205);
+    g2.lineTo(340, 205);
+    g2.arc(165, 205, 175, 0, HP);
+    g2.lineTo(0, 380);
+    g2.closePath(); g2.fill();
+
+    // bottom bar — half width, quarter disc off its own top-left
+    g2.beginPath();
+    g2.moveTo(0, 405);
+    g2.lineTo(170, 405);
+    g2.arc(0, 405, 170, 0, HP);
+    g2.lineTo(0, 580);
+    g2.closePath(); g2.fill();
+
+    const logoTex = new THREE.CanvasTexture(lc);
+    logoTex.minFilter = THREE.LinearFilter;
+    logoTex.generateMipmaps = false;
+    // wrapped on the cone rather than a flat plane — a plane either floats off
+    // the top or sinks inside the bottom, because the tower tapers.
+    const logo = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.828, 0.988, 1.00, 40, 1, true, -0.33, 0.66),
+      new THREE.MeshBasicMaterial({ map: logoTex, transparent: true,
+                                    depthWrite: false, side: THREE.FrontSide })
+    );
+    logo.position.set(0, 2.16, 0);
+    tower.add(logo);
+
+
+    const gallery = new THREE.Mesh(new THREE.CylinderGeometry(0.92, 0.92, 0.16, 32), mat(CREAM));
+    gallery.position.y = 3.95; tower.add(gallery);
+    const rail = new THREE.Mesh(new THREE.TorusGeometry(0.9, 0.05, 8, 40), mat(RED_D));
+    rail.rotation.x = Math.PI / 2; rail.position.y = 4.14; tower.add(rail);
+
+    const glass = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.56, 0.56, 0.82, 24, 1, true),
+      new THREE.MeshStandardMaterial({ color: 0xfff3c4, transparent: true, opacity: 0.3, side: THREE.DoubleSide, roughness: 0.2 })
+    );
+    glass.position.y = 4.5; tower.add(glass);
+
+    for (let i = 0; i < 4; i++) {
+      const post = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.85, 0.08), mat(CREAM));
+      const a = (i / 4) * Math.PI * 2 + 0.4;
+      post.position.set(Math.cos(a) * 0.53, 4.5, Math.sin(a) * 0.53);
+      tower.add(post);
+    }
+
+    const roof = new THREE.Mesh(new THREE.ConeGeometry(0.86, 0.95, 24), mat(RED));
+    roof.position.y = 5.4; tower.add(roof);
+    const finial = new THREE.Mesh(new THREE.SphereGeometry(0.08, 12, 12), mat(RED_D));
+    finial.position.y = 5.93; tower.add(finial);
+
+    const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.25, 20, 20),
+      new THREE.MeshBasicMaterial({ color: 0xfff8dc }));
+    bulb.position.y = 4.5; tower.add(bulb);
+
+    const halo = new THREE.Mesh(new THREE.SphereGeometry(0.66, 20, 20),
+      new THREE.MeshBasicMaterial({ color: YELLOW, transparent: true, opacity: 0.16,
+        blending: THREE.AdditiveBlending, depthWrite: false }));
+    halo.position.y = 4.5; tower.add(halo);
+
+    const beams = new THREE.Group();
+    beams.position.y = 4.5;
+    const beamMat = new THREE.MeshBasicMaterial({
+      color: YELLOW, transparent: true, opacity: 0.10,
+      side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending,
+    });
+    for (let i = 0; i < 2; i++) {
+      const cone = new THREE.Mesh(new THREE.ConeGeometry(1.0, 13, 28, 1, true), beamMat);
+      cone.rotation.z = Math.PI / 2;
+      cone.position.x = 6.5;
+      const armG = new THREE.Group();
+      armG.rotation.y = i * Math.PI;
+      armG.add(cone);
+      beams.add(armG);
+    }
+    tower.add(beams);
+
+    tower.scale.setScalar(1.0);
+    tower.position.set(TOWER_X, 0, 0);
+    scene.add(tower);
+
+    scene.add(new THREE.AmbientLight(0xdfefff, 0.9));
+    const key = new THREE.DirectionalLight(0xffffff, 0.7);
+    key.position.set(5, 9, 7); scene.add(key);
+    const lamp = new THREE.PointLight(YELLOW, 1.3, 16);
+    lamp.position.set(TOWER_X, 4.5, 0); scene.add(lamp);
+
+    let raf, t = 0;
+    const clock = new THREE.Clock();
+    const loop = () => {
+      const dt = Math.min(clock.getDelta(), 0.05);
+      t += dt;
+      beams.rotation.y += dt * 0.8;
+      if (spinRef) spinRef.current = beams.rotation.y;
+      const pulse = 0.12 + Math.sin(t * 2.1) * 0.03;
+      beamMat.opacity = pulse * intensity;
+      halo.material.opacity = (0.16 + Math.sin(t * 2.1) * 0.05) * intensity;
+      lamp.intensity = (1.3 + Math.sin(t * 2.1) * 0.3) * intensity;
+      tower.rotation.y = Math.sin(t * 0.16) * 0.05;
+      renderer.render(scene, cam);
+      raf = requestAnimationFrame(loop);
+    };
+    loop();
+
+    const onResize = () => {
+      const w = el.clientWidth, h = el.clientHeight;
+      cam.aspect = w / h; cam.updateProjectionMatrix(); renderer.setSize(w, h);
+      const a = aimX(w / h);
+      cam.position.x = a; cam.lookAt(a, 2.1, 0);
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+      logoTex.dispose();
+      renderer.dispose();
+      if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
+    };
+  }, [intensity, spinRef]);
+
+  return <div ref={mount} style={{ width: "100%", height: "100%" }} />;
+}
+
+function Confetti({ fire }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const cv = ref.current;
+    if (!cv) return;
+    const size = () => { cv.width = window.innerWidth; cv.height = window.innerHeight; };
+    size();
+    window.addEventListener("resize", size);
+    return () => window.removeEventListener("resize", size);
+  }, []);
+
+  useEffect(() => {
+    const cv = ref.current;
+    if (!cv) return;
+    const ctx = cv.getContext("2d");
+    const wipe = () => ctx.clearRect(0, 0, cv.width, cv.height);
+
+    // not firing: make sure nothing is left frozen on screen
+    if (!fire) { wipe(); return; }
+
+    const W = cv.width, H = cv.height;
+    const COLORS = ["#F5423A", "#FFD84D", "#1D9E75", "#2BA9E0", "#7F77DD", "#FFFFFF", "#F58C3A"];
+    const bits = [];
+    const timers = [];
+
+    const cannon = (ox, oy, aim) => {
+      for (let i = 0; i < 90; i++) {
+        const spread = aim + (Math.random() - 0.5) * 0.9;
+        const v = 13 + Math.random() * 15;
+        bits.push({
+          x: ox, y: oy,
+          vx: Math.cos(spread) * v, vy: Math.sin(spread) * v,
+          w: 6 + Math.random() * 7, h: 9 + Math.random() * 10,
+          rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.4,
+          c: COLORS[(Math.random() * COLORS.length) | 0],
+          life: 1, wob: Math.random() * 6.28,
+        });
+      }
+    };
+    cannon(-10, H + 10, -Math.PI / 3);
+    cannon(W + 10, H + 10, -Math.PI * 2 / 3);
+    timers.push(setTimeout(() => cannon(W * 0.5, H + 10, -Math.PI / 2), 260));
+
+    let t0 = performance.now(), raf = 0, started = performance.now();
+    const draw = (now) => {
+      const dt = Math.min(0.04, (now - t0) / 1000);
+      t0 = now;
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      let alive = 0;
+      for (const b of bits) {
+        b.vy += 26 * dt;
+        b.vx *= 0.995;
+        b.wob += dt * 6;
+        b.x += (b.vx + Math.sin(b.wob) * 1.4) * dt * 60;
+        b.y += b.vy * dt * 60;
+        b.rot += b.vr;
+        if (b.y > cv.height * 0.62) b.life -= dt * 0.55;
+        if (b.life <= 0 || b.y > cv.height + 60) continue;
+        alive++;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, b.life));
+        ctx.translate(b.x, b.y);
+        ctx.rotate(b.rot);
+        ctx.fillStyle = b.c;
+        ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h * Math.abs(Math.cos(b.wob * 0.5)));
+        ctx.restore();
+      }
+      // hard stop so a stalled burst can never linger
+      if (alive > 0 && now - started < 9000) raf = requestAnimationFrame(draw);
+      else wipe();
+    };
+    raf = requestAnimationFrame(draw);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      timers.forEach(clearTimeout);
+      wipe();
+    };
+  }, [fire]);
+
+  return <canvas ref={ref} aria-hidden="true"
+    style={{ position: "fixed", inset: 0, width: "100%", height: "100%",
+             pointerEvents: "none", zIndex: 9999 }} />;
+}
+
+/* ────────────────────────────────────────────────────────────
+   APP
+   ──────────────────────────────────────────────────────────── */
+function FactorsLeaderboard() {
+  const [phase, setPhase] = useState("idle"); // idle | sweep | racing | done
+  const [lit, setLit] = useState({});
+  const [tick, setTick] = useState(0);
+  const [filterICP, setFilterICP] = useState(false);
+
+  const [feed, setFeed] = useState(null);
+  const [weekIdx, setWeekIdx] = useState(null);
+  useEffect(() => {
+    let dead = false;
+    fetch("./data.json?t=" + Date.now(), { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (!dead && d && Array.isArray(d.people)) setFeed(d); })
+      .catch(() => {});
+    return () => { dead = true; };
+  }, []);
+
+  const poolRef = useRef(null);
+  const spinRef = useRef(0);
+  const rafRef = useRef(null);
+  const swimmers = useRef([]);
+  const sparks = useRef([]);
+
+  const history = (feed && Array.isArray(feed.history) && feed.history.length)
+    ? feed.history : null;
+  const lastIdx = history ? history.length - 1 : 0;
+  const activeIdx = weekIdx === null ? lastIdx : Math.min(weekIdx, lastIdx);
+  const isCurrentWeek = !history || activeIdx === lastIdx;
+
+  const roster = React.useMemo(() => {
+    if (!feed) return PEOPLE;
+    const src = history ? history[activeIdx].people : feed.people;
+    const before = history && activeIdx > 0 ? history[activeIdx - 1].people : null;
+    const live = {}, was = {};
+    src.forEach((p) => { live[p.id] = p; });
+    if (before) before.forEach((p) => { was[p.id] = p.rank; });
+    return PEOPLE.map((p) => (live[p.id]
+      ? { ...p, icp: live[p.id].icp, total: live[p.id].total,
+          prevRank: was[p.id] || live[p.id].prevRank || live[p.id].rank }
+      : { ...p, icp: 0, total: 0 }));
+  }, [feed, history, activeIdx]);
+
+  // rank over the last few weeks, for the sparklines
+  const rankTrend = React.useMemo(() => {
+    if (!history) return null;
+    const slice = history.slice(Math.max(0, activeIdx - 7), activeIdx + 1);
+    const out = {};
+    slice.forEach((wk) => wk.people.forEach((p) => {
+      (out[p.id] = out[p.id] || []).push(p.rank);
+    }));
+    return out;
+  }, [history, activeIdx]);
+
+  const ranked = [...roster].sort((a, b) => b.icp - a.icp || b.total - a.total);
+  const maxIcp = Math.max(1, ...roster.map((p) => p.icp));
+
+  const rivalOf = useCallback((p) => {
+    let best = null, gap = 99;
+    roster.forEach((q) => {
+      if (q.id === p.id) return;
+      const g = Math.abs(q.icp - p.icp);
+      if (g <= RIVAL_GAP && g < gap) { gap = g; best = q.id; }
+    });
+    return best;
+  }, []);
+
+  const trackFor = useCallback((icp, w) =>
+    130 + (0.18 + Math.pow(icp / maxIcp, 0.6) * 0.82) * Math.max(120, w * 0.70 - 226),
+  [maxIcp]);
+
+  const reset = useCallback(() => {
+    const w = poolRef.current ? poolRef.current.clientWidth : 900;
+    swimmers.current = roster.map((p, i) => ({
+      p, i,
+      x: 130,
+      baseY: i * 74 + 12,
+      yo: 0, push: 0,
+      ph: Math.random() * 6.28,
+      rate: 1.25 + Math.random() * 0.5,
+      wander: 0.45 + Math.random() * 0.5,
+      wphase: Math.random() * 6.28,
+      target: trackFor(p.icp, w),
+      fight: 0, cd: 0,
+      rival: rivalOf(p),
+    }));
+    sparks.current = [];
+    setLit({});
+    setPhase("idle");
+    setTick((t) => t + 1);
+  }, [maxIcp, rivalOf, trackFor, roster]);
+
+  useEffect(() => { reset(); }, [reset]);
+
+  // Window resized mid-race: rescale targets and current positions so the
+  // finish line still lands at the lighthouse instead of wherever it was.
+  useEffect(() => {
+    const onResize = () => {
+      const w = poolRef.current ? poolRef.current.clientWidth : 900;
+      swimmers.current.forEach((s2) => {
+        const oldTrack = s2.target - 130;
+        const next = trackFor(s2.p.icp, w);
+        const progress = oldTrack > 1 ? (s2.x - 130) / oldTrack : 0;
+        s2.target = next;
+        s2.x = 130 + Math.max(0, Math.min(1, progress)) * (next - 130);
+      });
+      setTick((t) => t + 1);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [trackFor]);
+
+  const reveal = useCallback(() => {
+    if (phase !== "idle") return;
+    setPhase("sweep");
+    const order = [...roster].sort((a, b) => a.icp - b.icp);
+    order.forEach((p, k) => {
+      setTimeout(() => setLit((s) => ({ ...s, [p.id]: true })), k * 420);
+    });
+    setTimeout(() => setPhase("racing"), order.length * 420 + 350);
+  }, [phase, roster]);
+
+  useEffect(() => {
+    if (phase !== "racing") return;
+    let last = performance.now();
+    const step = (now) => {
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      let moving = false;
+      const S = swimmers.current;
+
+      S.forEach((s) => {
+        s.ph += s.rate * dt * 6.283;
+        s.cd -= dt;
+        if (s.fight > 0) s.fight -= dt;
+        s.yo = Math.sin(now / 1000 * s.wander * 2.2 + s.wphase) * 10 + s.push;
+        s.push *= 1 - dt * 2.4;
+
+        const r = S.find((q) => q.p.id === s.rival);
+        if (r && s.x < s.target - 2 && r.x < r.target - 2 && Math.abs(s.x - r.x) < 64) {
+          const dy = (r.baseY + r.yo) - (s.baseY + s.yo);
+          s.yo += Math.sign(dy) * Math.min(8, Math.abs(dy)) * dt * 1.7;
+        }
+
+        const pull = Math.sin(s.ph);
+        let surge = 0.34 + 0.66 * Math.pow(Math.max(0, pull), 1.4);
+        if (s.fight > 0) surge *= 0.24;
+        if (s.x < s.target) { s.x += 82 * surge * dt; moving = true; }
+        if (s.x > s.target) s.x = s.target;
+      });
+
+      S.forEach((a) => {
+        const b = S.find((q) => q.p.id === a.rival);
+        if (!b || a.i > b.i || a.cd > 0 || b.cd > 0) return;
+        const dx = Math.abs(a.x - b.x), dy = Math.abs((a.baseY + a.yo) - (b.baseY + b.yo));
+        if (dx < 38 && dy < 34 && a.x < a.target - 4 && b.x < b.target - 4) {
+          a.fight = 0.8; b.fight = 0.8; a.cd = 2.0; b.cd = 2.0;
+          const sgn = Math.sign((a.baseY + a.yo) - (b.baseY + b.yo)) || 1;
+          a.push += sgn * 16; b.push -= sgn * 16;
+          if (Math.random() < 0.5) a.x -= 6; else b.x -= 6;
+          sparks.current.push({
+            x: (a.x + b.x) / 2 + 46, y: ((a.baseY + a.yo) + (b.baseY + b.yo)) / 2 + 42,
+            life: 0.9, word: ["oi!", "shove!", "nope!", "splash!"][Math.floor(Math.random() * 4)],
+          });
+        }
+      });
+
+      sparks.current = sparks.current.filter((sp) => (sp.life -= dt) > 0);
+      setTick((t) => t + 1);
+
+      if (!moving) { setPhase("done"); return; }
+      rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [phase]);
+
+  const allEngagers = (isCurrentWeek && feed && Array.isArray(feed.engagers) && feed.engagers.length)
+    ? feed.engagers
+    : (feed ? [] : ENGAGERS.map((e) => ({ ...e, icp: true })));
+  const engagers = (filterICP ? allEngagers.filter((e) => e.icp) : allEngagers).slice(0, 40);
+  const weekLabel = history ? history[activeIdx].week_label : ((feed && feed.week_label) || "Week 32");
+  const S = swimmers.current;
+
+  return (
+    <div className="fx-root">
+      <Confetti fire={phase === "done"} />
+      <style>{`
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@400;500;700&display=swap');
+.fx-root{--ink:#0B2A44;--sea:#1B6FA6;--sea2:#2BA9E0;--foam:#EAF6FC;--signal:#F5423A;--beam:#FFD84D;--paper:#FFF8F2;
+  font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;padding:28px 22px 56px}
+.fx-wrap{max-width:1180px;margin:0 auto}
+.fx-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.fx-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--signal);font-weight:700;margin:0 0 6px}
+.fx-h1{font-family:'STIX Two Text','Times New Roman',serif;font-weight:700;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-.012em;margin:0}
+.fx-sub{font-size:14px;color:#4A6B84;margin:8px 0 0;max-width:46ch;line-height:1.55}
+.fx-btn{font-family:'Space Grotesk';font-size:14px;font-weight:700;letter-spacing:.02em;border:0;border-radius:999px;
+  padding:14px 26px;background:var(--signal);color:#fff;cursor:pointer;box-shadow:0 6px 0 #C22C24;transition:transform .12s,box-shadow .12s}
+.fx-btn:hover{transform:translateY(2px);box-shadow:0 4px 0 #C22C24}
+.fx-btn:active{transform:translateY(6px);box-shadow:0 0 0 #C22C24}
+.fx-btn:disabled{background:#B9C9D6;box-shadow:0 6px 0 #9BAEBD;cursor:default;transform:none}
+.fx-btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none;padding:12px 22px}
+.fx-stage{position:relative;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#1B6FA6 0%,#12557F 100%);
+  height:480px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.14)}
+.fx-wave{position:absolute;left:0;right:0;height:2px;background:rgba(255,255,255,.16);border-radius:2px}
+.fx-lh{position:absolute;inset:0;pointer-events:none;z-index:1}
+.fx-swim{position:absolute;will-change:transform;z-index:3}
+.fx-chip{position:absolute;display:flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:999px;
+  background:rgba(255,255,255,.95);font-size:11px;font-weight:700;color:var(--ink);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.fx-ava{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;color:#fff}
+.fx-spark{position:absolute;z-index:4;font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;color:var(--beam);
+  text-shadow:0 2px 0 rgba(0,0,0,.35);pointer-events:none}
+.fx-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;margin-top:26px}
+@media(max-width:880px){.fx-grid{grid-template-columns:1fr}.fx-stage{height:430px}}
+.fx-card{background:#fff;border-radius:20px;padding:20px 22px;box-shadow:0 1px 0 rgba(11,42,68,.08),0 12px 34px rgba(11,42,68,.07)}
+.fx-cardhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
+.fx-cardtitle{font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;letter-spacing:-.01em;margin:0}
+.fx-row{display:grid;grid-template-columns:34px 30px 1fr auto;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EDF2F6}
+.fx-row:last-child{border-bottom:0}
+.fx-rank{font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;line-height:1;color:var(--ink);opacity:.28}
+.fx-rank.lead{opacity:1;color:var(--signal)}
+.fx-delta{font-size:11px;font-weight:700}
+.fx-name{font-weight:700;font-size:15px}
+.fx-bar{height:7px;border-radius:99px;background:#EDF2F6;overflow:hidden;margin-top:5px}
+.fx-fill{height:100%;border-radius:99px;transition:width .9s cubic-bezier(.3,1,.4,1)}
+.fx-num{font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;line-height:1}
+.fx-numlbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7A93A8;font-weight:700}
+.fx-eng{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid #EDF2F6}
+.fx-eng:last-child{border-bottom:0}
+.fx-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;
+  background:#FFF0DA;color:#8A5A0B;white-space:nowrap}
+.fx-weeks{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.fx-wk{font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.04em;border:1.5px solid #D8E3EC;
+  background:#fff;color:#5C7C93;border-radius:999px;padding:5px 11px;cursor:pointer;transition:all .15s}
+.fx-wk:hover{border-color:var(--ink);color:var(--ink)}
+.fx-wk.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.fx-trend{display:block}
+.fx-foot{margin-top:26px;font-size:12px;color:#7A93A8;line-height:1.7}
+      `}</style>
+
+      <div className="fx-wrap">
+        <header className="fx-top">
+          <div>
+            <p className="fx-eyebrow">{weekLabel}{feed ? "" : " \u00b7 sample data"}{!isCurrentWeek ? " \u00b7 archive" : ""}</p>
+            <h1 className="fx-h1">Six marketers,<br />one lighthouse.</h1>
+            <p className="fx-sub">
+              Distance is earned by ICP engagement. Whoever pulls the right designations
+              onto their posts gets closest to the beam. Close scores mean close quarters.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: 10 }}>
+            {phase === "done" && (
+              <button className="fx-btn ghost" onClick={reset}>Replay</button>
+            )}
+            <button className="fx-btn" onClick={reveal} disabled={phase !== "idle"}>
+              {phase === "idle" ? "Reveal the week"
+                : phase === "sweep" ? "Sweeping…"
+                : phase === "racing" ? "Racing…" : "Revealed"}
+            </button>
+          </div>
+        </header>
+
+        {history && history.length > 1 && (
+          <div className="fx-weeks">
+            {history.map((wk, i) => (
+              <button key={wk.week_label}
+                      className={"fx-wk" + (i === activeIdx ? " on" : "")}
+                      onClick={() => { setWeekIdx(i); reset(); }}>
+                {wk.week_label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="fx-stage" ref={poolRef}>
+          {[80, 160, 240, 320, 400].map((t) => (
+            <div key={t} className="fx-wave" style={{ top: t }} />
+          ))}
+
+          <div className="fx-lh"><Lighthouse spinRef={spinRef} intensity={phase === "idle" ? 0.6 : 1} /></div>
+
+          {S.map((s) => {
+            const isLit = !!lit[s.p.id] || phase === "done";
+            const armAngle = (s.ph * 57.3) % 360;
+            const roll = Math.sin(s.ph * 0.5) * 5 + (s.fight > 0 ? Math.sin(tick * 0.9) * 12 : 0);
+            return (
+              <div key={s.p.id} className="fx-swim"
+                   style={{ transform: `translate(${s.x}px, ${s.baseY + s.yo}px)` }}>
+                <Swimmer p={s.p} arm={armAngle} roll={roll} lit={isLit} fighting={s.fight > 0} />
+                {isLit && (
+                  <div className="fx-chip" style={{ left: -4, top: 16, transform: "translateX(-100%)" }}>
+                    <span className="fx-ava" style={{ background: s.p.cap }}>
+                      {s.p.photo
+                        ? <img src={s.p.photo} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
+                        : s.p.name[0]}
+                    </span>
+                    {s.p.name}
+                    {phase === "done" && <b style={{ color: "var(--signal)" }}>{s.p.icp}</b>}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {sparks.current.map((sp, i) => (
+            <div key={i} className="fx-spark"
+                 style={{ left: sp.x, top: sp.y, opacity: Math.min(1, sp.life * 1.6),
+                          transform: `translateY(${(0.9 - sp.life) * -18}px)` }}>
+              {sp.word}
+            </div>
+          ))}
+        </div>
+
+        <div className="fx-grid">
+          <section className="fx-card">
+            <div className="fx-cardhead">
+              <h2 className="fx-cardtitle">Standings</h2>
+              <span className="fx-numlbl">ICP engagements</span>
+            </div>
+            {ranked.map((p, i) => {
+              const move = p.prevRank - (i + 1);
+              return (
+                <div className="fx-row" key={p.id}>
+                  <div className={`fx-rank ${i === 0 ? "lead" : ""}`}>{i + 1}</div>
+                  <div className="fx-delta" style={{ color: move > 0 ? "#1D9E75" : move < 0 ? "#F5423A" : "#B9C9D6" }}>
+                    {move > 0 ? `▲${move}` : move < 0 ? `▼${-move}` : "—"}
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <span className="fx-ava" style={{ width: 30, height: 30, background: p.cap, flexShrink: 0 }}>
+                      {p.photo
+                        ? <img src={p.photo} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
+                        : p.name[0]}
+                    </span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                    <div className="fx-name">{p.name}</div>
+                    <div className="fx-bar">
+                      <div className="fx-fill"
+                           style={{ width: phase === "done" ? `${(p.icp / maxIcp) * 100}%` : "0%", background: p.cap }} />
+                    </div>
+                    {rankTrend && rankTrend[p.id] && rankTrend[p.id].length > 1 && (
+                      <svg className="fx-trend" width="82" height="18" viewBox="0 0 82 18"
+                           style={{ marginTop: 5 }} aria-label="rank over recent weeks">
+                        <polyline fill="none" stroke={p.cap} strokeWidth="1.6"
+                          strokeLinecap="round" strokeLinejoin="round"
+                          points={rankTrend[p.id].map((r, k, arr) =>
+                            `${(k / Math.max(1, arr.length - 1)) * 78 + 2},${((r - 1) / 5) * 12 + 3}`
+                          ).join(" ")} />
+                        <circle r="2.4" fill={p.cap}
+                          cx={78 + 2}
+                          cy={((rankTrend[p.id][rankTrend[p.id].length - 1] - 1) / 5) * 12 + 3} />
+                      </svg>
+                    )}
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "right" }}>
+                    <div className="fx-num">{phase === "done" ? p.icp : "–"}</div>
+                    <div className="fx-numlbl">{p.total} total</div>
+                  </div>
+                </div>
+              );
+            })}
+          </section>
+
+          <section className="fx-card">
+            <div className="fx-cardhead">
+              <h2 className="fx-cardtitle">Who showed up</h2>
+              <button className="fx-btn ghost" style={{ padding: "6px 14px", fontSize: 12 }}
+                      onClick={() => setFilterICP((v) => !v)}>
+                {filterICP ? "All" : "ICP only"}
+              </button>
+            </div>
+            {!isCurrentWeek && (
+              <p style={{ fontSize: 13, color: "#5C7C93", margin: "4px 0 0" }}>
+                Only the latest week keeps its engager list. Pick {history ? history[lastIdx].week_label : "the current week"} to see who showed up.
+              </p>
+            )}
+            {engagers.map((e, i) => (
+              <div className="fx-eng" key={i}>
+                <span className="fx-ava" style={{ background: "#0B2A44", width: 30, height: 30, fontSize: 11 }}>
+                  {e.name.split(" ").map((n) => n[0]).join("")}
+                </span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontWeight: 700, fontSize: 14 }}>{e.name}</div>
+                  <div style={{ fontSize: 12, color: "#5C7C93" }}>{e.title} · {e.co}</div>
+                </div>
+                <span className="fx-tag">{e.fn}</span>
+              </div>
+            ))}
+            <p className="fx-foot" style={{ marginTop: 14 }}>
+              {allEngagers.length} people engaged &middot; {allEngagers.filter((e) => e.icp).length} match your ICP.
+            </p>
+          </section>
+        </div>
+
+        <p className="fx-foot">
+          Scraped Monday 07:00 IST. Sri and Praveen are tracked for pipeline but sit out the race.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(<FactorsLeaderboard />);
+</script>
+</body>
+</html>
