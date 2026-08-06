@@ -3,7 +3,7 @@
   "history": [
     {
       "week_label": "2026-W32",
-      "generated_at": "2026-08-06T18:05:02.358Z",
+      "generated_at": "2026-08-06T18:13:22.986Z",
       "people": [
         {
           "id": "mansi",
@@ -16,7 +16,7 @@
           "id": "amith",
           "name": "Amith",
           "icp": 12,
-          "total": 223,
+          "total": 222,
           "rank": 2
         },
         {
@@ -50,7 +50,7 @@
       ]
     }
   ],
-  "generated_at": "2026-08-06T18:05:02.358Z",
+  "generated_at": "2026-08-06T18:13:22.986Z",
   "people": [
     {
       "id": "mansi",
@@ -67,10 +67,10 @@
       "id": "amith",
       "name": "Amith",
       "icp": 12,
-      "total": 223,
+      "total": 222,
       "comments": 17,
-      "reposts": 2,
-      "uniqueEngagers": 178,
+      "reposts": 1,
+      "uniqueEngagers": 177,
       "rank": 2,
       "prevRank": 2
     },
@@ -1345,16 +1345,6 @@
       "url": "https://www.linkedin.com/in/ACoAADAaoDoBiW9RA_yMqubp9kk7ExmGV2A2XP8"
     },
     {
-      "name": "Anish Prabhudessai",
-      "title": "LinkedIn Ads & ABM Strategy",
-      "co": "Factors AI",
-      "fn": "ABM",
-      "seniority": "",
-      "icp": false,
-      "on": "Amith",
-      "url": "https://www.linkedin.com/in/anish-prabhudessai"
-    },
-    {
       "name": "Sai Manish",
       "title": "Media professional",
       "co": "",
@@ -1633,11 +1623,21 @@
       "icp": false,
       "on": "Amith",
       "url": "https://www.linkedin.com/in/ACoAAA0_6bIBSw1PP_ARHw5MmI9Ho8WHl9x4sKY"
+    },
+    {
+      "name": "Prerna Bhardwaj",
+      "title": "SaaS Marketing",
+      "co": "5+ Years",
+      "fn": "Demand Generation",
+      "seniority": "",
+      "icp": false,
+      "on": "Amith",
+      "url": "https://www.linkedin.com/in/ACoAACciAX4BVFOAMeNu9XFjSCj52phBzU9d-yk"
     }
   ],
   "totals": {
-    "engagements": 780,
+    "engagements": 779,
     "icp": 63,
-    "uniqueEngagers": 611
+    "uniqueEngagers": 610
   }
 }
