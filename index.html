@@ -93,45 +93,47 @@ const REPEATS = [-1, 0, 1, 2, 3, 4, 5];
    SWIMMER — the prepped SVG, limbs driven by props.
    Source art flipped so the swimmer faces right.
    ──────────────────────────────────────────────────────────── */
-function Fish({ p, rot, lit, airborne, fighting }) {
+function Fish({ p, rot, lit, airborne, surfaced, fighting }) {
   const uid = p.id;
   return (
-    <svg viewBox="-6 -34 108 68" width="104" height="66" aria-hidden="true"
-         style={{ overflow: "visible", opacity: lit ? 1 : 0.22, transition: "opacity .45s ease" }}>
+    <svg viewBox="-6 -28 108 56" width="92" height="48" aria-hidden="true"
+         style={{ overflow: "visible",
+                  opacity: lit ? (airborne || surfaced ? 1 : 0.62) : 0.2,
+                  transition: "opacity .4s ease" }}>
       <defs>
-        <clipPath id={`face-${uid}`}><circle cx="74" cy="0" r="17" /></clipPath>
+        <clipPath id={`face-${uid}`}><circle cx="74" cy="0" r="14" /></clipPath>
       </defs>
 
       <g transform={`rotate(${rot} 46 0)`}>
-        {/* tail — flicks with the stroke */}
-        <path d={`M4,0 L-16,${-13 + (fighting ? 5 : 0)} C-8,-4 -8,4 -16,${13 - (fighting ? 5 : 0)} Z`}
+        {/* tail — flicks wider when scrapping */}
+        <path d={`M6,0 L-14,${-11 + (fighting ? 4 : 0)} C-7,-3 -7,3 -14,${11 - (fighting ? 4 : 0)} Z`}
               fill={p.cap} opacity=".92" />
         {/* dorsal fin */}
-        <path d="M32,-13 C40,-27 54,-27 58,-15 C50,-18 40,-17 32,-13 Z" fill={p.cap} opacity=".8" />
-        {/* body */}
-        <path d="M4,0 C10,-19 34,-27 58,-24 C76,-21 90,-11 90,0 C90,11 76,21 58,24 C34,27 10,19 4,0 Z"
+        <path d="M34,-14 C41,-23 53,-22 58,-13 C50,-16 42,-15 34,-14 Z" fill={p.cap} opacity=".8" />
+        {/* body — long and tapered, not a balloon */}
+        <path d="M6,0 C14,-12 36,-17 58,-15 C74,-13 88,-7 90,0 C88,7 74,13 58,15 C36,17 14,12 6,0 Z"
               fill={p.cap} />
         {/* belly highlight */}
-        <path d="M14,7 C34,23 62,24 84,9 C74,20 56,26 38,24 C26,22 18,15 14,7 Z"
-              fill="#FFFFFF" opacity=".22" />
+        <path d="M16,5 C34,15 60,16 84,6 C72,14 54,17 38,15 C27,14 20,10 16,5 Z"
+              fill="#FFFFFF" opacity=".2" />
         {/* pectoral fin */}
-        <path d="M44,9 C48,22 60,25 64,20 C56,20 50,15 44,9 Z" fill="#0B2A44" opacity=".18" />
+        <path d="M46,7 C50,17 59,19 62,15 C55,15 50,12 46,7 Z" fill="#0B2A44" opacity=".18" />
 
         {/* headshot as the face, counter-rotated so it stays readable */}
         <g transform={`rotate(${-rot * 0.55} 74 0)`}>
-          <circle cx="74" cy="0" r="18.5" fill={p.cap} />
+          <circle cx="74" cy="0" r="15" fill={p.cap} />
           {p.photo
-            ? <image href={p.photo} x="56.5" y="-17.5" width="35" height="35"
+            ? <image href={p.photo} x="60" y="-14" width="28" height="28"
                      clipPath={`url(#face-${uid})`} preserveAspectRatio="xMidYMid slice" />
-            : <circle cx="74" cy="0" r="17" fill={p.skin} />}
+            : <circle cx="74" cy="0" r="14" fill={p.skin} />}
         </g>
 
         {/* droplets trailing off a fish in mid-air */}
         {airborne && (
           <g fill="#FFFFFF" opacity=".7">
-            <circle cx="2" cy="-8" r="2.4" />
-            <circle cx="-8" cy="4" r="1.8" />
-            <circle cx="-2" cy="12" r="1.4" />
+            <circle cx="3" cy="-7" r="2" />
+            <circle cx="-6" cy="3" r="1.5" />
+            <circle cx="-1" cy="10" r="1.2" />
           </g>
         )}
       </g>
@@ -506,7 +508,7 @@ function FactorsLeaderboard() {
       jp: Math.random(),                       // porpoise phase, loops 0..1
       jumpRate: 0.52 + Math.random() * 0.22,   // arcs per second
       jumpH: 26 + Math.random() * 12,
-      prevJp: 0, air: false, lift: 0, rot: 0,
+      prevJp: 0, air: false, lift: 0, rot: 0, settle: 1,
       rival: rivalOf(p),
     }));
     sparks.current = [];
@@ -582,21 +584,32 @@ function FactorsLeaderboard() {
         s.prevJp = s.jp;
         s.jp += s.jumpRate * dt;
         if (s.jp >= 1) s.jp -= 1;
+        // Once the race is over the arc winds down over a couple of seconds and
+        // the fish settle to the surface, bobbing, instead of hopping forever.
+        if (doneRef.current) s.settle = Math.max(0, s.settle - dt * 0.55);
+        const k = s.settle;
+
         const AIR = 0.42;
         if (s.jp < AIR) {
           const u = s.jp / AIR;
-          s.air = true;
-          s.lift = -Math.sin(Math.PI * u) * s.jumpH;
-          s.rot = -Math.atan(Math.cos(Math.PI * u) * 1.15) * 57.3;
+          s.air = k > 0.12;
+          s.lift = -Math.sin(Math.PI * u) * s.jumpH * k;
+          s.rot = -Math.atan(Math.cos(Math.PI * u) * 1.15) * 57.3 * k;
         } else {
           const u = (s.jp - AIR) / (1 - AIR);
           s.air = false;
-          s.lift = Math.sin(Math.PI * u) * 6;
-          s.rot = Math.sin(u * Math.PI * 2) * 5;
+          s.lift = Math.sin(Math.PI * u) * 6 * k;
+          s.rot = Math.sin(u * Math.PI * 2) * 5 * k;
         }
+        // gentle float once they've stopped jumping
+        s.lift += Math.sin(el * 1.5 + s.wphase) * 3 * (1 - k);
+        s.rot += Math.sin(el * 1.1 + s.wphase) * 2 * (1 - k);
+
         // breaching the surface, and landing back through it
-        if (s.jp < s.prevJp) splash(s.x + 74, s.baseY + s.yo + 33, 9, 1.1);
-        else if (s.prevJp < AIR && s.jp >= AIR) splash(s.x + 74, s.baseY + s.yo + 33, 13, 1.4);
+        if (k > 0.15) {
+          if (s.jp < s.prevJp) splash(s.x + 74, s.baseY + s.yo + 33, 9, 1.1 * k);
+          else if (s.prevJp < AIR && s.jp >= AIR) splash(s.x + 74, s.baseY + s.yo + 33, 13, 1.4 * k);
+        }
 
         let surge = s.air ? 1.25 : 0.55;
         if (s.fight > 0) surge *= 0.3;
@@ -814,7 +827,8 @@ function FactorsLeaderboard() {
               <div key={s2.p.id} className="fx-swim"
                    style={{ transform: `translate(${s2.x}px, ${s2.baseY + s2.yo + s2.lift}px)`,
                             zIndex: s2.air ? 4 : 1 }}>
-                <Fish p={s2.p} rot={s2.rot} lit={isLit} airborne={s2.air} fighting={s2.fight > 0} />
+                <Fish p={s2.p} rot={s2.rot} lit={isLit} airborne={s2.air}
+                      surfaced={s2.settle < 0.2} fighting={s2.fight > 0} />
                 {isLit && (
                   <div className="fx-chip" style={{ left: -4, top: 18, transform: "translateX(-100%)" }}>
                     <span className="fx-ava" style={{ background: s2.p.cap }}>
