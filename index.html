@@ -45,9 +45,8 @@ const PEOPLE = [
   { id: "mansi",    name: "Mansi",    icp:  5, total: 121, prevRank: 5, photo: PHOTOS.mansi, skin: "#EDC391", skin2: "#DBA689", skinDk: "#C9926A", cap: "#FFD84D", shade: "#B58A50" },
   { id: "subiksha", name: "Subiksha", icp:  4, total:  98, prevRank: 4, photo: PHOTOS.subiksha, skin: "#BA8D68", skin2: "#99674F", skinDk: "#8A5A45", cap: "#2BA9E0", shade: "#7E5C38" },
   { id: "ganesh",   name: "Ganesh",   icp:  2, total:  61, prevRank: 6, photo: PHOTOS.ganesh, skin: "#70534A", skin2: "#4A2F27", skinDk: "#3C2B24", cap: "#F58C3A", shade: "#33251F" },
-  // tracked for pipeline — they swim, they never rank
-  { id: "sri",      name: "Sri",      icp:  7, total:  98, prevRank: 0, photo: PHOTOS.sri, guest: true, skin: "#D9A074", skin2: "#B8845C", skinDk: "#9E6B45", cap: "#4F7FA8", shade: "#7E5C38" },
-  { id: "praveen",  name: "Praveen",  icp:  2, total:  29, prevRank: 0, photo: PHOTOS.praveen, guest: true, skin: "#C68A5E", skin2: "#A9714B", skinDk: "#8A5A45", cap: "#6B8FA0", shade: "#6A4A30" },
+  { id: "sri",      name: "Sri",      icp:  7, total:  98, prevRank: 0, photo: PHOTOS.sri, skin: "#D9A074", skin2: "#B8845C", skinDk: "#9E6B45", cap: "#4F7FA8", shade: "#7E5C38" },
+  { id: "praveen",  name: "Praveen",  icp:  2, total:  29, prevRank: 0, photo: PHOTOS.praveen, skin: "#C68A5E", skin2: "#A9714B", skinDk: "#8A5A45", cap: "#6B8FA0", shade: "#6A4A30" },
 ];
 
 const ENGAGERS = [
@@ -63,6 +62,19 @@ const ENGAGERS = [
 
 const LANES = 8;
 const RIVAL_GAP = 2;
+
+// "2026-W31" tells nobody anything. Show the Monday-to-Friday range instead,
+// falling back to the ISO label only when the dates are missing.
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function weekRange(start, end, fallback) {
+  if (!start) return fallback || "";
+  const a = new Date(start + "T00:00:00Z");
+  if (isNaN(a)) return fallback || "";
+  const b = end ? new Date(end + "T00:00:00Z") : new Date(a.getTime() + 4 * 86400000);
+  const d1 = a.getUTCDate(), d2 = b.getUTCDate();
+  const m1 = MON[a.getUTCMonth()], m2 = MON[b.getUTCMonth()];
+  return m1 === m2 ? `${d1}\u2013${d2} ${m1}` : `${d1} ${m1} \u2013 ${d2} ${m2}`;
+}
 
 // Choppy water rather than one sine across the whole width: each lane gets a
 // handful of short crests with gaps between them. Everything is generated
@@ -446,8 +458,14 @@ function FactorsLeaderboard() {
   const history = (feed && Array.isArray(feed.history) && feed.history.length)
     ? feed.history : null;
   const lastIdx = history ? history.length - 1 : 0;
-  const activeIdx = weekIdx === null ? lastIdx : Math.min(weekIdx, lastIdx);
-  const isCurrentWeek = !history || activeIdx === lastIdx;
+  // Default to the week the feed says is current. Picking the last slot blindly
+  // showed a stale future week whenever one lingered in history.
+  const currentIdx = history
+    ? Math.max(0, history.findIndex((h) => h.week_label === (feed && feed.week_label)))
+    : 0;
+  const activeIdx = weekIdx === null ? (history ? currentIdx : lastIdx)
+                                     : Math.min(weekIdx, lastIdx);
+  const isCurrentWeek = !history || activeIdx === currentIdx;
 
   const roster = React.useMemo(() => {
     if (!feed) return PEOPLE;
@@ -475,7 +493,7 @@ function FactorsLeaderboard() {
     return out;
   }, [history, activeIdx]);
 
-  const ranked = roster.filter((p) => !p.guest).sort((a, b) => b.icp - a.icp || b.total - a.total);
+  const ranked = [...roster].sort((a, b) => b.icp - a.icp || b.total - a.total);
   const maxIcp = Math.max(1, ...roster.map((p) => p.icp));
 
   const rivalOf = useCallback((p) => {
@@ -662,7 +680,12 @@ function FactorsLeaderboard() {
   // units, so both get named rather than left to be guessed at.
   const icpRows = (feed && feed.totals && feed.totals.icp) || icpPeople;
   const rowCount = (feed && feed.totals && feed.totals.engagements) || allEngagers.length;
-  const weekLabel = history ? history[activeIdx].week_label : ((feed && feed.week_label) || "Week 32");
+  const activeWeek = history ? history[activeIdx] : feed;
+  const weekLabel = weekRange(
+    activeWeek && activeWeek.week_start,
+    activeWeek && activeWeek.week_end,
+    (activeWeek && activeWeek.week_label) || "Sample week"
+  );
   const S = swimmers.current;
 
   return (
@@ -778,7 +801,7 @@ function FactorsLeaderboard() {
               <button key={wk.week_label}
                       className={"fx-wk" + (i === activeIdx ? " on" : "")}
                       onClick={() => { setWeekIdx(i); reset(); }}>
-                {wk.week_label}
+                {weekRange(wk.week_start, wk.week_end, wk.week_label)}
               </button>
             ))}
           </div>
@@ -838,9 +861,7 @@ function FactorsLeaderboard() {
                         : s2.p.name[0]}
                     </span>
                     {s2.p.name}
-                    {s2.p.guest
-                      ? <em style={{ color: "#7A93A8", fontStyle: "normal", fontWeight: 500 }}>guest</em>
-                      : phase === "done" && <b style={{ color: "var(--signal)" }}>{s2.p.icp}</b>}
+                    {phase === "done" && <b style={{ color: "var(--signal)" }}>{s2.p.icp}</b>}
                   </div>
                 )}
               </div>
@@ -928,7 +949,7 @@ function FactorsLeaderboard() {
             <div className="fx-scroll" ref={scrollRef}>
             {!isCurrentWeek && (
               <p style={{ fontSize: 13, color: "#5C7C93", margin: "4px 0 0" }}>
-                Only the latest week keeps its engager list. Pick {history ? history[lastIdx].week_label : "the current week"} to see who showed up.
+                Only the latest week keeps its engager list. Pick {history ? weekRange(history[currentIdx].week_start, history[currentIdx].week_end, history[currentIdx].week_label) : "the current week"} to see who showed up.
               </p>
             )}
             {engagers.map((e, i) => (
