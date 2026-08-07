@@ -563,7 +563,10 @@ function FactorsLeaderboard() {
   const allEngagers = (isCurrentWeek && feed && Array.isArray(feed.engagers) && feed.engagers.length)
     ? feed.engagers
     : (feed ? [] : ENGAGERS.map((e) => ({ ...e, icp: true })));
-  const engagers = (filterICP ? allEngagers.filter((e) => e.icp) : allEngagers).slice(0, 40);
+  const engagers = filterICP ? allEngagers.filter((e) => e.icp) : allEngagers;
+  // totals.uniqueEngagers is the true count; the engagers array itself is capped
+  const peopleCount = (feed && feed.totals && feed.totals.uniqueEngagers) || allEngagers.length;
+  const icpCount = allEngagers.filter((e) => e.icp).length;
   const weekLabel = history ? history[activeIdx].week_label : ((feed && feed.week_label) || "Week 32");
   const S = swimmers.current;
 
@@ -575,6 +578,9 @@ function FactorsLeaderboard() {
 .fx-root{--ink:#0B2A44;--sea:#1B6FA6;--sea2:#2BA9E0;--foam:#EAF6FC;--signal:#F5423A;--beam:#FFD84D;--paper:#FFF8F2;
   font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;padding:28px 22px 56px}
 .fx-wrap{max-width:1180px;margin:0 auto}
+.fx-nav{max-width:1180px;margin:0 auto 26px;padding:0 0 16px;border-bottom:1px solid #E6DED6;
+  display:flex;align-items:center}
+.fx-logo{height:26px;width:auto;display:block}
 .fx-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
 .fx-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--signal);font-weight:700;margin:0 0 6px}
 .fx-h1{font-family:'STIX Two Text','Times New Roman',serif;font-weight:700;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-.012em;margin:0}
@@ -595,9 +601,12 @@ function FactorsLeaderboard() {
 .fx-ava{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;color:#fff}
 .fx-spark{position:absolute;z-index:4;font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;color:var(--beam);
   text-shadow:0 2px 0 rgba(0,0,0,.35);pointer-events:none}
-.fx-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;margin-top:26px}
+.fx-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px;margin-top:26px;align-items:stretch}
+.fx-scroll{flex:1;min-height:0;max-height:432px;overflow-y:auto;overscroll-behavior:contain;padding-right:4px}
+.fx-scroll::-webkit-scrollbar{width:6px}
+.fx-scroll::-webkit-scrollbar-thumb{background:#D8E3EC;border-radius:99px}
 @media(max-width:880px){.fx-grid{grid-template-columns:1fr}.fx-stage{height:430px}}
-.fx-card{background:#fff;border-radius:20px;padding:20px 22px;box-shadow:0 1px 0 rgba(11,42,68,.08),0 12px 34px rgba(11,42,68,.07)}
+.fx-card{background:#fff;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;box-shadow:0 1px 0 rgba(11,42,68,.08),0 12px 34px rgba(11,42,68,.07)}
 .fx-cardhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
 .fx-cardtitle{font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;letter-spacing:-.01em;margin:0}
 .fx-row{display:grid;grid-template-columns:34px 30px 1fr auto;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EDF2F6}
@@ -622,6 +631,16 @@ function FactorsLeaderboard() {
 .fx-trend{display:block}
 .fx-foot{margin-top:26px;font-size:12px;color:#7A93A8;line-height:1.7}
       `}</style>
+
+      <nav className="fx-nav" aria-label="Factors">
+        <svg className="fx-logo" viewBox="0 0 340 580" role="img" aria-label="Factors">
+          <g fill="var(--signal)">
+            <path d="M170,0 L340,0 A170,170 0 0,1 170,170 L0,170 A170,170 0 0,1 170,0 Z" />
+            <path d="M0,205 L340,205 A175,175 0 0,1 165,380 L0,380 Z" />
+            <path d="M0,405 L170,405 A170,170 0 0,1 0,575 Z" />
+          </g>
+        </svg>
+      </nav>
 
       <div className="fx-wrap">
         <header className="fx-top">
@@ -754,6 +773,7 @@ function FactorsLeaderboard() {
                 {filterICP ? "All" : "ICP only"}
               </button>
             </div>
+            <div className="fx-scroll">
             {!isCurrentWeek && (
               <p style={{ fontSize: 13, color: "#5C7C93", margin: "4px 0 0" }}>
                 Only the latest week keeps its engager list. Pick {history ? history[lastIdx].week_label : "the current week"} to see who showed up.
@@ -771,8 +791,10 @@ function FactorsLeaderboard() {
                 <span className="fx-tag">{e.fn}</span>
               </div>
             ))}
+            </div>
             <p className="fx-foot" style={{ marginTop: 14 }}>
-              {allEngagers.length} people engaged &middot; {allEngagers.filter((e) => e.icp).length} match your ICP.
+              {peopleCount} people engaged &middot; {icpCount} match your ICP.
+              {allEngagers.length < peopleCount && <> Showing the top {allEngagers.length}.</>}
             </p>
           </section>
         </div>
