@@ -3,27 +3,27 @@
   "history": [
     {
       "week_label": "2026-W32",
-      "generated_at": "2026-08-06T18:13:22.986Z",
+      "generated_at": "2026-08-07T06:29:59.377Z",
       "people": [
         {
           "id": "mansi",
           "name": "Mansi",
-          "icp": 26,
-          "total": 237,
+          "icp": 27,
+          "total": 265,
           "rank": 1
         },
         {
           "id": "amith",
           "name": "Amith",
           "icp": 12,
-          "total": 222,
+          "total": 223,
           "rank": 2
         },
         {
           "id": "ganesh",
           "name": "Ganesh",
           "icp": 11,
-          "total": 126,
+          "total": 127,
           "rank": 3
         },
         {
@@ -34,32 +34,32 @@
           "rank": 4
         },
         {
+          "id": "subiksha",
+          "name": "Subiksha",
+          "icp": 2,
+          "total": 15,
+          "rank": 5
+        },
+        {
           "id": "aditi",
           "name": "Aditi",
           "icp": 1,
           "total": 22,
-          "rank": 5
-        },
-        {
-          "id": "subiksha",
-          "name": "Subiksha",
-          "icp": 0,
-          "total": 0,
           "rank": 6
         }
       ]
     }
   ],
-  "generated_at": "2026-08-06T18:13:22.986Z",
+  "generated_at": "2026-08-07T06:29:59.377Z",
   "people": [
     {
       "id": "mansi",
       "name": "Mansi",
-      "icp": 26,
-      "total": 237,
-      "comments": 27,
+      "icp": 27,
+      "total": 265,
+      "comments": 29,
       "reposts": 0,
-      "uniqueEngagers": 188,
+      "uniqueEngagers": 207,
       "rank": 1,
       "prevRank": 1
     },
@@ -67,10 +67,10 @@
       "id": "amith",
       "name": "Amith",
       "icp": 12,
-      "total": 222,
+      "total": 223,
       "comments": 17,
       "reposts": 1,
-      "uniqueEngagers": 177,
+      "uniqueEngagers": 178,
       "rank": 2,
       "prevRank": 2
     },
@@ -78,8 +78,8 @@
       "id": "ganesh",
       "name": "Ganesh",
       "icp": 11,
-      "total": 126,
-      "comments": 29,
+      "total": 127,
+      "comments": 30,
       "reposts": 0,
       "uniqueEngagers": 115,
       "rank": 3,
@@ -97,6 +97,17 @@
       "prevRank": 4
     },
     {
+      "id": "subiksha",
+      "name": "Subiksha",
+      "icp": 2,
+      "total": 15,
+      "comments": 1,
+      "reposts": 0,
+      "uniqueEngagers": 14,
+      "rank": 5,
+      "prevRank": 6
+    },
+    {
       "id": "aditi",
       "name": "Aditi",
       "icp": 1,
@@ -104,19 +115,8 @@
       "comments": 4,
       "reposts": 0,
       "uniqueEngagers": 21,
-      "rank": 5,
-      "prevRank": 5
-    },
-    {
-      "id": "subiksha",
-      "name": "Subiksha",
-      "icp": 0,
-      "total": 0,
-      "comments": 0,
-      "reposts": 0,
-      "uniqueEngagers": 0,
       "rank": 6,
-      "prevRank": 6
+      "prevRank": 5
     }
   ],
   "tracked": [
@@ -124,13 +124,13 @@
       "id": "sri",
       "name": "Sri",
       "icp": 7,
-      "total": 95
+      "total": 97
     },
     {
       "id": "praveen",
       "name": "Praveen",
       "icp": 2,
-      "total": 30
+      "total": 29
     }
   ],
   "engagers": [
@@ -263,6 +263,16 @@
       "icp": true,
       "on": "Darshan",
       "url": "https://www.linkedin.com/in/ACoAACyZTEQBiMNpJuu5mrtUe7hj7cmNpofEeMg"
+    },
+    {
+      "name": "Samiksha Singh",
+      "title": "Global Events Manager",
+      "co": "Demand Generation",
+      "fn": "Demand Generation",
+      "seniority": "Manager",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAB2QNmUBIJr0KADZRzQcgJ4MxoPK4NHOFJA"
     },
     {
       "name": "Shyam Ravishankar",
@@ -425,6 +435,16 @@
       "url": "https://www.linkedin.com/in/axelsukianto"
     },
     {
+      "name": "Anna Lund",
+      "title": "Growth Marketing Leader",
+      "co": "Oslo",
+      "fn": "Marketing Ops",
+      "seniority": "Head",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAAB3OjgABFN9D7F7T81eQxqaZwb3QvBsLNVE"
+    },
+    {
       "name": "Jennita James",
       "title": "Global Business Development Leader",
       "co": "Asia & GCC Markets",
@@ -443,16 +463,6 @@
       "icp": true,
       "on": "Ganesh",
       "url": "https://www.linkedin.com/in/ACoAAB2fm-QBXaX6WtX7YoeBSoN3BoozrN8xEyQ"
-    },
-    {
-      "name": "Samiksha Singh",
-      "title": "Global Events Manager",
-      "co": "Demand Generation",
-      "fn": "Demand Generation",
-      "seniority": "Manager",
-      "icp": true,
-      "on": "Ganesh",
-      "url": "https://www.linkedin.com/in/ACoAAB2QNmUBIJr0KADZRzQcgJ4MxoPK4NHOFJA"
     },
     {
       "name": "Sanghamitra S.",
@@ -563,6 +573,16 @@
       "icp": true,
       "on": "Praveen",
       "url": "https://www.linkedin.com/in/ACoAABg7tQsBGav_zPCXVuITd0kfmFksvmE-CaI"
+    },
+    {
+      "name": "Gouri M Menon",
+      "title": "Product Marketer - Hexnode",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Amith",
+      "url": "https://www.linkedin.com/in/ACoAADOv6AoBIKfOzPlVitk9IAPHjLD8cKXc318"
     },
     {
       "name": "Akshay Rajendran 🦸🏻‍♂️",
@@ -1345,6 +1365,26 @@
       "url": "https://www.linkedin.com/in/ACoAADAaoDoBiW9RA_yMqubp9kk7ExmGV2A2XP8"
     },
     {
+      "name": "Sundara perumal M",
+      "title": "Digital Marketer",
+      "co": "Experimenting with AI-powered search, LLM, & GEO optimisations",
+      "fn": "Growth",
+      "seniority": "",
+      "icp": false,
+      "on": "Amith",
+      "url": "https://www.linkedin.com/in/ACoAADTKKCYBzaWBU4rPa731mttPxZO6aDLSs20"
+    },
+    {
+      "name": "Avi Sharma",
+      "title": "--",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Amith",
+      "url": "https://www.linkedin.com/in/ACoAAEIP2pQBCFcWAzLVixhfj09_7yX28n-9vSk"
+    },
+    {
       "name": "Sai Manish",
       "title": "Media professional",
       "co": "",
@@ -1593,51 +1633,11 @@
       "icp": false,
       "on": "Amith",
       "url": "https://www.linkedin.com/in/ACoAAB7EuQABti_Ti6eMtdR8NIo3RCfMDwsbhGw"
-    },
-    {
-      "name": "Mahima Pahuja",
-      "title": "Compliance and Strategy Professional",
-      "co": "NTU",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Amith",
-      "url": "https://www.linkedin.com/in/ACoAABmtnugBfRqWynCNMK5ZbYulcBKh6SL0sAg"
-    },
-    {
-      "name": "Atmeeya Nagavelli",
-      "title": "Growth & Brand Strategist",
-      "co": "Mind Appraisers",
-      "fn": "Brand",
-      "seniority": "",
-      "icp": false,
-      "on": "Amith",
-      "url": "https://www.linkedin.com/in/ACoAAD-iwowB-pvoVNPnLKvWrQvqzSLNj3T7SjM"
-    },
-    {
-      "name": "VamsiKrishna Tangudu",
-      "title": "Senior Software Engineer",
-      "co": "Dell Technologies",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Amith",
-      "url": "https://www.linkedin.com/in/ACoAAA0_6bIBSw1PP_ARHw5MmI9Ho8WHl9x4sKY"
-    },
-    {
-      "name": "Prerna Bhardwaj",
-      "title": "SaaS Marketing",
-      "co": "5+ Years",
-      "fn": "Demand Generation",
-      "seniority": "",
-      "icp": false,
-      "on": "Amith",
-      "url": "https://www.linkedin.com/in/ACoAACciAX4BVFOAMeNu9XFjSCj52phBzU9d-yk"
     }
   ],
   "totals": {
-    "engagements": 779,
-    "icp": 63,
-    "uniqueEngagers": 610
+    "engagements": 825,
+    "icp": 66,
+    "uniqueEngagers": 638
   }
 }
