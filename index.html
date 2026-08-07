@@ -566,7 +566,11 @@ function FactorsLeaderboard() {
   const engagers = filterICP ? allEngagers.filter((e) => e.icp) : allEngagers;
   // totals.uniqueEngagers is the true count; the engagers array itself is capped
   const peopleCount = (feed && feed.totals && feed.totals.uniqueEngagers) || allEngagers.length;
-  const icpCount = allEngagers.filter((e) => e.icp).length;
+  const icpPeople = allEngagers.filter((e) => e.icp).length;
+  // Standings count ICP *engagements*; this panel lists ICP *people*. Different
+  // units, so both get named rather than left to be guessed at.
+  const icpRows = (feed && feed.totals && feed.totals.icp) || icpPeople;
+  const rowCount = (feed && feed.totals && feed.totals.engagements) || allEngagers.length;
   const weekLabel = history ? history[activeIdx].week_label : ((feed && feed.week_label) || "Week 32");
   const S = swimmers.current;
 
@@ -788,13 +792,15 @@ function FactorsLeaderboard() {
                   <div style={{ fontWeight: 700, fontSize: 14 }}>{e.name}</div>
                   <div style={{ fontSize: 12, color: "#5C7C93" }}>{e.title} · {e.co}</div>
                 </div>
-                <span className="fx-tag">{e.fn}</span>
+                {e.fn ? <span className="fx-tag">{e.fn}</span> : null}
               </div>
             ))}
             </div>
             <p className="fx-foot" style={{ marginTop: 14 }}>
-              {peopleCount} people engaged &middot; {icpCount} match your ICP.
-              {allEngagers.length < peopleCount && <> Showing the top {allEngagers.length}.</>}
+              <b>{peopleCount}</b> unique people made <b>{rowCount}</b> engagements.
+              {" "}<b>{icpPeople}</b> of them match your ICP, worth <b>{icpRows}</b> ICP engagements
+              {" "}&mdash; that second number is what the standings rank on.
+              {allEngagers.length < peopleCount && <> Listing the top {allEngagers.length}.</>}
             </p>
           </section>
         </div>
