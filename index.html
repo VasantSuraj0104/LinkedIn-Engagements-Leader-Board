@@ -64,12 +64,30 @@ const ENGAGERS = [
 const LANES = 8;
 const RIVAL_GAP = 2;
 
-// one long wavy line, drifted sideways to fake a moving surface
-const WAVE = (() => {
-  let d = "M-200,0";
-  for (let x = -200; x < 1500; x += 60) d += " q15,-7 30,0 q15,7 30,0";
-  return d;
-})();
+// Choppy water rather than one sine across the whole width: each lane gets a
+// handful of short crests with gaps between them. Everything is generated
+// inside a fixed period so the sideways drift loops without a visible seam.
+const WAVE_PERIOD = 320;
+const crestSet = () => {
+  const segs = [];
+  let x = 0;
+  while (x < WAVE_PERIOD - 50) {
+    const wl = 30 + Math.random() * 26;
+    const amp = 2.5 + Math.random() * 5;
+    const cycles = 1 + Math.floor(Math.random() * 2);
+    let d = `M${x.toFixed(1)},0`;
+    for (let c = 0; c < cycles; c++) {
+      d += ` q${(wl / 4).toFixed(1)},${(-amp).toFixed(1)} ${(wl / 2).toFixed(1)},0`;
+      d += ` q${(wl / 4).toFixed(1)},${amp.toFixed(1)} ${(wl / 2).toFixed(1)},0`;
+    }
+    segs.push({ d, o: (0.13 + Math.random() * 0.2).toFixed(2), w: (1.5 + Math.random() * 1.3).toFixed(1) });
+    x += cycles * wl + 34 + Math.random() * 70;
+  }
+  return segs;
+};
+const LANE_CRESTS = Array.from({ length: LANES }, crestSet);
+const FAR_CRESTS  = Array.from({ length: LANES }, crestSet);
+const REPEATS = [-1, 0, 1, 2, 3, 4, 5];
 
 /* ────────────────────────────────────────────────────────────
    SWIMMER — the prepped SVG, limbs driven by props.
@@ -657,8 +675,9 @@ function FactorsLeaderboard() {
 .fx-stage{position:relative;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#1B6FA6 0%,#0E4A70 100%);
   height:552px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.14)}
 .fx-waves{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+/* 1 submerged fish · 2 water · 3 lighthouse · 4 airborne fish · 5 spray */
 .fx-drift{animation-name:drift;animation-timing-function:linear;animation-iteration-count:infinite}
-@keyframes drift{to{transform:translateX(-120px)}}
+@keyframes drift{to{transform:translateX(-320px)}}
 .fx-drop{position:absolute;border-radius:50%;background:#fff;pointer-events:none;z-index:5}
 .fx-wave{position:absolute;left:0;right:0;height:14px;opacity:.5;
   background-repeat:repeat-x;background-size:120px 14px;
@@ -669,7 +688,7 @@ function FactorsLeaderboard() {
 .fx-ring{position:absolute;border:2px solid rgba(255,255,255,.85);border-radius:50%;pointer-events:none;
   transform:translate(-50%,-50%)}
 .fx-drop{position:absolute;background:#fff;border-radius:50%;pointer-events:none}
-.fx-lh{position:absolute;inset:0;pointer-events:none;z-index:1}
+.fx-lh{position:absolute;inset:0;pointer-events:none;z-index:3}
 .fx-swim{position:absolute;will-change:transform;z-index:3}
 .fx-chip{position:absolute;display:flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:999px;
   background:rgba(255,255,255,.95);font-size:11px;font-weight:700;color:var(--ink);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2)}
@@ -752,14 +771,36 @@ function FactorsLeaderboard() {
         )}
 
         <div className="fx-stage" ref={poolRef}>
-          <svg className="fx-waves" viewBox={`0 0 1200 ${LANES * 64 + 40}`} preserveAspectRatio="none">
+          <svg className="fx-waves" viewBox="0 0 1200 552" preserveAspectRatio="none">
+            <defs>
+              {LANE_CRESTS.map((segs, i) => (
+                <g key={`n${i}`} id={`crest-n-${i}`}>
+                  {segs.map((sg, k) => (
+                    <path key={k} d={sg.d} fill="none" stroke="#FFFFFF"
+                          strokeOpacity={sg.o} strokeWidth={sg.w} strokeLinecap="round" />
+                  ))}
+                </g>
+              ))}
+              {FAR_CRESTS.map((segs, i) => (
+                <g key={`f${i}`} id={`crest-f-${i}`}>
+                  {segs.map((sg, k) => (
+                    <path key={k} d={sg.d} fill="none" stroke="#FFFFFF"
+                          strokeOpacity={(sg.o * 0.45).toFixed(2)} strokeWidth="1.4" strokeLinecap="round" />
+                  ))}
+                </g>
+              ))}
+            </defs>
             {Array.from({ length: LANES }).map((_, i) => (
               <g key={i} transform={`translate(0,${i * 64 + 51})`}>
-                <g className="fx-drift" style={{ animationDuration: `${8 + i * 0.9}s` }}>
-                  <path d={WAVE} fill="none" stroke="rgba(255,255,255,.30)" strokeWidth="2.5" strokeLinecap="round" />
+                <g className="fx-drift" style={{ animationDuration: `${17 + i * 2.1}s` }}>
+                  {REPEATS.map((k) => (
+                    <use key={k} href={`#crest-f-${i}`} x={k * WAVE_PERIOD} y="6" />
+                  ))}
                 </g>
-                <g className="fx-drift" style={{ animationDuration: `${12 + i * 0.7}s`, animationDirection: "reverse" }}>
-                  <path d={WAVE} transform="translate(0,5)" fill="none" stroke="rgba(255,255,255,.13)" strokeWidth="2" />
+                <g className="fx-drift" style={{ animationDuration: `${9 + i * 1.3}s` }}>
+                  {REPEATS.map((k) => (
+                    <use key={k} href={`#crest-n-${i}`} x={k * WAVE_PERIOD} />
+                  ))}
                 </g>
               </g>
             ))}
