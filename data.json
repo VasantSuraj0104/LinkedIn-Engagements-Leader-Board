@@ -50,57 +50,8 @@
           "rank": 6
         }
       ]
-    },
-    {
-      "week_label": "2026-W32",
-      "week_start": "2026-08-03",
-      "generated_at": "2026-08-07T07:50:54.410Z",
-      "people": [
-        {
-          "id": "mansi",
-          "name": "Mansi",
-          "icp": 23,
-          "total": 304,
-          "rank": 1
-        },
-        {
-          "id": "amith",
-          "name": "Amith",
-          "icp": 9,
-          "total": 220,
-          "rank": 2
-        },
-        {
-          "id": "ganesh",
-          "name": "Ganesh",
-          "icp": 9,
-          "total": 127,
-          "rank": 3
-        },
-        {
-          "id": "darshan",
-          "name": "Darshan",
-          "icp": 3,
-          "total": 46,
-          "rank": 4
-        },
-        {
-          "id": "subiksha",
-          "name": "Subiksha",
-          "icp": 2,
-          "total": 18,
-          "rank": 5
-        },
-        {
-          "id": "aditi",
-          "name": "Aditi",
-          "icp": 1,
-          "total": 22,
-          "rank": 6
-        }
-      ]
     }
-  ],
+      ],
   "generated_at": "2026-08-07T12:35:50.021Z",
   "people": [
     {
