@@ -28,6 +28,8 @@ const { useState, useEffect, useRef, useCallback } = React;
    previous_rank. `photo` takes a headshot URL when you have them.
    ──────────────────────────────────────────────────────────── */
 const PHOTOS = {
+  sri: "data:image/jpeg;base64,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",
+  praveen: "data:image/jpeg;base64,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",
   amith: "data:image/jpeg;base64,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",
   darshan: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBUODAsLDBkSEw8VHhsgHx4bHR0hJTApISMtJB0dKjkqLTEzNjY2ICg7Pzo0PjA1NjP/2wBDAQkJCQwLDBgODhgzIh0iMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzP/wAARCABUAFQDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAwACBAUHBgEI/8QAOhAAAgEDAgQEAgcFCQAAAAAAAQIDAAQRBSEGEjFBE1FhcSKRBxQyQoGh0RUjscHhM0NTVHKCkvDx/8QAGQEAAgMBAAAAAAAAAAAAAAAABAUAAgMB/8QAIREAAgICAwEAAwEAAAAAAAAAAAECEQMEEiExEzJBUZH/2gAMAwEAAhEDEQA/AOxpjOoO25oTMzddh5V6oplQtHF2PkKWCepNehd6xfjjjS+1DUZ7GznaKxVuRFjb+1HQs3v2FUnNRRpDG5s0+84o0HTpjBdarbJMOqBuZh7gZxVGPpO4ba6MIkuuUNy+L4J5f1x+FZAVitWVsvJcfeAO2PKjG8iZhO9oSy7ZI2dfI/nWLzSCFrxPoKw1Oz1ODxrC8jnjBIJU9CPMHcVLEjD7QzWIcM8RW+n60l0GIUuFf1TYZz371t45XUMpypGQR3raE+SB8mPgx4cHp8q93oLKaSuR9rcVejMLmlTQcjrSrhBuKci15iioKlnSm4ruXsuFdSnjbkkEBCnONzt/OsM0iyk1i55UBWcP8b4PwJ2HlW/cQaZ+1uH76yH2niJX/UNx/Csr4Ss5bSC6vpQI7Rn+AnqSOv6UJsyaVoO1IpumdNo/CenRQLHFZo+ftMwyT65q0u+GbPwzGbONVxuOWlpeuWMbpG73MLP0LW7BfnVzquqWllbr400szOByrDHzE0of0sdLhXhk/GPC9pYWf1qzh8IqwD8vQqa0PgOSWbg6yM0jSOvMuW6gA7Cq3UkXV7CeDwZomkX4BMoGfzq24Btng4RgRx/eyYz1xzU005Nqn6K9+CXa8L4ihstSGShstHCugG46GlTyuTSrpwIq0VFrxBtRUG9VL0etzpGzR45wCVz0z2rgn0uX9mtaryCQTzEcg+EMW5tvnWhouTg9K56/We1uD4sR5RJ8DY2YY6j5Uv3XLprwY6PHtP05GDRdTWOR7ye4KqARzMAq+eAOufWrq40iXUYLQF3DLF0LkZPlkd+9G1rUg8UcLzC2VyPDIAJLe3egLczxxQ/WNWZoYdjm3CfMnp7jFAXKXY0SiugVhoF1ZOZbiaV8DGJHDH36V02hZ+otFk8iMSgIxgEk4+dQjdme35wwZSNm8xVzplm1taZf7T74z0Hat9OU5ZLBd5Qjjr/B7LQmWpbJQWGabpiRkQqc0qIRvSqxWh69KMi0NcVJiGaozRIJEuDVVxfOlroqzkrzxygqhO7j7wA77b1bzTQ2dtJc3EixQxqWd2OAAKwrjHi281vWF1CAGO3smzawt3Xo3N5lh1+VYZe4tG+G1JM7iGe21eFY1YHujZ3A/wDatF0+doFFxIHiA6Ak596z+3sri+sk1bQJ8c+8luzY5W7gHsf41Jj1Diu5XwHguFA2LNgAClXz/jHMcj/aO0t/DutShsUYAud8dgNzXYsmBsMAVkg1V+DnstTnAmke5SOQH/DbIbHritZs7+y1O38axuoriM/ejbOPcdvxo3TjGMXQv3XKU1YF13oDjFS5BUZ6PQvZFYb0qe3WlVio2SWG2gaaeVIokGWeRgqj8TXGaz9J1pbBoNGi+sy9PHcYjHsOrflWeatrOpa3cePfXDOAfhjC4RPQCoKx9dzt3OP1oaWRvwKjiS9Juo6vf6xdeNfXc07824ZvhHsBsPwFMIDAHCle+R696CqrkjPXfbH6+tHtwvjFo1XxPMAEkH8qzNgvDeszcMawY2Hi2cpHiRdnXsR6j+la0qWN1BHeWs7mGVcry9CP+9qx3U7ctAJgeZojliN9j5mrjgjime11aPTZE5rO7cR8rHBjc/e36eooXZwclyj6Fa+bi+MvC+4wtkvNJu1UErBGZQfUEYrjtOvrqHlntppEZNi0TkEfI13X0iOul8PeDGwSa8kEeW22G5/lWW6Gq29xNCSWDoGxnuDg/wAa7q38yuzXM0Ox+kDXbWPEksd2g/zCZb/kMV1Olce6fqBSK8ie0mcgA554yfft+NZc/LI/wjlx2znH40yRiVZcYGOvlRkZtAkscWby3WlVfpNy11o1jOxyzwKWPmcYNKiUBvpmJ2rcypkDJOM+5qYEOSOc9PIenpSpUEHkeYEfCHbGPP3oQBEqHmJ3xg98mlSrpCfIo8OMHfmGDn2qmuLZFkR1Z1LHlODSpVEQ9u765uLC3gmlaSO0DeCHYnGdyMntUO1JjvIZF2LMuf8AdsaVKupUiMvW2j5+pBGM0GQ8oPc7DJ3pUqiIatwTM8/DUIfH7p2RceQP9aVKlRMfAKf5M//Z",
   aditi: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBUODAsLDBkSEw8VHhsgHx4bHR0hJTApISMtJB0dKjkqLTEzNjY2ICg7Pzo0PjA1NjP/2wBDAQkJCQwLDBgODhgzIh0iMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzP/wAARCABUAFQDASIAAhEBAxEB/8QAHAAAAgMAAwEAAAAAAAAAAAAABQYABAcBAgMI/8QANRAAAgEDAgQEAwcDBQAAAAAAAQIDAAQRBSEGEjFBEyJRYXGBsQcUFSMyQpFiocEWM3Ky8P/EABkBAAMBAQEAAAAAAAAAAAAAAAEDBAIABf/EAB8RAAICAgMBAQEAAAAAAAAAAAABAhEDMQQSIRNhQv/aAAwDAQACEQMRAD8A5j8rKd8GisJyi0NUdAOtEo0wi+opAxHsVA3PeuBtkHHTau/7RXmWSNfMwC43rgnRyBsT0/vVZ12z1x0qlqXEel6epSa6UyD9iDmYfEdvnQ234w068mSGJJsk4BIGPrR6sFhmRQcHufWtP4eGNDtsA4C+vsKzRx5lAIzjPLnJrTdAUDSYATheX+NhWWaRcuW5TnrtSdxDLHBqOVtvGnkthgs2FUZO/wAetN91scf0gf3pK4wvZbO4iitgRNLEEZyM8q5JwPfrXJ07BNXESJrMIwGfD2/SN8VK4vLx0uWVVGPY4qUE50LaiEogOddu9Ec7gVQhXzrRFAT16+tEYejn8ssAdqQOK+JyGNjZkKyjEsoPT2FMvFWsfg+jOysPHl8kfx7n5VkExZgSW3Y5JpuKNu2Zk6PN3adzgnHerenQ30dykkFuzDPX1qWUHOCB6gVonD2lYjR2wRRz5/mhvH4/1foD1G8vLK9ttQa3ePYByNs1uvB+pxatoEE8TAkDDAfLFJmoaPBqGkzQSgbqeU+hrx+yq+NkotmbKvI6EHsR0/8Ae9SY8qyR/UUZ8HzfmjVblRzKcDfrmkXje+S0uoM8rMYxn364FPkhyM9877VmXHjQ/jhhcEyGCPlXpuCcfWtSJJaE3UdQUX0ojaUAHfkIIz33FSrF3KReTK0nhlXIKqoUDG3SpRr8EthyIYkX41eU4OAelUoyAwNXEblJfPlxmiPRmPGmoHUNfa3VvyrfyD496V5QZJMgEKowAO5zVy5lMl9dSvuzOd/iaJWdt93kjmMMciY3SQZDVQpdEBQ7ugLBzo+FYqc7ZrR+F9UlbR57mVeaK2IV2BGR8aVtWazupkazsFtpMYYBsrn1Apr0jhOzt9Msbx4D95laRJXY5HmQ8rEdMg4x8an5Eoygu3hZxsc4TfX1BjT+MtM1CR7HnZJGXyMwwCaEcFTtBrVwpP6brI/tQ+LSLzT4Z7eS08eJG5pGeJfKBv5W67jqDQvhXUmTXwgwOeRTgdiT0+lYx4opNwDmySdKaPphTmMZOx9qzTjWOP8A1hFJK3IOWEK++Ou9aaFKALjyqfnWe8XskvEDRSQmRRHHjHbvsKLdEU9CVezW8l9cSZ5+eV2yM92NSrYla4zI0EROT5nUAt71K3Yno2E0XcdvU163biKwkcnoprkLjc/Wh3Etx4WlsFODIQo/zQZQjKJxhXY9WfJpnkdVsIjtjlAzS7fLg4HqTRiwlS/sFCnzJ+pD2ps14mGDptHW2Tx7uNILmGN5DjnkI5R8+1aZYWeqR6KsUslsIwQVUZY98g9qUdG0G4u5fHht7KVTs0cxBz8sbGnWHTpLIwrCWiiJ/MhBJX5Z6VBysifiPU4sKjb2U+I5LbSuFLuaaSQqq7IJGCsx2AxnpWS8HI8uvWar1a4T/sM0c+0PiFdWuk0u0kBtbZsyuDkM/TA9cfWrX2XaWtzxJaOV8scgcfLf/FVcaDhhbltkXLyrJmSjpH0ef0DI3J/mkLihRFr5uOVuZUj6HsB0NPucoP8AlQDV7W1mviZ7ZJGUDBLMPoaDi5eEmS+vhkwuLuxZ7eZn5lbqBgH3FStF/CdLJJbToHJOcyMzEfyelSm/NGVlml6hceWNHCu4DHsdqV+JLuOS4ijWVWjiUs2/UnoKOa7pr6lpzxQiPxh/ts+2PnWVXbXsN+Ibu1eNozumCMgd/ehCPYZKXUl4eYF9uUHGfU110/njfmQkMp6iuZRHdRFufw40yemM/Cu9gAeZh0Jp38mV7Kw/p+qX1ndxywMpZTnlY4Fc8SccavcwvZqyQBhh2iyCR6A9qqo4TJJOR0FCpojdXnnJPMxJPrSFji53JaKXkmoUmB41LMM+uAK03g24OhMt196Fs3hHDGDxRn0I/mlT8Pg02ZWmIkkJ8seOmwIJ9qI3WpzOk8KpyKu45e3f/Jps330Iiut2bBoP2jaXcwumqXttFKjeVkRwrrjqQRsfbNEjrOm6tdSNp97DcqoGSh3G3pXzJNNLaqG5ipcZC53IonperXFvdxPBO0bqAQyHBHeisSXphys+iTscVKUdK4ztpbBDqHMLgbMUXZvepXUwUDuKdWuNG0Q3FqIzITjzjIFY/qOrX+qXKzXt3LO6/p5jsoPYDtUqVvjpVZnM3Z0DEqGJLH+o5q9p87tGc42ONhUqVqejsewhI7eCD3oUt3Kl80athTzDpv0qVKVBDZvRdsua9vgJ3YlhkkHejM2kW1jIphMh2J87ZA39KlSizloWLzMuqMZDzYz1rwtmK3xx+yEY+lSpTVoU9jVbyN4I3qVKlLGH/9k=",
@@ -43,6 +45,9 @@ const PEOPLE = [
   { id: "mansi",    name: "Mansi",    icp:  5, total: 121, prevRank: 5, photo: PHOTOS.mansi, skin: "#EDC391", skin2: "#DBA689", skinDk: "#C9926A", cap: "#FFD84D", shade: "#B58A50" },
   { id: "subiksha", name: "Subiksha", icp:  4, total:  98, prevRank: 4, photo: PHOTOS.subiksha, skin: "#BA8D68", skin2: "#99674F", skinDk: "#8A5A45", cap: "#2BA9E0", shade: "#7E5C38" },
   { id: "ganesh",   name: "Ganesh",   icp:  2, total:  61, prevRank: 6, photo: PHOTOS.ganesh, skin: "#70534A", skin2: "#4A2F27", skinDk: "#3C2B24", cap: "#F58C3A", shade: "#33251F" },
+  // tracked for pipeline — they swim, they never rank
+  { id: "sri",      name: "Sri",      icp:  7, total:  98, prevRank: 0, photo: PHOTOS.sri, guest: true, skin: "#D9A074", skin2: "#B8845C", skinDk: "#9E6B45", cap: "#4F7FA8", shade: "#7E5C38" },
+  { id: "praveen",  name: "Praveen",  icp:  2, total:  29, prevRank: 0, photo: PHOTOS.praveen, guest: true, skin: "#C68A5E", skin2: "#A9714B", skinDk: "#8A5A45", cap: "#6B8FA0", shade: "#6A4A30" },
 ];
 
 const ENGAGERS = [
@@ -56,51 +61,59 @@ const ENGAGERS = [
   { name: "Leena Kapoor",   title: "Head of Marketing",         co: "Descope",    fn: "Marketing",         on: "Ganesh" },
 ];
 
-const LANES = 6;
+const LANES = 8;
 const RIVAL_GAP = 2;
+
+// one long wavy line, drifted sideways to fake a moving surface
+const WAVE = (() => {
+  let d = "M-200,0";
+  for (let x = -200; x < 1500; x += 60) d += " q15,-7 30,0 q15,7 30,0";
+  return d;
+})();
 
 /* ────────────────────────────────────────────────────────────
    SWIMMER — the prepped SVG, limbs driven by props.
    Source art flipped so the swimmer faces right.
    ──────────────────────────────────────────────────────────── */
-function Swimmer({ p, arm, roll, lit, fighting }) {
+function Fish({ p, rot, lit, airborne, fighting }) {
   const uid = p.id;
   return (
-    <svg viewBox="2.7 30.4 112.5 89.2" width="96" height="76" aria-hidden="true"
-         style={{ transform: "scaleX(-1)", overflow: "visible",
-                  opacity: lit ? 1 : 0.22, transition: "opacity .45s ease" }}>
+    <svg viewBox="-6 -34 108 68" width="104" height="66" aria-hidden="true"
+         style={{ overflow: "visible", opacity: lit ? 1 : 0.22, transition: "opacity .45s ease" }}>
       <defs>
-        <linearGradient id={`body-${uid}`} gradientUnits="userSpaceOnUse"
-                        x1="4.7" y1="75" x2="113.1" y2="75">
-          <stop offset="0" stopColor={p.skin} />
-          <stop offset="1" stopColor={p.skin2} />
-        </linearGradient>
-        <clipPath id={`head-${uid}`}>
-          <circle cx="38" cy="71" r="19.5" />
-        </clipPath>
+        <clipPath id={`face-${uid}`}><circle cx="74" cy="0" r="17" /></clipPath>
       </defs>
 
-      <g transform={`rotate(${roll} 60 75)`}>
-        <path d="M21.18 42.61l11.72-2.09a2.913 2.913 0 0 0-1.25-5.69l-11.61 3.23c-1.57.35-2.63 1.38-2.29 2.95c.35 1.57 1.86 1.95 3.43 1.6z" fill={p.skinDk} />
-        <path d="M89.56 70.81c-5.78-3.45-9.55-5.88-13.17-10.52L59.64 38.85a7.14 7.14 0 0 0-4.49-3.26c-.08-.02-.16-.03-.24-.05l.01-.07l-34.28-2.99c-1.07-.09-2.14.02-3.17.34l-5.32 1.66c-.7.22-1.37.53-2 .93c-1.24.79-3.47 2.26-4.5 3.16c-.57.5-.95 1.01-.95 1.92c0 .74.3 1.4.86 1.86c.61.51 1.47.71 2.35.55c1.11-.2 2.34-1.27 3.18-2.13c.23-.24.53-.39.86-.43l5.63-.74c.43-.06.85-.04 1.25.05c.75.17 1.63.32 2.66.51c1.33.24 2.99.53 4.93.96c2.4.53 20.25 6.29 20.42 6.34c1.21.42 2.27 1.23 2.98 2.3l6.72 10.1c2.53 3.8 2.5 8.81-.06 12.47l-.1.14c-2.71 3.91-5.94 10.83-7.19 15.43c-2.69 9.87-1.06 16.29 4.87 19.09l22.64 10.69l26.58-15.87l9.89-17.48l-23.61-13.52z" fill={`url(#body-${uid})`} />
-        <path d="M19.95 60.96s.13-.21.19-.3l.2-.3c8-10.58 15.78-8.85 20.52-6.69c5.14 2.33 8.71 4.42 8.71 4.42s-.31.06-.81.22c-.52.18-.95.47-.95.47l3.54 3.19l-10.64-1.48a.148.148 0 0 0-.16.08l-1.26 2.46a79.334 79.334 0 0 1-4.2 7.19h.01c-.07.1-.13.2-.2.3c-.07.1-.13.2-.2.3h-.01a78.76 78.76 0 0 1-4.98 6.68l-1.77 2.12a.15.15 0 0 0-.01.18l5.52 9.22L29.13 87s-.11.51-.07 1.06c.04.52.11.83.11.83s-3.68-2.35-7.62-6.39c-3.73-3.83-8.05-10.36-1.6-21.54z" fill={p.shade} />
+      <g transform={`rotate(${rot} 46 0)`}>
+        {/* tail — flicks with the stroke */}
+        <path d={`M4,0 L-16,${-13 + (fighting ? 5 : 0)} C-8,-4 -8,4 -16,${13 - (fighting ? 5 : 0)} Z`}
+              fill={p.cap} opacity=".92" />
+        {/* dorsal fin */}
+        <path d="M32,-13 C40,-27 54,-27 58,-15 C50,-18 40,-17 32,-13 Z" fill={p.cap} opacity=".8" />
+        {/* body */}
+        <path d="M4,0 C10,-19 34,-27 58,-24 C76,-21 90,-11 90,0 C90,11 76,21 58,24 C34,27 10,19 4,0 Z"
+              fill={p.cap} />
+        {/* belly highlight */}
+        <path d="M14,7 C34,23 62,24 84,9 C74,20 56,26 38,24 C26,22 18,15 14,7 Z"
+              fill="#FFFFFF" opacity=".22" />
+        {/* pectoral fin */}
+        <path d="M44,9 C48,22 60,25 64,20 C56,20 50,15 44,9 Z" fill="#0B2A44" opacity=".18" />
 
-        <g transform={`rotate(${arm} 52 59)`}>
-          <path d="M52.1 58.71c-2.69-1.78-4.77.43-4.77.43l-.76 1.15l-16.51 24.93l-.76 1.15s-1.22 2.78 1.47 4.56c2.37 1.57 4.51.37 5.72-1.45L53 64.54c1.2-1.82 1.47-4.26-.9-5.83z" fill={p.skin2} />
-          <path d="M61.14 87.92a6.19 6.19 0 0 0-1.74-8.58l-4.41-2.92l-6.83 10.32l4.41 2.92c2.84 1.89 6.68 1.11 8.57-1.74z" fill={p.skin2} transform="translate(-24 -22)" />
-        </g>
-
-        <g transform="scale(-1,1) translate(-76,0)">
-          <circle cx="38" cy="71" r="22" fill={p.cap} />
+        {/* headshot as the face, counter-rotated so it stays readable */}
+        <g transform={`rotate(${-rot * 0.55} 74 0)`}>
+          <circle cx="74" cy="0" r="18.5" fill={p.cap} />
           {p.photo
-            ? <image href={p.photo} x="18.5" y="51.5" width="39" height="39"
-                     clipPath={`url(#head-${uid})`} preserveAspectRatio="xMidYMid slice" />
-            : <circle cx="38" cy="71" r="19.5" fill={p.skin} />}
+            ? <image href={p.photo} x="56.5" y="-17.5" width="35" height="35"
+                     clipPath={`url(#face-${uid})`} preserveAspectRatio="xMidYMid slice" />
+            : <circle cx="74" cy="0" r="17" fill={p.skin} />}
         </g>
-        {fighting && (
-          <g opacity="0.9">
-            <circle cx="8" cy="62" r="4" fill="#fff" opacity=".7" />
-            <circle cx="2" cy="72" r="2.6" fill="#fff" opacity=".55" />
+
+        {/* droplets trailing off a fish in mid-air */}
+        {airborne && (
+          <g fill="#FFFFFF" opacity=".7">
+            <circle cx="2" cy="-8" r="2.4" />
+            <circle cx="-8" cy="4" r="1.8" />
+            <circle cx="-2" cy="12" r="1.4" />
           </g>
         )}
       </g>
@@ -402,10 +415,13 @@ function FactorsLeaderboard() {
   }, []);
 
   const poolRef = useRef(null);
+  const scrollRef = useRef(null);
   const spinRef = useRef(0);
   const rafRef = useRef(null);
+  const doneRef = useRef(false);
   const swimmers = useRef([]);
   const sparks = useRef([]);
+  const drops = useRef([]);
 
   const history = (feed && Array.isArray(feed.history) && feed.history.length)
     ? feed.history : null;
@@ -416,9 +432,11 @@ function FactorsLeaderboard() {
   const roster = React.useMemo(() => {
     if (!feed) return PEOPLE;
     const src = history ? history[activeIdx].people : feed.people;
+    const guests = (history ? history[activeIdx].tracked : feed.tracked) || [];
     const before = history && activeIdx > 0 ? history[activeIdx - 1].people : null;
     const live = {}, was = {};
     src.forEach((p) => { live[p.id] = p; });
+    guests.forEach((p) => { live[p.id] = p; });
     if (before) before.forEach((p) => { was[p.id] = p.rank; });
     return PEOPLE.map((p) => (live[p.id]
       ? { ...p, icp: live[p.id].icp, total: live[p.id].total,
@@ -437,7 +455,7 @@ function FactorsLeaderboard() {
     return out;
   }, [history, activeIdx]);
 
-  const ranked = [...roster].sort((a, b) => b.icp - a.icp || b.total - a.total);
+  const ranked = roster.filter((p) => !p.guest).sort((a, b) => b.icp - a.icp || b.total - a.total);
   const maxIcp = Math.max(1, ...roster.map((p) => p.icp));
 
   const rivalOf = useCallback((p) => {
@@ -459,7 +477,7 @@ function FactorsLeaderboard() {
     swimmers.current = roster.map((p, i) => ({
       p, i,
       x: 130,
-      baseY: i * 74 + 12,
+      baseY: i * 64 + 18,
       yo: 0, push: 0,
       ph: Math.random() * 6.28,
       rate: 1.25 + Math.random() * 0.5,
@@ -467,9 +485,15 @@ function FactorsLeaderboard() {
       wphase: Math.random() * 6.28,
       target: trackFor(p.icp, w),
       fight: 0, cd: 0,
+      jp: Math.random(),                       // porpoise phase, loops 0..1
+      jumpRate: 0.52 + Math.random() * 0.22,   // arcs per second
+      jumpH: 26 + Math.random() * 12,
+      prevJp: 0, air: false, lift: 0, rot: 0,
       rival: rivalOf(p),
     }));
     sparks.current = [];
+    drops.current = [];
+    doneRef.current = false;
     setLit({});
     setPhase("idle");
     setTick((t) => t + 1);
@@ -506,7 +530,16 @@ function FactorsLeaderboard() {
   }, [phase, roster]);
 
   useEffect(() => {
-    if (phase !== "racing") return;
+    if (phase !== "racing" && phase !== "done") return;
+    const splash = (x, y, n, scale) => {
+      for (let i = 0; i < n; i++) {
+        const a = -Math.PI / 2 + (Math.random() - 0.5) * 1.9;
+        const v = (26 + Math.random() * 34) * scale;
+        drops.current.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v,
+                             r: 1.6 + Math.random() * 2.6 * scale, life: 0.55 + Math.random() * 0.3 });
+      }
+      if (drops.current.length > 220) drops.current.splice(0, drops.current.length - 220);
+    };
     let last = performance.now();
     const step = (now) => {
       const dt = Math.min(0.05, (now - last) / 1000);
@@ -527,10 +560,29 @@ function FactorsLeaderboard() {
           s.yo += Math.sign(dy) * Math.min(8, Math.abs(dy)) * dt * 1.7;
         }
 
-        const pull = Math.sin(s.ph);
-        let surge = 0.34 + 0.66 * Math.pow(Math.max(0, pull), 1.4);
-        if (s.fight > 0) surge *= 0.24;
-        if (s.x < s.target) { s.x += 82 * surge * dt; moving = true; }
+        // porpoise: a fish is quick in the air, slower under
+        s.prevJp = s.jp;
+        s.jp += s.jumpRate * dt;
+        if (s.jp >= 1) s.jp -= 1;
+        const AIR = 0.42;
+        if (s.jp < AIR) {
+          const u = s.jp / AIR;
+          s.air = true;
+          s.lift = -Math.sin(Math.PI * u) * s.jumpH;
+          s.rot = -Math.atan(Math.cos(Math.PI * u) * 1.15) * 57.3;
+        } else {
+          const u = (s.jp - AIR) / (1 - AIR);
+          s.air = false;
+          s.lift = Math.sin(Math.PI * u) * 6;
+          s.rot = Math.sin(u * Math.PI * 2) * 5;
+        }
+        // breaching the surface, and landing back through it
+        if (s.jp < s.prevJp) splash(s.x + 74, s.baseY + s.yo + 33, 9, 1.1);
+        else if (s.prevJp < AIR && s.jp >= AIR) splash(s.x + 74, s.baseY + s.yo + 33, 13, 1.4);
+
+        let surge = s.air ? 1.25 : 0.55;
+        if (s.fight > 0) surge *= 0.3;
+        if (s.x < s.target) { s.x += 62 * surge * dt; moving = true; }
         if (s.x > s.target) s.x = s.target;
       });
 
@@ -551,9 +603,16 @@ function FactorsLeaderboard() {
       });
 
       sparks.current = sparks.current.filter((sp) => (sp.life -= dt) > 0);
+      drops.current = drops.current.filter((d) => {
+        d.life -= dt; d.vy += 150 * dt;
+        d.x += d.vx * dt; d.y += d.vy * dt;
+        return d.life > 0;
+      });
       setTick((t) => t + 1);
 
-      if (!moving) { setPhase("done"); return; }
+      // Keep animating after everyone arrives: the fish carry on porpoising in
+      // place and the final splash gets to fall, instead of freezing mid-air.
+      if (!moving && !doneRef.current) { doneRef.current = true; setPhase("done"); }
       rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);
@@ -595,9 +654,21 @@ function FactorsLeaderboard() {
 .fx-btn:active{transform:translateY(6px);box-shadow:0 0 0 #C22C24}
 .fx-btn:disabled{background:#B9C9D6;box-shadow:0 6px 0 #9BAEBD;cursor:default;transform:none}
 .fx-btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none;padding:12px 22px}
-.fx-stage{position:relative;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#1B6FA6 0%,#12557F 100%);
-  height:480px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.14)}
-.fx-wave{position:absolute;left:0;right:0;height:2px;background:rgba(255,255,255,.16);border-radius:2px}
+.fx-stage{position:relative;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#1B6FA6 0%,#0E4A70 100%);
+  height:552px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.14)}
+.fx-waves{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.fx-drift{animation-name:drift;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes drift{to{transform:translateX(-120px)}}
+.fx-drop{position:absolute;border-radius:50%;background:#fff;pointer-events:none;z-index:5}
+.fx-wave{position:absolute;left:0;right:0;height:14px;opacity:.5;
+  background-repeat:repeat-x;background-size:120px 14px;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14'%3E%3Cpath d='M0 7 q15 -6 30 0 t30 0 t30 0 t30 0' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' opacity='0.85'/%3E%3C/svg%3E");
+  animation:drift 5.5s linear infinite}
+@keyframes drift{from{background-position-x:0}to{background-position-x:-120px}}
+.fx-deep{position:absolute;left:0;right:0;background:rgba(3,32,58,.16)}
+.fx-ring{position:absolute;border:2px solid rgba(255,255,255,.85);border-radius:50%;pointer-events:none;
+  transform:translate(-50%,-50%)}
+.fx-drop{position:absolute;background:#fff;border-radius:50%;pointer-events:none}
 .fx-lh{position:absolute;inset:0;pointer-events:none;z-index:1}
 .fx-swim{position:absolute;will-change:transform;z-index:3}
 .fx-chip{position:absolute;display:flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:999px;
@@ -681,34 +752,50 @@ function FactorsLeaderboard() {
         )}
 
         <div className="fx-stage" ref={poolRef}>
-          {[80, 160, 240, 320, 400].map((t) => (
-            <div key={t} className="fx-wave" style={{ top: t }} />
-          ))}
+          <svg className="fx-waves" viewBox={`0 0 1200 ${LANES * 64 + 40}`} preserveAspectRatio="none">
+            {Array.from({ length: LANES }).map((_, i) => (
+              <g key={i} transform={`translate(0,${i * 64 + 51})`}>
+                <g className="fx-drift" style={{ animationDuration: `${8 + i * 0.9}s` }}>
+                  <path d={WAVE} fill="none" stroke="rgba(255,255,255,.30)" strokeWidth="2.5" strokeLinecap="round" />
+                </g>
+                <g className="fx-drift" style={{ animationDuration: `${12 + i * 0.7}s`, animationDirection: "reverse" }}>
+                  <path d={WAVE} transform="translate(0,5)" fill="none" stroke="rgba(255,255,255,.13)" strokeWidth="2" />
+                </g>
+              </g>
+            ))}
+          </svg>
 
           <div className="fx-lh"><Lighthouse spinRef={spinRef} intensity={phase === "idle" ? 0.6 : 1} /></div>
 
-          {S.map((s) => {
-            const isLit = !!lit[s.p.id] || phase === "done";
-            const armAngle = (s.ph * 57.3) % 360;
-            const roll = Math.sin(s.ph * 0.5) * 5 + (s.fight > 0 ? Math.sin(tick * 0.9) * 12 : 0);
+          {S.map((s2) => {
+            const isLit = !!lit[s2.p.id] || phase === "done";
             return (
-              <div key={s.p.id} className="fx-swim"
-                   style={{ transform: `translate(${s.x}px, ${s.baseY + s.yo}px)` }}>
-                <Swimmer p={s.p} arm={armAngle} roll={roll} lit={isLit} fighting={s.fight > 0} />
+              <div key={s2.p.id} className="fx-swim"
+                   style={{ transform: `translate(${s2.x}px, ${s2.baseY + s2.yo + s2.lift}px)`,
+                            zIndex: s2.air ? 4 : 1 }}>
+                <Fish p={s2.p} rot={s2.rot} lit={isLit} airborne={s2.air} fighting={s2.fight > 0} />
                 {isLit && (
-                  <div className="fx-chip" style={{ left: -4, top: 16, transform: "translateX(-100%)" }}>
-                    <span className="fx-ava" style={{ background: s.p.cap }}>
-                      {s.p.photo
-                        ? <img src={s.p.photo} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
-                        : s.p.name[0]}
+                  <div className="fx-chip" style={{ left: -4, top: 18, transform: "translateX(-100%)" }}>
+                    <span className="fx-ava" style={{ background: s2.p.cap }}>
+                      {s2.p.photo
+                        ? <img src={s2.p.photo} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
+                        : s2.p.name[0]}
                     </span>
-                    {s.p.name}
-                    {phase === "done" && <b style={{ color: "var(--signal)" }}>{s.p.icp}</b>}
+                    {s2.p.name}
+                    {s2.p.guest
+                      ? <em style={{ color: "#7A93A8", fontStyle: "normal", fontWeight: 500 }}>guest</em>
+                      : phase === "done" && <b style={{ color: "var(--signal)" }}>{s2.p.icp}</b>}
                   </div>
                 )}
               </div>
             );
           })}
+
+          {drops.current.map((d, i) => (
+            <span key={i} className="fx-drop"
+                  style={{ left: d.x, top: d.y, width: d.r * 2, height: d.r * 2,
+                           opacity: Math.min(1, d.life * 2) }} />
+          ))}
 
           {sparks.current.map((sp, i) => (
             <div key={i} className="fx-spark"
@@ -771,13 +858,18 @@ function FactorsLeaderboard() {
 
           <section className="fx-card">
             <div className="fx-cardhead">
-              <h2 className="fx-cardtitle">Who showed up</h2>
+              <div>
+                <h2 className="fx-cardtitle">Who showed up</h2>
+                <span className="fx-numlbl">
+                  {engagers.length} {filterICP ? "ICP" : "listed"}
+                </span>
+              </div>
               <button className="fx-btn ghost" style={{ padding: "6px 14px", fontSize: 12 }}
-                      onClick={() => setFilterICP((v) => !v)}>
-                {filterICP ? "All" : "ICP only"}
+                      onClick={() => { setFilterICP((v) => !v); if (scrollRef.current) scrollRef.current.scrollTop = 0; }}>
+                {filterICP ? `All ${allEngagers.length}` : `ICP only ${icpPeople}`}
               </button>
             </div>
-            <div className="fx-scroll">
+            <div className="fx-scroll" ref={scrollRef}>
             {!isCurrentWeek && (
               <p style={{ fontSize: 13, color: "#5C7C93", margin: "4px 0 0" }}>
                 Only the latest week keeps its engager list. Pick {history ? history[lastIdx].week_label : "the current week"} to see who showed up.
