@@ -470,7 +470,11 @@ function FactorsLeaderboard() {
   const roster = React.useMemo(() => {
     if (!feed) return PEOPLE;
     const src = history ? history[activeIdx].people : feed.people;
-    const guests = (history ? history[activeIdx].tracked : feed.tracked) || [];
+    // History entries never stored a `tracked` array, so anyone the workflow
+    // classed as tracked-only would read as zero on every archived week. Fall
+    // back to the feed's list, which is where their numbers actually live.
+    const guests = (history ? (history[activeIdx].tracked || feed.tracked)
+                            : feed.tracked) || [];
     const before = history && activeIdx > 0 ? history[activeIdx - 1].people : null;
     const live = {}, was = {};
     src.forEach((p) => { live[p.id] = p; });
