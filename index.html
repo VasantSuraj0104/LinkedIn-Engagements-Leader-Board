@@ -466,6 +466,10 @@ function FactorsLeaderboard() {
   const activeIdx = weekIdx === null ? (history ? currentIdx : lastIdx)
                                      : Math.min(weekIdx, lastIdx);
   const isCurrentWeek = !history || activeIdx === currentIdx;
+  // Rank movement is only meaningful once there is an earlier week to compare
+  // against. With a single week the workflow sets prevRank = rank, so every
+  // arrow would be measuring roster changes rather than performance.
+  const hasPrevWeek = !!(history && activeIdx > 0);
 
   const roster = React.useMemo(() => {
     if (!feed) return PEOPLE;
@@ -781,10 +785,10 @@ function FactorsLeaderboard() {
         <header className="fx-top">
           <div>
             <p className="fx-eyebrow">{weekLabel}{feed ? "" : " \u00b7 sample data"}{!isCurrentWeek ? " \u00b7 archive" : ""}</p>
-            <h1 className="fx-h1">Six marketers,<br />one lighthouse.</h1>
+            <h1 className="fx-h1">Eight swimmers,<br />one beam.</h1>
             <p className="fx-sub">
               Distance is earned by ICP engagement. Whoever pulls the right designations
-              onto their posts gets closest to the beam. Close scores mean close quarters.
+              onto their posts gets closest to the beam.
             </p>
           </div>
           <div style={{ display: "flex", gap: 10 }}>
@@ -899,7 +903,7 @@ function FactorsLeaderboard() {
                 <div className="fx-row" key={p.id}>
                   <div className={`fx-rank ${i === 0 ? "lead" : ""}`}>{i + 1}</div>
                   <div className="fx-delta" style={{ color: move > 0 ? "#1D9E75" : move < 0 ? "#F5423A" : "#B9C9D6" }}>
-                    {move > 0 ? `▲${move}` : move < 0 ? `▼${-move}` : "—"}
+                    {!hasPrevWeek ? "" : move > 0 ? `▲${move}` : move < 0 ? `▼${-move}` : "—"}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span className="fx-ava" style={{ width: 30, height: 30, background: p.cap, flexShrink: 0 }}>
@@ -913,7 +917,7 @@ function FactorsLeaderboard() {
                       <div className="fx-fill"
                            style={{ width: phase === "done" ? `${(p.icp / maxIcp) * 100}%` : "0%", background: p.cap }} />
                     </div>
-                    {rankTrend && rankTrend[p.id] && rankTrend[p.id].length > 1 && (
+                    {hasPrevWeek && rankTrend && rankTrend[p.id] && rankTrend[p.id].length > 1 && (
                       <svg className="fx-trend" width="82" height="18" viewBox="0 0 82 18"
                            style={{ marginTop: 5 }} aria-label="rank over recent weeks">
                         <polyline fill="none" stroke={p.cap} strokeWidth="1.6"
@@ -978,9 +982,6 @@ function FactorsLeaderboard() {
           </section>
         </div>
 
-        <p className="fx-foot">
-          Scraped Monday 07:00 IST. Sri and Praveen are tracked for pipeline but sit out the race.
-        </p>
       </div>
     </div>
   );
