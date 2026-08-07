@@ -602,8 +602,9 @@ function FactorsLeaderboard() {
           s.rot = Math.sin(u * Math.PI * 2) * 5 * k;
         }
         // gentle float once they've stopped jumping
-        s.lift += Math.sin(el * 1.5 + s.wphase) * 3 * (1 - k);
-        s.rot += Math.sin(el * 1.1 + s.wphase) * 2 * (1 - k);
+        const tsec = now / 1000;
+        s.lift += Math.sin(tsec * 1.5 + s.wphase) * 3 * (1 - k);
+        s.rot += Math.sin(tsec * 1.1 + s.wphase) * 2 * (1 - k);
 
         // breaching the surface, and landing back through it
         if (k > 0.15) {
