@@ -468,12 +468,14 @@ function FactorsLeaderboard() {
       a.load();
     }
     if (!musicRef.current) {
-      // Sits beside index.html rather than inlined — 240KB of base64 would have
-      // tripled the page and delayed first paint for something only played on
-      // a button press.
+      // Sits beside index.html rather than inlined — base64 would have tripled
+      // the page and delayed first paint for something only played on a click.
+      // Cut to 26s because the race scales with window width: ~7s at 900px but
+      // ~20s at 2000px. It gets faded out the moment the race lands, so the
+      // extra length is headroom, never trailing audio.
       const m = new Audio("./race.mp3");
       m.preload = "auto";
-      m.loop = true;          // in case a wide screen makes the race run long
+      m.loop = false;         // plays once and stops; never restarts
       m.volume = 0.34;        // under the horn, not competing with it
       musicRef.current = m;
       m.load();
@@ -672,8 +674,8 @@ function FactorsLeaderboard() {
     order.forEach((p, k) => {
       setTimeout(() => setLit((s) => ({ ...s, [p.id]: true })), k * 420);
     });
-    setTimeout(() => { setPhase("racing"); startMusic(); }, order.length * 420 + 350);
-  }, [phase, roster, startMusic]);
+    setTimeout(() => setPhase("racing"), order.length * 420 + 350);
+  }, [phase, roster]);
 
   useEffect(() => {
     if (phase !== "racing" && phase !== "done") return;
@@ -895,7 +897,7 @@ function FactorsLeaderboard() {
             {phase === "done" && (
               <button className="fx-btn ghost" onClick={() => { primeAudio(); reset(); }}>Replay</button>
             )}
-            <button className="fx-btn" onClick={() => { primeAudio(); reveal(); }} disabled={phase !== "idle"}>
+            <button className="fx-btn" onClick={() => { primeAudio(); startMusic(); reveal(); }} disabled={phase !== "idle"}>
               {phase === "idle" ? "Reveal the week"
                 : phase === "sweep" ? "Sweeping…"
                 : phase === "racing" ? "Racing…" : "Revealed"}
