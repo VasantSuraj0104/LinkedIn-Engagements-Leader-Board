@@ -458,6 +458,7 @@ function FactorsLeaderboard() {
   // AudioContext has to be created inside a user gesture or the browser blocks
   // it, so this is primed on the button press rather than at mount.
   const sfxRef = useRef(null);
+  const musicRef = useRef(null);
   const primeAudio = () => {
     if (!sfxRef.current) {
       const a = new Audio(FINISH_SFX);
@@ -466,11 +467,42 @@ function FactorsLeaderboard() {
       sfxRef.current = a;
       a.load();
     }
+    if (!musicRef.current) {
+      // Sits beside index.html rather than inlined — 240KB of base64 would have
+      // tripled the page and delayed first paint for something only played on
+      // a button press.
+      const m = new Audio("./race.mp3");
+      m.preload = "auto";
+      m.loop = true;          // in case a wide screen makes the race run long
+      m.volume = 0.34;        // under the horn, not competing with it
+      musicRef.current = m;
+      m.load();
+    }
     if (!audioRef.current) {
       const AC = window.AudioContext || window.webkitAudioContext;
       if (AC) audioRef.current = new AC();
     }
   };
+
+  const startMusic = useCallback(() => {
+    const m = musicRef.current;
+    if (!m) return;
+    try { m.currentTime = 0; const p = m.play(); if (p && p.catch) p.catch(() => {}); }
+    catch (e) { /* no music is fine, the race still runs */ }
+  }, []);
+
+  // Duck out over ~0.7s so the horn lands in the clear rather than on top of it.
+  const stopMusic = useCallback(() => {
+    const m = musicRef.current;
+    if (!m || m.paused) return;
+    const from = m.volume, steps = 14;
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      m.volume = Math.max(0, from * (1 - i / steps));
+      if (i >= steps) { clearInterval(id); m.pause(); m.volume = from; }
+    }, 50);
+  }, []);
 
   // Plays the clip; the synthesised horn below is the fallback if the browser
   // refuses the file for any reason, so the finish never lands silently.
@@ -607,6 +639,7 @@ function FactorsLeaderboard() {
     sparks.current = [];
     drops.current = [];
     doneRef.current = false;
+    if (musicRef.current) { musicRef.current.pause(); musicRef.current.currentTime = 0; }
     setLit({});
     setPhase("idle");
     setTick((t) => t + 1);
@@ -639,8 +672,8 @@ function FactorsLeaderboard() {
     order.forEach((p, k) => {
       setTimeout(() => setLit((s) => ({ ...s, [p.id]: true })), k * 420);
     });
-    setTimeout(() => setPhase("racing"), order.length * 420 + 350);
-  }, [phase, roster]);
+    setTimeout(() => { setPhase("racing"); startMusic(); }, order.length * 420 + 350);
+  }, [phase, roster, startMusic]);
 
   useEffect(() => {
     if (phase !== "racing" && phase !== "done") return;
@@ -737,7 +770,7 @@ function FactorsLeaderboard() {
 
       // Keep animating after everyone arrives: the fish carry on porpoising in
       // place and the final splash gets to fall, instead of freezing mid-air.
-      if (!moving && !doneRef.current) { doneRef.current = true; setPhase("done"); horn(); }
+      if (!moving && !doneRef.current) { doneRef.current = true; setPhase("done"); stopMusic(); horn(); }
       rafRef.current = requestAnimationFrame(step);
     };
     rafRef.current = requestAnimationFrame(step);
