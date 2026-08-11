@@ -8,7 +8,7 @@
       "week_end": "2026-07-31",
       "tracked": [],
       "week_start": "2026-07-27",
-      "generated_at": "2026-08-11T07:52:04.980Z",
+      "generated_at": "2026-08-11T08:09:54.172Z",
       "people": [
         {
           "id": "mansi",
@@ -20,7 +20,7 @@
         {
           "id": "sri",
           "name": "Sri",
-          "icp": 80,
+          "icp": 78,
           "total": 196,
           "rank": 2
         },
@@ -69,7 +69,7 @@
       ]
     }
   ],
-  "generated_at": "2026-08-11T07:52:04.980Z",
+  "generated_at": "2026-08-11T08:09:54.172Z",
   "people": [
     {
       "id": "mansi",
@@ -85,7 +85,7 @@
     {
       "id": "sri",
       "name": "Sri",
-      "icp": 80,
+      "icp": 78,
       "total": 196,
       "comments": 17,
       "reposts": 0,
@@ -102,7 +102,7 @@
       "reposts": 0,
       "uniqueEngagers": 142,
       "rank": 3,
-      "prevRank": 2
+      "prevRank": 3
     },
     {
       "id": "subiksha",
@@ -124,7 +124,7 @@
       "reposts": 2,
       "uniqueEngagers": 39,
       "rank": 5,
-      "prevRank": 3
+      "prevRank": 5
     },
     {
       "id": "praveen",
@@ -146,7 +146,7 @@
       "reposts": 0,
       "uniqueEngagers": 0,
       "rank": 7,
-      "prevRank": 5
+      "prevRank": 7
     },
     {
       "id": "ganesh",
@@ -157,7 +157,7 @@
       "reposts": 0,
       "uniqueEngagers": 0,
       "rank": 8,
-      "prevRank": 6
+      "prevRank": 8
     }
   ],
   "tracked": [],
@@ -176,7 +176,7 @@
       "name": "Nivedita S.",
       "title": "Digital Product Marketing Lead",
       "co": "DiligenceVault",
-      "fn": "Digital Marketing",
+      "fn": "Marketing",
       "seniority": "",
       "icp": true,
       "on": "Amith",
@@ -191,6 +191,16 @@
       "icp": true,
       "on": "Amith",
       "url": "https://www.linkedin.com/in/ACoAADTKKCYBzaWBU4rPa731mttPxZO6aDLSs20"
+    },
+    {
+      "name": "Kousar Anjum Mohammad",
+      "title": "Marketing Team Lead",
+      "co": "Tipco Engineering",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Amith",
+      "url": "https://www.linkedin.com/in/ACoAACtH_K8BCbIEEiAkJMKOAq7V7nAT1vbRCR0"
     },
     {
       "name": "Nivedita Bharathi",
@@ -301,16 +311,6 @@
       "icp": true,
       "on": "Amith",
       "url": "https://www.linkedin.com/in/ACoAAAncYyEB3VFE1hZVH3Jl1SfLorH-nMGIwhE"
-    },
-    {
-      "name": "Joy Sam Raj M",
-      "title": "Founder and Full Stack Engineer",
-      "co": "DevDukes Technologies",
-      "fn": "Founder",
-      "seniority": "",
-      "icp": true,
-      "on": "Amith",
-      "url": "https://www.linkedin.com/in/ACoAADKLDZAB7mHGwuFUNIJFBYZhFgjJGaWH8n0"
     },
     {
       "name": "Jose Kuzhivelil",
@@ -746,7 +746,7 @@
       "name": "Arpit Garg",
       "title": "Assistant Manager, Demand Generation + MarTech",
       "co": "Stellarix",
-      "fn": "Demand Generation",
+      "fn": "Marketing Ops",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
@@ -793,14 +793,24 @@
       "url": "https://www.linkedin.com/in/nitinflanker"
     },
     {
-      "name": "Aparna Kulkarni",
-      "title": "Founder",
-      "co": "Personifiers",
-      "fn": "Founder",
+      "name": "Mohamed Natheem",
+      "title": "Associate SEO Manager",
+      "co": "Botpresso",
+      "fn": "Digital Marketing",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAAATpWEwBmjFuRc3EmzvrqokAC2cacXvdv9g"
+      "url": "https://www.linkedin.com/in/ACoAACESJmcBE8v3AoMNp9CWG-Yp1egXWqqI5c0"
+    },
+    {
+      "name": "Rahul Sehgal",
+      "title": "Head of New Business, Growth & Strategic Partnerships | India & South Asia",
+      "co": "LinkedIn",
+      "fn": "Growth Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAADwAuABKqgey15876IvfETOBUEb4O_ZuvI"
     },
     {
       "name": "Zeeshan Akhtar",
@@ -851,16 +861,6 @@
       "icp": true,
       "on": "Mansi",
       "url": "https://www.linkedin.com/in/ACoAACE6NYgBBuq_FBTKoaMXo99wfr-kJYEEF3U"
-    },
-    {
-      "name": "Poonam Peswani",
-      "title": "Founder",
-      "co": "Connect & Co",
-      "fn": "Founder",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAABSZPaUBj8gXAEVKA0PM2CTaRjwali0kjU0"
     },
     {
       "name": "Kabir Uppal",
@@ -966,7 +966,7 @@
       "name": "Kumar Vasnani",
       "title": "Manager - Growth and Strategy",
       "co": "Make My House",
-      "fn": "Growth Marketing",
+      "fn": "Growth",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
@@ -1203,6 +1203,16 @@
       "url": "https://www.linkedin.com/in/ACoAAA3PJvIBeHkm2co83AGl5WV9wFvFpKbEZjA"
     },
     {
+      "name": "Amrudheen D",
+      "title": "Founder",
+      "co": "XTSY ONE",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAADCqQ98BwFzSBrEClGI-VOiDbTmkhgQnruM"
+    },
+    {
       "name": "ALEENA RANDHAWA",
       "title": "Digital Marketing Executive",
       "co": "DG Tech Machinery",
@@ -1403,16 +1413,6 @@
       "url": "https://www.linkedin.com/in/ACoAAA2stNIB-VKfat_3s4UsZV4CpQJImVWZ2lY"
     },
     {
-      "name": "Poovizhi Devaraj",
-      "title": "Digital Marketing Consultant",
-      "co": "Freelance",
-      "fn": "Digital Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Subiksha",
-      "url": "https://www.linkedin.com/in/ACoAACS3mh4BQePcZvnhH8KGra00kfNCA_Ys31w"
-    },
-    {
       "name": "Yashasvi Shailly",
       "title": "Operator & Builder | Founder",
       "co": "The One Labs",
@@ -1486,7 +1486,7 @@
       "name": "Aishwarya Singh",
       "title": "Head - Growth & Customer Success",
       "co": "Adgebra | Inuxu Digital Media Technologies",
-      "fn": "Growth",
+      "fn": "Growth Marketing",
       "seniority": "",
       "icp": true,
       "on": "Sri",
@@ -1516,7 +1516,7 @@
       "name": "Orest Grytsiv",
       "title": "Regional Business Growth Director",
       "co": "Drіpіfy",
-      "fn": "Growth",
+      "fn": "Growth Marketing",
       "seniority": "",
       "icp": true,
       "on": "Sri",
@@ -1623,16 +1623,6 @@
       "url": "https://www.linkedin.com/in/ACoAAB-FWxIBKgYU3vsVxLMCijKTmArAxDoNPGU"
     },
     {
-      "name": "Kabandi Saikia",
-      "title": "Growth Consultant",
-      "co": "Freelance",
-      "fn": "Growth",
-      "seniority": "",
-      "icp": true,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAV3ofIBAb6UEkrYqMz5d6SYe7XlRP9lxAo"
-    },
-    {
       "name": "Philemon Raju S",
       "title": "Chief Executive Officer",
       "co": "Certinal",
@@ -1661,11 +1651,21 @@
       "icp": true,
       "on": "Sri",
       "url": "https://www.linkedin.com/in/ACoAAABmzWUBzzgVoRavJPXPzVObZJ3DUVFq3sQ"
+    },
+    {
+      "name": "Deepak Nautiyal",
+      "title": "Co-Founder, CEO",
+      "co": "NoiLabs",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAABSrvUBNdFK6Jzqqvkj_fIeKQgKVQNyLig"
     }
   ],
   "totals": {
     "engagements": 793,
-    "icp": 265,
+    "icp": 263,
     "uniqueEngagers": 638
   }
 }
