@@ -67,6 +67,14 @@ const RIVAL_GAP = 2;
 
 // "2026-W31" tells nobody anything. Show the Monday-to-Friday range instead,
 // falling back to the ISO label only when the dates are missing.
+const MONTH_FULL = ["January","February","March","April","May","June",
+  "July","August","September","October","November","December"];
+const monthKeyOf = (ws) => String(ws || "").slice(0, 7);            // "2026-08"
+const monthNameOf = (k) => {
+  const [y, m] = String(k).split("-");
+  return MONTH_FULL[Number(m) - 1] + " " + y;
+};
+
 const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function weekRange(start, end, fallback) {
   if (!start) return fallback || "";
@@ -439,6 +447,9 @@ function FactorsLeaderboard() {
 
   const [feed, setFeed] = useState(null);
   const [weekIdx, setWeekIdx] = useState(null);
+  const [monthKey, setMonthKey] = useState(null);
+  const [crowned, setCrowned] = useState(false);
+  const [monthNote, setMonthNote] = useState("");
   useEffect(() => {
     let dead = false;
     fetch("./data.json?t=" + Date.now(), { cache: "no-store" })
@@ -564,6 +575,40 @@ function FactorsLeaderboard() {
   // against. With a single week the workflow sets prevRank = rank, so every
   // arrow would be measuring roster changes rather than performance.
   const hasPrevWeek = !!(history && activeIdx > 0);
+
+  // Weeks grouped by the calendar month their Monday falls in. A month is only
+  // "closed" once a week from a LATER month exists — that is the real signal the
+  // month is over, and it copes with months that run 4 weeks or 5.
+  const months = React.useMemo(() => {
+    if (!history || !history.length) return null;
+    const byKey = {};
+    history.forEach((h, i) => {
+      const k = monthKeyOf(h.week_start) || monthKeyOf(h.week_label);
+      (byKey[k] = byKey[k] || []).push({ ...h, idx: i });
+    });
+    const keys = Object.keys(byKey).sort();
+    return { byKey, keys, latest: keys[keys.length - 1] };
+  }, [history]);
+
+  const openMonth = months ? (monthKey && months.byKey[monthKey] ? monthKey : months.latest) : null;
+  const monthWeeks = months && openMonth ? months.byKey[openMonth] : [];
+  const monthClosed = !!(months && openMonth && months.keys.indexOf(openMonth) < months.keys.length - 1);
+
+  // Month standings are derived, never stored — summing the weeks we already
+  // have means a corrected week automatically corrects the month.
+  const totalsForMonth = useCallback((key) => {
+    if (!months || !months.byKey[key]) return [];
+    const acc = {};
+    months.byKey[key].forEach((wk) => {
+      [...(wk.people || []), ...(wk.tracked || [])].forEach((p) => {
+        const a = acc[p.id] = acc[p.id] || { id: p.id, name: p.name, icp: 0, total: 0, weeks: 0 };
+        a.icp += p.icp || 0; a.total += p.total || 0; a.weeks += 1;
+      });
+    });
+    return Object.values(acc).sort((x, y) => y.icp - x.icp || y.total - x.total);
+  }, [months]);
+
+  const closedMonths = months ? months.keys.slice(0, -1) : [];
 
   const roster = React.useMemo(() => {
     if (!feed) return PEOPLE;
@@ -865,6 +910,36 @@ function FactorsLeaderboard() {
 .fx-tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;
   background:#FFF0DA;color:#8A5A0B;white-space:nowrap}
 .fx-weeks{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.fx-monthtag{font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:#7A93A8;margin:0 2px}
+.fx-mnav{width:22px;height:22px;border-radius:50%;border:1.5px solid #D8E3EC;background:#fff;
+  color:#7A93A8;font-size:15px;line-height:1;cursor:pointer;padding:0}
+.fx-mnav:hover:not(:disabled){border-color:var(--ink);color:var(--ink)}
+.fx-mnav:disabled{opacity:.3;cursor:default}
+.fx-crown{font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.04em;
+  border-radius:99px;padding:7px 15px;cursor:pointer;margin-left:6px;border:1.5px solid;transition:.18s}
+.fx-crown.locked{background:#FDECEA;border-color:#F5423A;color:#C6362F}
+.fx-crown.locked:hover{background:#FBDBD7}
+.fx-crown.live{background:#1D9E75;border-color:#1D9E75;color:#fff}
+.fx-crown.live:hover{background:#178A65}
+.fx-monthnote{font-size:13px;color:#C6362F;margin:-8px 0 14px;max-width:640px}
+.fx-month{background:#fff;border-radius:20px;padding:22px 24px;margin-top:26px;
+  box-shadow:0 1px 0 rgba(11,42,68,.06),0 8px 30px rgba(11,42,68,.06)}
+.fx-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 8px}
+.fx-pod{border-radius:16px;padding:16px;text-align:center;border:1.5px solid #E6DED6}
+.fx-pod.p1{background:#FFF8E6;border-color:#E8C766}
+.fx-pod.p2{background:#F5F7F9;border-color:#CBD6DF}
+.fx-pod.p3{background:#FBF0E8;border-color:#DFC0A6}
+.fx-podpos{font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.08em;color:#7A93A8}
+.fx-podname{font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;color:var(--ink);margin:6px 0 2px}
+.fx-podicp{font-family:'Space Grotesk';font-size:22px;font-weight:700;color:var(--signal)}
+.fx-podsub{font-size:11px;color:#7A93A8}
+.fx-mrow{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;
+  padding:9px 0;border-top:1px solid #F0EAE3;font-size:14px}
+.fx-past{margin-top:18px;border-top:1px solid #F0EAE3;padding-top:16px}
+.fx-pastrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;padding:7px 0}
+.fx-pastmonth{font-family:'Space Grotesk';font-weight:700;font-size:11px;letter-spacing:.05em;
+  text-transform:uppercase;color:#7A93A8;min-width:112px}
 .fx-wk{font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.04em;border:1.5px solid #D8E3EC;
   background:#fff;color:#5C7C93;border-radius:999px;padding:5px 11px;cursor:pointer;transition:all .15s}
 .fx-wk:hover{border-color:var(--ink);color:var(--ink)}
@@ -905,17 +980,51 @@ function FactorsLeaderboard() {
           </div>
         </header>
 
-        {history && history.length > 1 && (
+        {months && (
           <div className="fx-weeks">
-            {history.map((wk, i) => (
+            <button className="fx-mnav" disabled={months.keys.indexOf(openMonth) <= 0}
+                    onClick={() => {
+                      const i = months.keys.indexOf(openMonth);
+                      if (i <= 0) return;
+                      const k = months.keys[i - 1];
+                      setMonthKey(k); setCrowned(false); setMonthNote("");
+                      setWeekIdx(months.byKey[k][0].idx); reset();
+                    }}>&#8249;</button>
+            <span className="fx-monthtag">{monthNameOf(openMonth)}</span>
+            <button className="fx-mnav"
+                    disabled={months.keys.indexOf(openMonth) >= months.keys.length - 1}
+                    onClick={() => {
+                      const i = months.keys.indexOf(openMonth);
+                      if (i >= months.keys.length - 1) return;
+                      const k = months.keys[i + 1];
+                      setMonthKey(k); setCrowned(false); setMonthNote("");
+                      setWeekIdx(months.byKey[k][0].idx); reset();
+                    }}>&#8250;</button>
+            {monthWeeks.map((wk) => (
               <button key={wk.week_label}
-                      className={"fx-wk" + (i === activeIdx ? " on" : "")}
-                      onClick={() => { setWeekIdx(i); reset(); }}>
+                      className={"fx-wk" + (wk.idx === activeIdx ? " on" : "")}
+                      onClick={() => { setWeekIdx(wk.idx); reset(); }}>
                 {weekRange(wk.week_start, wk.week_end, wk.week_label)}
               </button>
             ))}
+            <button className={"fx-crown " + (monthClosed ? "live" : "locked")}
+                    onClick={() => {
+                      if (!monthClosed) {
+                        const n = monthWeeks.length;
+                        setMonthNote(monthNameOf(openMonth) + " is still running \u2014 " + n +
+                          (n === 1 ? " week" : " weeks") +
+                          " in so far. The month can only be crowned once it is over.");
+                        setCrowned(false);
+                        return;
+                      }
+                      setMonthNote("");
+                      setCrowned((v) => !v);
+                    }}>
+              {crowned && monthClosed ? "Hide the month" : "Crown the month"}
+            </button>
           </div>
         )}
+        {monthNote && <p className="fx-monthnote">{monthNote}</p>}
 
         <div className="fx-stage" ref={poolRef}>
           <svg className="fx-waves" viewBox="0 0 1200 552" preserveAspectRatio="none">
@@ -992,6 +1101,37 @@ function FactorsLeaderboard() {
             </div>
           ))}
         </div>
+
+        {crowned && monthClosed && (() => {
+          const rows = totalsForMonth(openMonth);
+          const pod = rows.slice(0, 3);
+          const POS = ["1st", "2nd", "3rd"];
+          return (
+            <div className="fx-month">
+              <h2 className="fx-cardtitle">{monthNameOf(openMonth)} \u2014 the month</h2>
+              <span className="fx-numlbl">
+                {monthWeeks.length} {monthWeeks.length === 1 ? "week" : "weeks"} added together
+              </span>
+              <div className="fx-podium">
+                {pod.map((p, i) => (
+                  <div key={p.id} className={"fx-pod p" + (i + 1)}>
+                    <div className="fx-podpos">{POS[i]}</div>
+                    <div className="fx-podname">{p.name}</div>
+                    <div className="fx-podicp">{p.icp}</div>
+                    <div className="fx-podsub">ICP engagements</div>
+                  </div>
+                ))}
+              </div>
+              {rows.slice(3).map((p, i) => (
+                <div className="fx-mrow" key={p.id}>
+                  <span className="fx-rank" style={{ fontSize: 15 }}>{i + 4}</span>
+                  <span>{p.name}</span>
+                  <span><b>{p.icp}</b> <span style={{ color: "#7A93A8" }}>/ {p.total} total</span></span>
+                </div>
+              ))}
+            </div>
+          );
+        })()}
 
         <div className="fx-grid">
           <section className="fx-card">
@@ -1084,6 +1224,27 @@ function FactorsLeaderboard() {
           </section>
         </div>
 
+
+        {closedMonths.length > 0 && (
+          <div className="fx-month fx-past" style={{ marginTop: 26 }}>
+            <h2 className="fx-cardtitle">Past months</h2>
+            <span className="fx-numlbl">Top three, each month once it closed</span>
+            {closedMonths.slice().reverse().map((k) => {
+              const top = totalsForMonth(k).slice(0, 3);
+              const MEDAL = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
+              return (
+                <div className="fx-pastrow" key={k}>
+                  <span className="fx-pastmonth">{monthNameOf(k)}</span>
+                  {top.map((p, i) => (
+                    <span key={p.id} style={{ marginRight: 14 }}>
+                      {MEDAL[i]} {p.name} <b style={{ color: "var(--signal)" }}>{p.icp}</b>
+                    </span>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
