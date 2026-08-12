@@ -73,26 +73,26 @@
       "week_end": "2026-08-07",
       "tracked": [],
       "week_start": "2026-08-03",
-      "generated_at": "2026-08-12T07:23:24.520Z",
+      "generated_at": "2026-08-12T11:08:21.809Z",
       "people": [
         {
           "id": "mansi",
           "name": "Mansi",
-          "icp": 109,
+          "icp": 102,
           "total": 293,
           "rank": 1
         },
         {
           "id": "sri",
           "name": "Sri",
-          "icp": 51,
+          "icp": 49,
           "total": 120,
           "rank": 2
         },
         {
           "id": "ganesh",
           "name": "Ganesh",
-          "icp": 48,
+          "icp": 45,
           "total": 160,
           "rank": 3
         },
@@ -113,7 +113,7 @@
         {
           "id": "praveen",
           "name": "Praveen",
-          "icp": 26,
+          "icp": 25,
           "total": 36,
           "rank": 6
         },
@@ -127,30 +127,30 @@
         {
           "id": "aditi",
           "name": "Aditi",
-          "icp": 9,
+          "icp": 8,
           "total": 30,
           "rank": 8
         }
       ]
     }
   ],
-  "generated_at": "2026-08-12T07:23:24.520Z",
+  "generated_at": "2026-08-12T11:08:21.809Z",
   "people": [
     {
       "id": "mansi",
       "name": "Mansi",
-      "icp": 109,
+      "icp": 102,
       "total": 293,
       "comments": 29,
       "reposts": 1,
-      "uniqueEngagers": 262,
+      "uniqueEngagers": 261,
       "rank": 1,
       "prevRank": 1
     },
     {
       "id": "sri",
       "name": "Sri",
-      "icp": 51,
+      "icp": 49,
       "total": 120,
       "comments": 10,
       "reposts": 2,
@@ -161,13 +161,13 @@
     {
       "id": "ganesh",
       "name": "Ganesh",
-      "icp": 48,
+      "icp": 45,
       "total": 160,
       "comments": 33,
       "reposts": 0,
       "uniqueEngagers": 136,
       "rank": 3,
-      "prevRank": 8
+      "prevRank": 3
     },
     {
       "id": "amith",
@@ -178,7 +178,7 @@
       "reposts": 1,
       "uniqueEngagers": 74,
       "rank": 4,
-      "prevRank": 3
+      "prevRank": 4
     },
     {
       "id": "darshan",
@@ -194,7 +194,7 @@
     {
       "id": "praveen",
       "name": "Praveen",
-      "icp": 26,
+      "icp": 25,
       "total": 36,
       "comments": 4,
       "reposts": 0,
@@ -211,18 +211,18 @@
       "reposts": 0,
       "uniqueEngagers": 29,
       "rank": 7,
-      "prevRank": 4
+      "prevRank": 7
     },
     {
       "id": "aditi",
       "name": "Aditi",
-      "icp": 9,
+      "icp": 8,
       "total": 30,
       "comments": 5,
       "reposts": 0,
       "uniqueEngagers": 28,
       "rank": 8,
-      "prevRank": 7
+      "prevRank": 8
     }
   ],
   "tracked": [],
@@ -331,7 +331,7 @@
       "name": "Rajat Chouthaiwale",
       "title": "Founder & Growth Strategist",
       "co": "Digital Sprout",
-      "fn": "Founder",
+      "fn": "Growth",
       "seniority": "",
       "icp": true,
       "on": "Amith",
@@ -518,16 +518,6 @@
       "url": "https://www.linkedin.com/in/ACoAACpd9QgBWUrAzr9vsxfc7bCo-3dIW8MG4Io"
     },
     {
-      "name": "Manika Nagpal",
-      "title": "Marketing Manager",
-      "co": "BioBrain Insights",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Aditi",
-      "url": "https://www.linkedin.com/in/ACoAACUNuAgBla1HkxPEJEOP0mywK582E9ier2Y"
-    },
-    {
       "name": "Anant Ahuja",
       "title": "Founder & Managing Director",
       "co": "Irregulars Studio",
@@ -691,7 +681,7 @@
       "name": "Yash Reddy",
       "title": "Chief Revenue Officer (CRO)",
       "co": "MoEngage",
-      "fn": "CMO",
+      "fn": "Revenue",
       "seniority": "",
       "icp": true,
       "on": "Darshan",
@@ -731,7 +721,7 @@
       "name": "Job Joseph",
       "title": "Principal Program Manager - Revenue Operations and AI GTM Initiatives",
       "co": "MoEngage",
-      "fn": "GTM",
+      "fn": "Revenue",
       "seniority": "",
       "icp": true,
       "on": "Darshan",
@@ -789,7 +779,7 @@
     },
     {
       "name": "Prateek Shetty",
-      "title": "Senior Analyst - Digital Marketing (Paid Media Lead)",
+      "title": "Senior Analyst - Digital Marketing (Paid Media Manager)",
       "co": "TE Connectivity",
       "fn": "Paid Media",
       "seniority": "",
@@ -831,7 +821,7 @@
       "name": "Ashwin Pavery",
       "title": "Senior Manager Web Growth and Analytics",
       "co": "MoEngage",
-      "fn": "Growth",
+      "fn": "Growth Marketing",
       "seniority": "",
       "icp": true,
       "on": "Darshan",
@@ -856,6 +846,16 @@
       "icp": true,
       "on": "Darshan",
       "url": "https://www.linkedin.com/in/ACoAACVCSBcBlXN-gyty0LPnMIK9Xg6TiDIcOvY"
+    },
+    {
+      "name": "Izna Abidi",
+      "title": "Digital Marketing Executive",
+      "co": "UHF Solutions Pvt Ltd",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAADjsBg8BVhvj93aq7HGHSKa7VdZQaUXYp5g"
     },
     {
       "name": "Michelle Luo",
@@ -901,7 +901,7 @@
       "name": "Sanyogita Sharma",
       "title": "Assistant Manager (Campaign Management)",
       "co": "Genpact",
-      "fn": "Marketing",
+      "fn": "Marketing Ops",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
@@ -958,16 +958,6 @@
       "url": "https://www.linkedin.com/in/ACoAABUYo9YBuMV4HnsIaoija1QmbCWEtppTGfY"
     },
     {
-      "name": "Maryam Naveed 🔮",
-      "title": "Top Rated | Clay, N8N,GTM and GHL Automation Specialist, Software Engineer",
-      "co": "Upwork",
-      "fn": "GTM",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAADEXDPoBRHR6RWJccuegP6cyXIYrYgyXt9g"
-    },
-    {
       "name": "Bushra Arif",
       "title": "Co-Founder",
       "co": "Webvision",
@@ -976,26 +966,6 @@
       "icp": true,
       "on": "Mansi",
       "url": "https://www.linkedin.com/in/ACoAADHhRLoBOkaeEQb6aq6rspt05p9S8qdHJ2k"
-    },
-    {
-      "name": "Ali Mustafa",
-      "title": "Digital Marketing Consultant",
-      "co": "ESTAYA Group",
-      "fn": "Digital Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAAB2AbRUBNCZfO6Gjq37YBkBwBEWZIf0Re4U"
-    },
-    {
-      "name": "Aleena B",
-      "title": "Freelance",
-      "co": "Self-Employed",
-      "fn": "Target title",
-      "seniority": "Listed",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAAC0N8PMB4rMWHlFP0uxgE28qW24wOPQPPdY"
     },
     {
       "name": "Zainab Siddiqui",
@@ -1016,16 +986,6 @@
       "icp": true,
       "on": "Mansi",
       "url": "https://www.linkedin.com/in/imran-q-2b03859"
-    },
-    {
-      "name": "Pihu Singh",
-      "title": "Search Engine Optimization Consultant",
-      "co": "Freelance",
-      "fn": "Digital Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/seo-expert-pihu-singh"
     },
     {
       "name": "Zeeshan Akhtar",
@@ -1248,16 +1208,6 @@
       "url": "https://www.linkedin.com/in/ACoAABw2AmYB44-x1Y0K8AZIMldAi-IPquavq10"
     },
     {
-      "name": "Deepak J.",
-      "title": "Deputy Manager - Solution Marketing",
-      "co": "iOPEX Technologies",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAACUkDa4B96V6jx_NK9bBdbH_9iDDMqFglao"
-    },
-    {
       "name": "Sarita Kumari",
       "title": "Marketing Executive",
       "co": "SiftHub",
@@ -1306,16 +1256,6 @@
       "icp": true,
       "on": "Mansi",
       "url": "https://www.linkedin.com/in/ACoAABzrRqcBekevNCtFal_zsqMmNn0ASFZi_So"
-    },
-    {
-      "name": "Luuk de Jonge",
-      "title": "Co-founder & Product",
-      "co": "Contrast webinars",
-      "fn": "Founder",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAAALj8YsBxC9LLI6S9gctmK2CkRoW0WoNokQ"
     },
     {
       "name": "Kowshika Parvathi Muthiah",
@@ -1411,7 +1351,7 @@
       "name": "Hitesh Thapar",
       "title": "Global Digital Marketing Operations and Automations Lead",
       "co": "DNV",
-      "fn": "Marketing Ops",
+      "fn": "Digital Marketing",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
@@ -1451,7 +1391,7 @@
       "name": "Curtis O'Keefe",
       "title": "CCO",
       "co": "webinar.net",
-      "fn": "CMO",
+      "fn": "Marketing",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
@@ -1468,24 +1408,14 @@
       "url": "https://www.linkedin.com/in/harkirat-singh-hello"
     },
     {
-      "name": "Rajoshi Ghosh",
-      "title": "Co-founder & Chief Ecosystem Officer",
-      "co": "PromptQL",
-      "fn": "Founder",
-      "seniority": "",
-      "icp": true,
-      "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAAAbHGjgBKKUkBf_GQkaf8RXF3rc-DxS8BBk"
-    },
-    {
-      "name": "Diksha Vidyarthi",
-      "title": "Senior Manager",
-      "co": "Media Mic",
+      "name": "Chetna Kaura",
+      "title": "Senior Manager Marketing, Ecommerce",
+      "co": "Eureka Forbes Ltd",
       "fn": "Marketing",
       "seniority": "",
       "icp": true,
       "on": "Mansi",
-      "url": "https://www.linkedin.com/in/ACoAABdUl8gB6YvSYFIRpGc0BNZIs1Nvn0zq13A"
+      "url": "https://www.linkedin.com/in/ACoAAAp7K98BduF8FEwQIFYlgpYRTBldtt2wVyw"
     },
     {
       "name": "Dimpy Acharjee",
@@ -1726,11 +1656,81 @@
       "icp": true,
       "on": "Subiksha",
       "url": "https://www.linkedin.com/in/ACoAAC5CqywByDf-2dx_m1KBRL-HcdRNidofUyg"
+    },
+    {
+      "name": "Hari Vignesh",
+      "title": "Growth Marketing Manager",
+      "co": "MinoriLabs",
+      "fn": "Growth Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAAC-xm7QBo1O2Ex1Pfc445_o1Ux2y55EWdR8"
+    },
+    {
+      "name": "Viswanathan Nadarajah",
+      "title": "Growth & RevOps Lead",
+      "co": "Concirrus",
+      "fn": "Growth Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAACsrHJoB_KIJhz1wnMq6tsHrvQpBbJqmps4"
+    },
+    {
+      "name": "Pradeep Kumar",
+      "title": "Digital Marketing Specialist",
+      "co": "Absolute App Labs",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAAEEzLW4BLxt_wrb06n9ZUCRxK9XsITAIF1o"
+    },
+    {
+      "name": "Anand Raju",
+      "title": "SEO Lead",
+      "co": "TripleDart",
+      "fn": "Digital Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAABNRipkBspIPys63kVp2dBOz6X5LJcIl2q0"
+    },
+    {
+      "name": "Cody Collins",
+      "title": "Founder",
+      "co": "Lionspire",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAAFbaqH0BohtohVGzG6co1OcFJE7Vcw3tkYg"
+    },
+    {
+      "name": "Kumud Deepali Rudraraju",
+      "title": "Founder",
+      "co": "Incredible Edge",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAAA6PploB6b3M1KEzrMew3AP9ug4z3UmdddE"
+    },
+    {
+      "name": "Will Stewart, MBA",
+      "title": "Founder",
+      "co": "EmpowerCore Solutions",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Subiksha",
+      "url": "https://www.linkedin.com/in/ACoAAAEO9-wBjz5cWcX1ex9zKdaUG8_HNXONyeU"
     }
   ],
   "totals": {
     "engagements": 824,
-    "icp": 319,
-    "uniqueEngagers": 671
+    "icp": 305,
+    "uniqueEngagers": 670
   }
 }
