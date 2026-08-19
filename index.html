@@ -167,7 +167,7 @@ function Fish({ p, rot, lit, airborne, surfaced, fighting }) {
    LIGHTHOUSE — three.js. Two opposed beams sweeping.
    `sweep` is a ref the race loop reads to know the beam angle.
    ──────────────────────────────────────────────────────────── */
-function Lighthouse({ spinRef, intensity = 1 }) {
+function Lighthouse({ spinRef, intensityRef, placeRef, spinDriveRef, assembleRef }) {
   const mount = useRef(null);
 
   useEffect(() => {
@@ -176,13 +176,17 @@ function Lighthouse({ spinRef, intensity = 1 }) {
     const W = el.clientWidth, H = el.clientHeight;
 
     const scene = new THREE.Scene();
-    const TOWER_X = 3.6, DIST = 40, FOV = 16, PLACE = 0.78;
-    const aimX = (aspect) => {
+    const TOWER_X = 3.6, DIST = 40, FOV = 16;
+    // Framing is read from a ref every frame rather than baked in, so the intro
+    // can slide the tower from centre stage to its resting spot on the right
+    // without tearing down and rebuilding the whole scene.
+    const aimX = (aspect, place) => {
       const visW = 2 * DIST * Math.tan((FOV * Math.PI / 180) / 2) * aspect;
-      return TOWER_X + visW * (0.5 - PLACE);
+      return TOWER_X + visW * (0.5 - place);
     };
+    const placeNow = () => (placeRef && placeRef.current != null ? placeRef.current : 0.78);
     const cam = new THREE.PerspectiveCamera(FOV, W / H, 0.1, 100);
-    const aim0 = aimX(W / H);
+    const aim0 = aimX(W / H, placeNow());
     cam.position.set(aim0, 5.4, DIST);
     cam.lookAt(aim0, 2.1, 0);
 
@@ -190,6 +194,7 @@ function Lighthouse({ spinRef, intensity = 1 }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(W, H);
     el.appendChild(renderer.domElement);
+    let lastW = W, lastH = H;
 
     const RED = 0xf5423a, RED_D = 0xc8291f, CREAM = 0xfff6ec, YELLOW = 0xffd84d;
     const mat = (c, r = 0.85) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: 0.04 });
@@ -304,6 +309,12 @@ function Lighthouse({ spinRef, intensity = 1 }) {
     tower.add(beams);
 
     tower.scale.setScalar(1.0);
+    // Remember where every piece belongs, so the intro can pull them apart and
+    // let them fall back into place. Ordered bottom-up already, which is exactly
+    // the order we want them to land in.
+    tower.children.forEach((c) => { c.userData.restY = c.position.y; });
+    const PARTS = tower.children.filter((c) => c !== beams);
+
     tower.position.set(TOWER_X, 0, 0);
     scene.add(tower);
 
@@ -318,13 +329,55 @@ function Lighthouse({ spinRef, intensity = 1 }) {
     const loop = () => {
       const dt = Math.min(clock.getDelta(), 0.05);
       t += dt;
-      beams.rotation.y += dt * 0.8;
+      // spinDriveRef lets the intro dictate the exact beam angle so it can turn a
+      // set number of times; left null the beam just idles at its own pace.
+      if (spinDriveRef && spinDriveRef.current != null) beams.rotation.y = spinDriveRef.current;
+      else beams.rotation.y += dt * 0.8;
       if (spinRef) spinRef.current = beams.rotation.y;
+      const inten = (intensityRef && intensityRef.current != null) ? intensityRef.current : 1;
       const pulse = 0.12 + Math.sin(t * 2.1) * 0.03;
-      beamMat.opacity = pulse * intensity;
-      halo.material.opacity = (0.16 + Math.sin(t * 2.1) * 0.05) * intensity;
-      lamp.intensity = (1.3 + Math.sin(t * 2.1) * 0.3) * intensity;
+      beamMat.opacity = pulse * inten;
+      halo.material.opacity = (0.16 + Math.sin(t * 2.1) * 0.05) * inten;
+      lamp.intensity = (1.3 + Math.sin(t * 2.1) * 0.3) * inten;
+      // ── assembly ────────────────────────────────────────────────────────
+      // assembleRef runs 0 -> 1 at the very start of the intro. Pieces are held
+      // above their resting spot and dropped in bottom-up, each landing with a
+      // small bounce so it reads as weight rather than a fade-in.
+      const asm = assembleRef && assembleRef.current;
+      if (asm != null && asm < 1) {
+        const n = PARTS.length;
+        PARTS.forEach((c, i) => {
+          const from = (i / n) * 0.62;
+          let u = (asm - from) / 0.38;
+          u = u < 0 ? 0 : u > 1 ? 1 : u;
+          // one soft settle rather than a rattle: slower decay, half the
+          // wobble frequency, and a shorter fall so nothing whips into place
+          const e = u >= 1 ? 1 : 1 - Math.pow(2, -6.5 * u) * Math.cos(u * 6);
+          c.position.y = c.userData.restY + (1 - e) * (4.2 + i * 0.32);
+          c.visible = u > 0.002;
+          const sc = 0.78 + 0.22 * (u >= 1 ? 1 : 1 - Math.pow(1 - u, 3));
+          c.scale.set(sc, sc, sc);
+        });
+        beams.visible = false;
+      } else if (asm != null) {
+        PARTS.forEach((c) => {
+          c.position.y = c.userData.restY; c.scale.set(1, 1, 1); c.visible = true;
+        });
+        beams.visible = true;
+      }
+
       tower.rotation.y = Math.sin(t * 0.16) * 0.05;
+
+      // The intro animates this element's size every frame, so the renderer has
+      // to keep pace - a resize listener alone would only fire on window changes.
+      const cw = el.clientWidth, ch = el.clientHeight;
+      if (cw && ch && (cw !== lastW || ch !== lastH)) {
+        lastW = cw; lastH = ch;
+        cam.aspect = cw / ch; renderer.setSize(cw, ch); cam.updateProjectionMatrix();
+      }
+      const a = aimX((cw || 1) / (ch || 1), placeNow());
+      cam.position.x = a; cam.lookAt(a, 2.1, 0);
+
       renderer.render(scene, cam);
       raf = requestAnimationFrame(loop);
     };
@@ -332,8 +385,10 @@ function Lighthouse({ spinRef, intensity = 1 }) {
 
     const onResize = () => {
       const w = el.clientWidth, h = el.clientHeight;
+      if (!w || !h) return;
+      lastW = w; lastH = h;
       cam.aspect = w / h; cam.updateProjectionMatrix(); renderer.setSize(w, h);
-      const a = aimX(w / h);
+      const a = aimX(w / h, placeNow());
       cam.position.x = a; cam.lookAt(a, 2.1, 0);
     };
     window.addEventListener("resize", onResize);
@@ -345,7 +400,7 @@ function Lighthouse({ spinRef, intensity = 1 }) {
       renderer.dispose();
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement);
     };
-  }, [intensity, spinRef]);
+  }, [spinRef, intensityRef, placeRef, spinDriveRef, assembleRef]);
 
   return <div ref={mount} style={{ width: "100%", height: "100%" }} />;
 }
@@ -462,6 +517,13 @@ function FactorsLeaderboard() {
   const poolRef = useRef(null);
   const scrollRef = useRef(null);
   const spinRef = useRef(0);
+  const lhRef = useRef(null);          // the .fx-lh box the canvas lives in
+  const poolRef2 = useRef(null);       // where it has to land
+  const backdropRef = useRef(null);
+  const placeRef = useRef(0.78);       // 0.5 = centre stage, 0.78 = resting spot
+  const intensityRef = useRef(1);
+  const spinDriveRef = useRef(null);
+  const assembleRef = useRef(null);   // 0->1 while the tower builds itself
   const rafRef = useRef(null);
   const doneRef = useRef(false);
   const audioRef = useRef(null);
@@ -692,6 +754,105 @@ function FactorsLeaderboard() {
     setTick((t) => t + 1);
   }, [maxIcp, rivalOf, trackFor, roster]);
 
+
+  // ── INTRO ──────────────────────────────────────────────────────────────
+  // One canvas, start to finish. The lighthouse opens full-bleed and centred,
+  // then the same element is animated down into the pool while the backdrop
+  // drains away - so there is no swap between a "loader" and the real scene,
+  // because there is only ever the real scene.
+  useEffect(() => {
+    const box = lhRef.current, pool = poolRef.current, back = backdropRef.current;
+    if (!box || !pool || !back) return;
+
+    let skip = false;
+    try {
+      skip = sessionStorage.getItem("fx-intro") === "1";
+      sessionStorage.setItem("fx-intro", "1");
+    } catch (e) { /* storage blocked - just play it */ }
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) skip = true;
+
+    if (skip) { back.style.display = "none"; return; }
+
+    // Hold full-bleed while the beam sweeps three times - the lighthouse doing
+    // its actual job, which reads as loading - then carry it down into the pool.
+    // ASSEMBLE: pieces fall in. SPIN: beam winds up and sweeps. MERGE: flies
+    // down into the pool. HOLD is when the merge begins, so the spin owns
+    // everything between assembly finishing and the descent starting.
+    const ASSEMBLE = 1500, HOLD = 3100, MERGE = 2100, TOTAL = HOLD + MERGE;
+    const SPINS = 2;
+    const easeOut = (u) => 1 - Math.pow(1 - u, 3);
+    // smoothstep peaks at 1.5x average speed; the cubic ease-in-out it
+    // replaces peaked at 2x, which is what read as a surge mid-descent
+    const smooth = (u) => u * u * (3 - 2 * u);
+
+    box.style.position = "fixed";
+    box.style.zIndex = "9998";
+    box.style.opacity = "0";
+    document.body.style.overflow = "hidden";
+    placeRef.current = 0.5;
+    intensityRef.current = 2.6;           // a faint beam does not read as spinning
+    const spin0 = spinRef.current || 0;
+    assembleRef.current = 0;
+
+    let raf = 0, t0 = 0;
+    const step = (now) => {
+      if (!t0) t0 = now;
+      const t = now - t0;
+      const u = Math.min(1, t / TOTAL);
+
+      // fade up rather than snapping in
+      box.style.opacity = String(Math.min(1, t / 420));
+
+      // pieces first, then the beam starts turning
+      const a = Math.min(1, t / ASSEMBLE);
+      assembleRef.current = a;
+
+      // the beam only winds up once the tower is whole
+      const sp = Math.max(0, Math.min(1, (t - ASSEMBLE) / (TOTAL - ASSEMBLE)));
+      // Linear: one steady sweep speed the whole way. Any easing here reads as
+      // the beam winding up, and a lighthouse beam turns at a constant rate.
+      // No visible jump at the start because the beams stay hidden until the
+      // tower is whole, so they appear already up to speed.
+      spinDriveRef.current = spin0 + SPINS * Math.PI * 2 * sp;
+
+      const m = Math.max(0, Math.min(1, (t - HOLD) / MERGE));
+      const e = smooth(m);
+      const r = pool.getBoundingClientRect();
+
+      box.style.top    = (r.top * e) + "px";
+      box.style.left   = (r.left * e) + "px";
+      box.style.width  = (window.innerWidth + (r.width - window.innerWidth) * e) + "px";
+      box.style.height = (window.innerHeight + (r.height - window.innerHeight) * e) + "px";
+
+      placeRef.current = 0.5 + (0.78 - 0.5) * e;
+      intensityRef.current = 2.6 + (1 - 2.6) * e;
+      back.style.opacity = String(1 - Math.max(0, (m - 0.35) / 0.65));
+
+      if (t < TOTAL) { raf = requestAnimationFrame(step); return; }
+
+      // hand back to the stylesheet; the rect already matches, so nothing jumps
+      box.style.cssText = "";
+      back.style.display = "none";
+      document.body.style.overflow = "";
+      placeRef.current = 0.78;
+      spinDriveRef.current = null;        // beam resumes its own idle sweep
+      assembleRef.current = null;
+      intensityRef.current = 1;
+    };
+    raf = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      box.style.cssText = "";
+      document.body.style.overflow = "";
+      placeRef.current = 0.78;
+      spinDriveRef.current = null;
+      assembleRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => { intensityRef.current = phase === "idle" ? 0.6 : 1; }, [phase]);
+
   useEffect(() => { reset(); }, [reset]);
 
   // Window resized mid-race: rescale targets and current positions so the
@@ -881,6 +1042,10 @@ function FactorsLeaderboard() {
   transform:translate(-50%,-50%)}
 .fx-drop{position:absolute;background:#fff;border-radius:50%;pointer-events:none}
 .fx-lh{position:absolute;inset:0;pointer-events:none;z-index:3}
+/* Sits behind the lighthouse during the intro and drains away as the pool forms.
+   Matches the pool's own gradient so the two meet without a seam. */
+.fx-backdrop{position:fixed;inset:0;z-index:9997;pointer-events:none;
+  background:linear-gradient(180deg,#1B6FA6 0%,#0E4A70 100%)}
 .fx-swim{position:absolute;will-change:transform;z-index:3}
 .fx-chip{position:absolute;display:flex;align-items:center;gap:6px;padding:3px 9px 3px 3px;border-radius:999px;
   background:rgba(255,255,255,.95);font-size:11px;font-weight:700;color:var(--ink);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2)}
@@ -947,6 +1112,8 @@ function FactorsLeaderboard() {
 .fx-trend{display:block}
 .fx-foot{margin-top:26px;font-size:12px;color:#7A93A8;line-height:1.7}
       `}</style>
+
+      <div className="fx-backdrop" ref={backdropRef} aria-hidden="true" />
 
       <nav className="fx-nav" aria-label="Factors">
         <svg className="fx-logo" viewBox="0 0 340 580" role="img" aria-label="Factors">
@@ -1062,7 +1229,11 @@ function FactorsLeaderboard() {
             ))}
           </svg>
 
-          <div className="fx-lh"><Lighthouse spinRef={spinRef} intensity={phase === "idle" ? 0.6 : 1} /></div>
+          <div className="fx-lh" ref={lhRef}>
+            <Lighthouse spinRef={spinRef} intensityRef={intensityRef}
+                        placeRef={placeRef} spinDriveRef={spinDriveRef}
+                        assembleRef={assembleRef} />
+          </div>
 
           {S.map((s2) => {
             const isLit = !!lit[s2.p.id] || phase === "done";
