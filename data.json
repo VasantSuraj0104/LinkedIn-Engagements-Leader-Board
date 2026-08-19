@@ -138,27 +138,27 @@
       "week_end": "2026-08-14",
       "tracked": [],
       "week_start": "2026-08-10",
-      "generated_at": "2026-08-19T19:59:47.122Z",
+      "generated_at": "2026-08-19T20:14:51.359Z",
       "people": [
         {
           "id": "praveen",
           "name": "Praveen",
-          "icp": 167,
+          "icp": 166,
           "total": 304,
           "rank": 1
         },
         {
           "id": "ganesh",
           "name": "Ganesh",
-          "icp": 134,
+          "icp": 136,
           "total": 359,
           "rank": 2
         },
         {
           "id": "sri",
           "name": "Sri",
-          "icp": 46,
-          "total": 112,
+          "icp": 44,
+          "total": 113,
           "rank": 3
         },
         {
@@ -171,7 +171,7 @@
         {
           "id": "darshan",
           "name": "Darshan",
-          "icp": 15,
+          "icp": 18,
           "total": 38,
           "rank": 5
         },
@@ -199,12 +199,12 @@
       ]
     }
   ],
-  "generated_at": "2026-08-19T19:59:47.122Z",
+  "generated_at": "2026-08-19T20:14:51.360Z",
   "people": [
     {
       "id": "praveen",
       "name": "Praveen",
-      "icp": 167,
+      "icp": 166,
       "total": 304,
       "comments": 27,
       "reposts": 0,
@@ -215,7 +215,7 @@
     {
       "id": "ganesh",
       "name": "Ganesh",
-      "icp": 134,
+      "icp": 136,
       "total": 359,
       "comments": 36,
       "reposts": 10,
@@ -226,13 +226,13 @@
     {
       "id": "sri",
       "name": "Sri",
-      "icp": 46,
-      "total": 112,
+      "icp": 44,
+      "total": 113,
       "comments": 5,
       "reposts": 0,
-      "uniqueEngagers": 105,
+      "uniqueEngagers": 106,
       "rank": 3,
-      "prevRank": 4
+      "prevRank": 3
     },
     {
       "id": "mansi",
@@ -243,12 +243,12 @@
       "reposts": 2,
       "uniqueEngagers": 63,
       "rank": 4,
-      "prevRank": 3
+      "prevRank": 4
     },
     {
       "id": "darshan",
       "name": "Darshan",
-      "icp": 15,
+      "icp": 18,
       "total": 38,
       "comments": 1,
       "reposts": 0,
@@ -376,7 +376,7 @@
       "name": "Ashwin Pavery",
       "title": "Senior Manager Web Growth and Analytics",
       "co": "MoEngage",
-      "fn": "Growth",
+      "fn": "Growth Marketing",
       "seniority": "",
       "icp": true,
       "on": "Darshan",
@@ -453,6 +453,16 @@
       "url": "https://www.linkedin.com/in/ACoAABBqvWgBFPJgteYtxGquczyZSAt7N8-iu5o"
     },
     {
+      "name": "Shubhagata Choudhury",
+      "title": "Marketing Advisor",
+      "co": "Freelance",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Darshan",
+      "url": "https://www.linkedin.com/in/ACoAAAJbiE8B-dNGX_ZSSFLcRidomHo6wgLwT9s"
+    },
+    {
       "name": "Vinay Nair",
       "title": "Associate Director - Marketing",
       "co": "Fractal",
@@ -471,6 +481,16 @@
       "icp": true,
       "on": "Darshan",
       "url": "https://www.linkedin.com/in/ACoAABbSt2sBmAcwW0efxlHq-oKnN708XOWbzVw"
+    },
+    {
+      "name": "Kayvan Sanghavi",
+      "title": "Digital Marketing Consultant",
+      "co": "Independent Consultant",
+      "fn": "Digital Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Darshan",
+      "url": "https://www.linkedin.com/in/ACoAACUJQowBjYqGsJAwqR-ZiASwxtwWsUHeyyI"
     },
     {
       "name": "Abhishek M.",
@@ -803,6 +823,16 @@
       "url": "https://www.linkedin.com/in/ACoAACWuwCcBjA8Vmv_SYwBhKVVmef7ggkojxAg"
     },
     {
+      "name": "Karan Handa",
+      "title": "Marketing Consultant",
+      "co": "Self Emoployed",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": true,
+      "on": "Ganesh",
+      "url": "https://www.linkedin.com/in/ACoAACqTbQUBnzV_KChYnmgeD-oNBiUXOgd50uY"
+    },
+    {
       "name": "Kirish V",
       "title": "Product Marketing Manager",
       "co": "Zoho",
@@ -866,7 +896,7 @@
       "name": "Gideon Jeromeraj",
       "title": "Partnerships & Growth",
       "co": "Logbase",
-      "fn": "Growth",
+      "fn": "Growth Marketing",
       "seniority": "",
       "icp": true,
       "on": "Ganesh",
@@ -1073,6 +1103,16 @@
       "url": "https://www.linkedin.com/in/ACoAADpnVAcBdV1YwSEIjhK7nx2hnwHye49usUc"
     },
     {
+      "name": "Ankit Kustwar ☠️",
+      "title": "Founder",
+      "co": "Khali Mind",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Ganesh",
+      "url": "https://www.linkedin.com/in/ACoAADQBB24BvebEpq96OENkROtVTN8f6zSY3_U"
+    },
+    {
       "name": "Abhinav Kaushik",
       "title": "Creative Director",
       "co": "PW (PhysicsWallah)",
@@ -1111,16 +1151,6 @@
       "icp": true,
       "on": "Ganesh",
       "url": "https://www.linkedin.com/in/ACoAACUcWnkBvv54dt_twU4LUiwfCO1su8L3ERM"
-    },
-    {
-      "name": "Philip Eze",
-      "title": "Lead Strategist",
-      "co": "Phillforce Marketing",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Ganesh",
-      "url": "https://www.linkedin.com/in/ACoAADzKGf0BWZ-l54A5TkQZSKETlPeQZVE3eo4"
     },
     {
       "name": "Rashmita Behera",
@@ -1346,7 +1376,7 @@
       "name": "Navya Muralidhar",
       "title": "Search Marketing Manager",
       "co": "Amilis",
-      "fn": "Paid Media",
+      "fn": "Digital Marketing",
       "seniority": "",
       "icp": true,
       "on": "Ganesh",
@@ -1401,6 +1431,16 @@
       "icp": true,
       "on": "Ganesh",
       "url": "https://www.linkedin.com/in/sheikh-sameer-751a1786"
+    },
+    {
+      "name": "Subhasis Chatterjee",
+      "title": "Founder",
+      "co": "SDN Foundation",
+      "fn": "Founder",
+      "seniority": "",
+      "icp": true,
+      "on": "Ganesh",
+      "url": "https://www.linkedin.com/in/subhasischatterjee1"
     },
     {
       "name": "Karthik Pasupathy Ramachandran",
@@ -1586,7 +1626,7 @@
       "name": "Nandhini Rajalingam",
       "title": "Manager - Ad ops",
       "co": "WPP Media",
-      "fn": "Marketing Ops",
+      "fn": "Paid Media",
       "seniority": "",
       "icp": true,
       "on": "Ganesh",
@@ -1626,7 +1666,7 @@
       "name": "Aditya Kabra (AK)",
       "title": "Lead - Growth & Partnership",
       "co": "YourDOST",
-      "fn": "Growth",
+      "fn": "Growth Marketing",
       "seniority": "",
       "icp": true,
       "on": "Ganesh",
@@ -1751,51 +1791,11 @@
       "icp": true,
       "on": "Ganesh",
       "url": "https://www.linkedin.com/in/ACoAACBTCkMBtvLf00zT0nok3hx1x46JfXEJO74"
-    },
-    {
-      "name": "Pragati Gupta",
-      "title": "Content Marketing Lead",
-      "co": "AIclicks",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Ganesh",
-      "url": "https://www.linkedin.com/in/ACoAACMztfUBYiO7t0Ao7HnNEW-d_Q81pozVoII"
-    },
-    {
-      "name": "Tyler Hakes 🍋",
-      "title": "Organic Growth Advisor (Content, SEO, AEO) & Agency Founder",
-      "co": "Optimist",
-      "fn": "Founder",
-      "seniority": "",
-      "icp": true,
-      "on": "Ganesh",
-      "url": "https://www.linkedin.com/in/ACoAAALp6QUBk-cdlxRvfifRqMMZsybSeWJmWhw"
-    },
-    {
-      "name": "Tithi Mitra Chowdhury",
-      "title": "Team Lead, Customer Engagement Marketing",
-      "co": "Blackbaud",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": true,
-      "on": "Ganesh",
-      "url": "https://www.linkedin.com/in/ACoAACKuFI8BcMr1z03qPqfssH20mPAlFUqrbSo"
-    },
-    {
-      "name": "Rapti Gupta",
-      "title": "Fractional CMO",
-      "co": "Self Employed",
-      "fn": "CMO",
-      "seniority": "",
-      "icp": true,
-      "on": "Ganesh",
-      "url": "https://www.linkedin.com/in/ACoAAAyJs5QBfhB-1ZDM4k6a1Ukym4HrDsEjMRY"
     }
   ],
   "totals": {
-    "engagements": 925,
-    "icp": 415,
-    "uniqueEngagers": 745
+    "engagements": 926,
+    "icp": 417,
+    "uniqueEngagers": 746
   }
 }
