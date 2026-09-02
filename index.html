@@ -654,7 +654,18 @@ function FactorsLeaderboard() {
 
   const openMonth = months ? (monthKey && months.byKey[monthKey] ? monthKey : months.latest) : null;
   const monthWeeks = months && openMonth ? months.byKey[openMonth] : [];
-  const monthClosed = !!(months && openMonth && months.keys.indexOf(openMonth) < months.keys.length - 1);
+  // A month is over when the calendar says so, not when a week from the next
+  // month happens to have been scraped. Waiting for that took until mid-September
+  // to unlock August, because the scrape runs a week behind and a Monday of
+  // 31 Aug still belongs to August.
+  const thisMonthKey = (() => {
+    const d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+  })();
+  const monthClosed = !!(months && openMonth && (
+    openMonth < thisMonthKey ||
+    months.keys.indexOf(openMonth) < months.keys.length - 1
+  ));
 
   // Month standings are derived, never stored — summing the weeks we already
   // have means a corrected week automatically corrects the month.
@@ -1180,7 +1191,7 @@ function FactorsLeaderboard() {
                         const n = monthWeeks.length;
                         setMonthNote(monthNameOf(openMonth) + " is still running \u2014 " + n +
                           (n === 1 ? " week" : " weeks") +
-                          " in so far. The month can only be crowned once it is over.");
+                          " in so far. It can be crowned once the month is over.");
                         setCrowned(false);
                         return;
                       }
