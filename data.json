@@ -268,20 +268,20 @@
       "week_end": "2026-08-28",
       "tracked": [],
       "week_start": "2026-08-24",
-      "generated_at": "2026-09-02T09:31:54.845Z",
+      "generated_at": "2026-09-02T10:10:11.504Z",
       "people": [
         {
           "id": "sri",
           "name": "Sri",
           "icp": 51,
-          "total": 300,
+          "total": 293,
           "rank": 1
         },
         {
           "id": "praveen",
           "name": "Praveen",
           "icp": 25,
-          "total": 111,
+          "total": 108,
           "rank": 2
         },
         {
@@ -329,29 +329,29 @@
       ]
     }
   ],
-  "generated_at": "2026-09-02T09:31:54.846Z",
+  "generated_at": "2026-09-02T10:10:11.504Z",
   "people": [
     {
       "id": "sri",
       "name": "Sri",
       "icp": 51,
-      "total": 300,
+      "total": 293,
       "comments": 21,
-      "reposts": 8,
-      "uniqueEngagers": 266,
+      "reposts": 4,
+      "uniqueEngagers": 261,
       "rank": 1,
-      "prevRank": 3
+      "prevRank": 1
     },
     {
       "id": "praveen",
       "name": "Praveen",
       "icp": 25,
-      "total": 111,
+      "total": 108,
       "comments": 18,
       "reposts": 0,
-      "uniqueEngagers": 97,
+      "uniqueEngagers": 96,
       "rank": 2,
-      "prevRank": 1
+      "prevRank": 2
     },
     {
       "id": "mansi",
@@ -362,7 +362,7 @@
       "reposts": 0,
       "uniqueEngagers": 68,
       "rank": 3,
-      "prevRank": 2
+      "prevRank": 3
     },
     {
       "id": "aditi",
@@ -373,7 +373,7 @@
       "reposts": 0,
       "uniqueEngagers": 13,
       "rank": 4,
-      "prevRank": 8
+      "prevRank": 4
     },
     {
       "id": "amith",
@@ -384,7 +384,7 @@
       "reposts": 0,
       "uniqueEngagers": 4,
       "rank": 5,
-      "prevRank": 4
+      "prevRank": 5
     },
     {
       "id": "darshan",
@@ -417,7 +417,7 @@
       "reposts": 0,
       "uniqueEngagers": 0,
       "rank": 8,
-      "prevRank": 5
+      "prevRank": 8
     }
   ],
   "tracked": [],
@@ -714,8 +714,8 @@
     },
     {
       "name": "Gokul Heda",
-      "title": "Marketing Leader",
-      "co": "",
+      "title": "Marketing Manager - Business Operations",
+      "co": "Stone Plus Enterprises Private Ltd.",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -724,8 +724,8 @@
     },
     {
       "name": "👨🏻‍💻 Dipak Vadera",
-      "title": "Fractional Partnerships and Community Lead making deals happen! 😊",
-      "co": "fulltimebackpacker 🎒",
+      "title": "Fractional Partnerships, Community & Ecosystem Lead",
+      "co": "Dipak Vadera",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -735,7 +735,7 @@
     {
       "name": "Jalpa Shah",
       "title": "Founder",
-      "co": "Alchemist AI I Sr. Marketing Specialist at Engageli",
+      "co": "Alchemist AI",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -744,7 +744,7 @@
     },
     {
       "name": "Raja T M",
-      "title": "Creative B2B Enterprise marketing leader",
+      "title": "Director Marketing",
       "co": "Kissflow",
       "fn": "Target title",
       "seniority": "Listed",
@@ -754,7 +754,7 @@
     },
     {
       "name": "Mahesh Sundararaman",
-      "title": "Building Slate",
+      "title": "Founding Team - GTM",
       "co": "TripleDart",
       "fn": "Target title",
       "seniority": "Listed",
@@ -764,8 +764,8 @@
     },
     {
       "name": "Sathananthan S",
-      "title": "Senior Performance Marketing Specialist",
-      "co": "",
+      "title": "Senior Performance Marketing Specialist  (Enterprise Systems & AI)",
+      "co": "Ciklum",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -774,8 +774,8 @@
     },
     {
       "name": "George Kuruvilla",
-      "title": "CRO & SVP Sales",
-      "co": "One-to-Scale Revenue Builder",
+      "title": "Senior Vice President, Global Sales (CRO scope)",
+      "co": "Sand Technologies",
       "fn": "Revenue",
       "seniority": "CRO",
       "icp": true,
@@ -784,8 +784,8 @@
     },
     {
       "name": "Sabarinathan Rajeswaran",
-      "title": "Co-Founder",
-      "co": "TripleDart Digital",
+      "title": "Director of Paid Media & ABM",
+      "co": "TripleDart",
       "fn": "ABM",
       "seniority": "Head",
       "icp": true,
@@ -794,8 +794,8 @@
     },
     {
       "name": "Ajaykumar Mudunuri",
-      "title": "Business Marketing & GTM Leader",
-      "co": "",
+      "title": "Senior Manager, Marketing",
+      "co": "Coforge",
       "fn": "ABM",
       "seniority": "Head",
       "icp": true,
@@ -804,8 +804,8 @@
     },
     {
       "name": "Sandhiya SR",
-      "title": "Digital marketing analyst",
-      "co": "Zoho Corp",
+      "title": "Digital Marketing Specialist",
+      "co": "Zoho",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -814,8 +814,8 @@
     },
     {
       "name": "Bhaskar Dev",
-      "title": "Co-Founder, GrowthClub.org",
-      "co": "Cavli Wireless",
+      "title": "Co-Founder",
+      "co": "GrowthClub.org",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -824,8 +824,8 @@
     },
     {
       "name": "Vinitha Ramani",
-      "title": "Mentor, Guide, Leader - Driving marketing strategy, GTM & growth",
-      "co": "Fractional CMO",
+      "title": "Fractional CMO",
+      "co": "Full-time",
       "fn": "Marketing",
       "seniority": "Head",
       "icp": true,
@@ -834,8 +834,8 @@
     },
     {
       "name": "River Paige",
-      "title": "Creative Director & Co-Founder of Yugen",
-      "co": "",
+      "title": "Co-founder at Yugen Agency",
+      "co": "Yugen | B Corp",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -844,7 +844,7 @@
     },
     {
       "name": "Arun Deepak",
-      "title": "🚀 RevOps & Demand Generation Manager",
+      "title": "Demand Gen Manager",
       "co": "7 Eagles",
       "fn": "Target title",
       "seniority": "Listed",
@@ -854,8 +854,8 @@
     },
     {
       "name": "Manojkumar Sekar",
-      "title": "Marketing Manager - Digital",
-      "co": "",
+      "title": "Marketing Manager",
+      "co": "Zoho",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -864,8 +864,8 @@
     },
     {
       "name": "Nikita Bhatia",
-      "title": "Enterprise Sales Director",
-      "co": "Linkedin Sales Solutions",
+      "title": "Enterprise Sales Director, Linkedin Sales Solutions, India",
+      "co": "LinkedIn",
       "fn": "Growth",
       "seniority": "Director",
       "icp": true,
@@ -884,8 +884,8 @@
     },
     {
       "name": "Udyan Nayak",
-      "title": "Revenue Leader",
-      "co": "People-First",
+      "title": "Business Head- Acquisition (Strategic/Enterprise/Mid Market)",
+      "co": "LinkedIn",
       "fn": "Revenue",
       "seniority": "Head",
       "icp": true,
@@ -894,8 +894,8 @@
     },
     {
       "name": "Aswini Bommakanti",
-      "title": "B2B, SaaS Marketing leader",
-      "co": "ISB",
+      "title": "Director - Marketing",
+      "co": "Affle",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -905,7 +905,7 @@
     {
       "name": "Ryo N.",
       "title": "Head of Marketing, Microsoft Advertising Japan",
-      "co": "",
+      "co": "Microsoft",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -914,8 +914,8 @@
     },
     {
       "name": "Shweta Aggarwal",
-      "title": "B2B Marketing Leader",
-      "co": "",
+      "title": "Head of Marketing, APAC",
+      "co": "Lloyd's List Intelligence",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
@@ -1924,8 +1924,8 @@
     }
   ],
   "totals": {
-    "engagements": 509,
+    "engagements": 499,
     "icp": 95,
-    "uniqueEngagers": 424
+    "uniqueEngagers": 419
   }
 }
