@@ -1,7 +1,7 @@
 {
-  "week_label": "2026-W46",
-  "week_end": "2026-11-13",
-  "week_start": "2026-11-09",
+  "week_label": "2026-W47",
+  "week_end": "2026-11-20",
+  "week_start": "2026-11-16",
   "history": [
     {
       "week_label": "2026-W31",
@@ -1042,31 +1042,107 @@
           "rank": 8
         }
       ]
+    },
+    {
+      "week_label": "2026-W47",
+      "week_end": "2026-11-20",
+      "tracked": [],
+      "week_start": "2026-11-16",
+      "generated_at": "2026-11-25T11:05:57.645Z",
+      "people": [
+        {
+          "id": "sri",
+          "name": "Sri",
+          "icp": 14,
+          "total": 74,
+          "rank": 1
+        },
+        {
+          "id": "mansi",
+          "name": "Mansi",
+          "icp": 7,
+          "total": 50,
+          "rank": 2
+        },
+        {
+          "id": "praveen",
+          "name": "Praveen",
+          "icp": 4,
+          "total": 32,
+          "rank": 3
+        },
+        {
+          "id": "aditi",
+          "name": "Aditi",
+          "icp": 0,
+          "total": 0,
+          "rank": 4
+        },
+        {
+          "id": "amith",
+          "name": "Amith",
+          "icp": 0,
+          "total": 0,
+          "rank": 5
+        },
+        {
+          "id": "darshan",
+          "name": "Darshan",
+          "icp": 0,
+          "total": 0,
+          "rank": 6
+        },
+        {
+          "id": "ganesh",
+          "name": "Ganesh",
+          "icp": 0,
+          "total": 0,
+          "rank": 7
+        },
+        {
+          "id": "subiksha",
+          "name": "Subiksha",
+          "icp": 0,
+          "total": 0,
+          "rank": 8
+        }
+      ]
     }
   ],
-  "generated_at": "2026-11-18T11:02:44.128Z",
+  "generated_at": "2026-11-25T11:05:57.645Z",
   "people": [
     {
       "id": "sri",
       "name": "Sri",
-      "icp": 8,
-      "total": 47,
-      "comments": 3,
-      "reposts": 0,
-      "uniqueEngagers": 43,
+      "icp": 14,
+      "total": 74,
+      "comments": 7,
+      "reposts": 2,
+      "uniqueEngagers": 64,
       "rank": 1,
-      "prevRank": 3
+      "prevRank": 1
+    },
+    {
+      "id": "mansi",
+      "name": "Mansi",
+      "icp": 7,
+      "total": 50,
+      "comments": 5,
+      "reposts": 0,
+      "uniqueEngagers": 44,
+      "rank": 2,
+      "prevRank": 7
     },
     {
       "id": "praveen",
       "name": "Praveen",
-      "icp": 0,
-      "total": 8,
-      "comments": 2,
+      "icp": 4,
+      "total": 32,
+      "comments": 8,
       "reposts": 0,
-      "uniqueEngagers": 4,
-      "rank": 2,
-      "prevRank": 1
+      "uniqueEngagers": 29,
+      "rank": 3,
+      "prevRank": 2
     },
     {
       "id": "aditi",
@@ -1076,8 +1152,8 @@
       "comments": 0,
       "reposts": 0,
       "uniqueEngagers": 0,
-      "rank": 3,
-      "prevRank": 4
+      "rank": 4,
+      "prevRank": 3
     },
     {
       "id": "amith",
@@ -1087,8 +1163,8 @@
       "comments": 0,
       "reposts": 0,
       "uniqueEngagers": 0,
-      "rank": 4,
-      "prevRank": 5
+      "rank": 5,
+      "prevRank": 4
     },
     {
       "id": "darshan",
@@ -1098,8 +1174,8 @@
       "comments": 0,
       "reposts": 0,
       "uniqueEngagers": 0,
-      "rank": 5,
-      "prevRank": 6
+      "rank": 6,
+      "prevRank": 5
     },
     {
       "id": "ganesh",
@@ -1109,19 +1185,8 @@
       "comments": 0,
       "reposts": 0,
       "uniqueEngagers": 0,
-      "rank": 6,
-      "prevRank": 7
-    },
-    {
-      "id": "mansi",
-      "name": "Mansi",
-      "icp": 0,
-      "total": 0,
-      "comments": 0,
-      "reposts": 0,
-      "uniqueEngagers": 0,
       "rank": 7,
-      "prevRank": 2
+      "prevRank": 6
     },
     {
       "id": "subiksha",
@@ -1138,14 +1203,134 @@
   "tracked": [],
   "engagers": [
     {
-      "name": "🌊 Ben Billups",
-      "title": "Founder & CEO",
-      "co": "Breaker",
-      "fn": "Revenue",
-      "seniority": "Chief",
+      "name": "AdhiShankar C",
+      "title": "Marketing Lead",
+      "co": "Cegeka",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAUo25MBNGoFdYCe2zpe6f3vCXSqv6T-c5o"
+    },
+    {
+      "name": "Mani Nafde",
+      "title": "Senior Account Director",
+      "co": "LinkedIn",
+      "fn": "Marketing",
+      "seniority": "Director",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAkir6MBgJ8INsDqBPyozCx24FIvoGXc5EQ"
+    },
+    {
+      "name": "Mariana Klober",
+      "title": "Community Lead (Global)",
+      "co": "Genspark",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABMWvcMBdharD1UsC3prxXpM5PGBJ9g7Wv8"
+    },
+    {
+      "name": "Tanuj Mittal",
+      "title": "Marketing Manager",
+      "co": "Keka HR",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAqRJAsBnU-F8BNE597GQjYFAsRxvDdDC5Y"
+    },
+    {
+      "name": "Soumyajit Dey",
+      "title": "Global Head, Digital Campaign Delivery.",
+      "co": "Thoughtworks",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAKhu8oBtxYnseWgcvfKCDlxX9BL6bkXj70"
+    },
+    {
+      "name": "Saravanan J",
+      "title": "Senior Product Marketing Lead",
+      "co": "Macro Global",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABYUFtwBblcpaIeTwgftLvIfj8Ixq58sZ_k"
+    },
+    {
+      "name": "Rikard Jonsson®️",
+      "title": "CEO",
+      "co": "Hey Sid",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/rikard-jonsson"
+    },
+    {
+      "name": "Brandon Nolte",
+      "title": "Head of Growth",
+      "co": "Lemongrove",
+      "fn": "Target title",
+      "seniority": "Listed",
       "icp": true,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACMyUQ0B62Yg-I0vzznha3eSlSCikCYiK7g"
+      "url": "https://www.linkedin.com/in/ACoAAAHZAnoBWSRnPCOWFHBlFJoOxD08Cjda01Y"
+    },
+    {
+      "name": "Addi Avinash Reddy",
+      "title": "Growth Marketing Leader | Enterprise ABM, Demand Generation & Digital GTM",
+      "co": "Digitate",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAXyMEMB2AQeWpxpti5BpUqgq0cIPvK1Znk"
+    },
+    {
+      "name": "Prashant Chaudhary",
+      "title": "Senior Director of Marketing",
+      "co": "Privado AI",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAABGF46cBreI8g_28rOYJpSjeKDxiBDAcSSs"
+    },
+    {
+      "name": "Jenny Gardynski",
+      "title": "Sr. Director of Content & Communications",
+      "co": "G2",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAMv0oIBLi6GKpqVrY1WtzkDQ8s8fi080Q8"
+    },
+    {
+      "name": "Palmer Houchins",
+      "title": "Vice President, Marketing",
+      "co": "G2",
+      "fn": "Marketing",
+      "seniority": "VP",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAADYTXABWmGNFdAXul7wtIjhApdT6V1JQwg"
+    },
+    {
+      "name": "Chetan B.",
+      "title": "Partner",
+      "co": "Wisdom Tree LLP",
+      "fn": "Growth",
+      "seniority": "Head",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAAzl2IBM1a5ePzx0YS35qebZ4jH50ZDoDc"
     },
     {
       "name": "Reetam D.",
@@ -1158,46 +1343,6 @@
       "url": "https://www.linkedin.com/in/ACoAAAYgWCEBzqQVuTgodeWkC-yLXti04-6KY9k"
     },
     {
-      "name": "Sathananthan S",
-      "title": "Senior Performance Marketing Specialist",
-      "co": "Ciklum",
-      "fn": "Target title",
-      "seniority": "Listed",
-      "icp": true,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAABCqXtwB_rkM5-a6iSnYWZ4z0ZYGucqaoZk"
-    },
-    {
-      "name": "Karthick Udaiyakumar",
-      "title": "Senior Executive - Growth Marketing",
-      "co": "Prodapt",
-      "fn": "Target title",
-      "seniority": "Listed",
-      "icp": true,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACxibooBeEdqnsUWOsXW-tOi-BpHdOIo9mA"
-    },
-    {
-      "name": "Tal Valariola",
-      "title": "CMO",
-      "co": "Milkshake consulting and marketing",
-      "fn": "Marketing",
-      "seniority": "Head",
-      "icp": true,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAD94a1YBYWHOPOUh1G-nAL8e0jSrqUd13w8"
-    },
-    {
-      "name": "Adhithya Prabhu",
-      "title": "MarTech Specialist",
-      "co": "toss the coin",
-      "fn": "Target title",
-      "seniority": "Listed",
-      "icp": true,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACkDTpoB4k3F-uURYFiQArVfMl6zyuceS38"
-    },
-    {
       "name": "Shashwat Ghosh",
       "title": "Co-Founder and Fractional CMO",
       "co": "Helix GTM Consulting",
@@ -1208,164 +1353,134 @@
       "url": "https://www.linkedin.com/in/ACoAAACDCVoBGewE5sAoTDjfR2BV1T2PiuYt52Q"
     },
     {
-      "name": "Mohamed Reza",
-      "title": "Co-founder and CMO",
-      "co": "NeonTrumpet",
+      "name": "Ritu Samdani",
+      "title": "Lead Account Director- Portfolio Business, LinkedIn Marketing Solutions",
+      "co": "LinkedIn",
+      "fn": "Marketing",
+      "seniority": "Director",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAjtl9wBGuXww3h915k7cgXZNwPGkdGQZ8M"
+    },
+    {
+      "name": "Shreyoshi Choudhury",
+      "title": "Sr Account Director - Marketing Solutions",
+      "co": "LinkedIn",
+      "fn": "Marketing",
+      "seniority": "Director",
+      "icp": true,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAA2bj00Bq7ayVQmKEoXr5w_9qfXVOzmB_30"
+    },
+    {
+      "name": "Shaun Lee Wei Rong",
+      "title": "Lead Client Solutions Manager | AI & Marketing",
+      "co": "LinkedIn",
       "fn": "Target title",
       "seniority": "Listed",
       "icp": true,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAABq78cBBVy2UcsBo8bhOkLdi5_cIOFgCxs"
+      "url": "https://www.linkedin.com/in/ACoAABEFJkEBWcuiVnGuPAuIsF4Nd6RmEFrlJeA"
     },
     {
-      "name": "YouLynq.me US",
-      "title": "2,236 followers",
-      "co": "",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
+      "name": "Sonia Agrawal",
+      "title": "Manager- Global Marketing",
+      "co": "Hexaware Technologies",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
       "on": "Sri",
-      "url": "https://www.linkedin.com/company/youlynq-me-us/"
+      "url": "https://www.linkedin.com/in/ACoAABBuXFkBtZhmx13HCcO-gsdoq3oAB6liC4w"
     },
     {
-      "name": "Vikram Asokan",
-      "title": "Partner",
-      "co": "Bergworx",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAADrN46kB2HVjSeGnh1BsTV0Hhbt4C8Iz1W4"
+      "name": "Aswini Bommakanti",
+      "title": "Director - Marketing",
+      "co": "Affle",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAGgutYBOi6C0taya5i3_t-O7rM5uBopUTo"
     },
     {
-      "name": "MarketerFirst, LLC",
-      "title": "1,623 followers",
-      "co": "",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/company/marketerfirst/"
+      "name": "Shikhar Pant",
+      "title": "Head of Global Marketing",
+      "co": "Disprz",
+      "fn": "Target title",
+      "seniority": "Listed",
+      "icp": true,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAABuhIW8BGvl4ENOVkjKfDveUbUqRt-DSqsA"
     },
     {
-      "name": "Ali Raza",
-      "title": "CEO",
-      "co": "NextDigital",
+      "name": "Swetha S.",
+      "title": "GTM Certified Partner",
+      "co": "GTM Partners",
       "fn": "Growth",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAADPuCZ4B014Ch7cuNzl8SHXD8z6RXlrWQBA"
+      "seniority": "Head",
+      "icp": true,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/swethasirupa"
     },
     {
-      "name": "Christian Poulos M.D.",
-      "title": "Co-Founder",
-      "co": "Best Man Med",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAD6J-U8BGfB-rBhyaf6Cvu0vZsijEyn_JqE"
-    },
-    {
-      "name": "AdBacklog",
-      "title": "18 followers",
-      "co": "",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/company/adbacklog/"
-    },
-    {
-      "name": "Kate Marshall",
-      "title": "Partner Sales Director APAC",
-      "co": "Microsoft",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAhJC1AB6tGkINsHqSAyrqDemlB3j7xXsUQ"
-    },
-    {
-      "name": "Mark D. Gordon",
-      "title": "Founder",
-      "co": "Integrated Go-To-Market Solutions",
-      "fn": "Growth",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAFAwKUB1oUEBBcQPy-m0JOr4gM_yPYC-2Q"
-    },
-    {
-      "name": "Agshin Rajabov",
-      "title": "Founder",
-      "co": "Parvaz",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAUrGd0B0p6Gf9LcnYjW66blu_SwZXFG5Ko"
-    },
-    {
-      "name": "Automation by Thynkblox AI",
-      "title": "2 followers",
-      "co": "",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/company/automation-by-thynkblox-ai/"
-    },
-    {
-      "name": "Prasad Hassan",
-      "title": "Founder/CEO",
-      "co": "Brandvelocity.ai",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAGKbN0BxNOKRUha3CDKOKYEpiF4gMzKEeM"
-    },
-    {
-      "name": "Chris Nelson",
-      "title": "Founder",
-      "co": "Human Video",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAABbX1BEBlg8RIRlIGAsbSQVZpSFPbOmgmwQ"
-    },
-    {
-      "name": "Daniel Macià",
-      "title": "Founder & CEO",
-      "co": "ASTRAD",
+      "name": "Shubham Grover",
+      "title": "B2B Growth Consultant",
+      "co": "Self Employed",
       "fn": "ABM",
       "seniority": "",
       "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACKbliwBIUuSByiR_5mEwvB7usV9S2XCMZU"
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABd2fmgBPFNf1hiLz9E0kTbbVGUtJ9ebjQo"
     },
     {
-      "name": "Sneha Bansal",
-      "title": "Account Director",
-      "co": "LinkedIn",
-      "fn": "",
-      "seniority": "Director",
+      "name": "Jatin K.",
+      "title": "Business Development & GTM Specialist",
+      "co": "FluxForce AI",
+      "fn": "Revenue",
+      "seniority": "",
       "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAB3iGvsB1J1gb7yL_F2n10yoIWOa6Yr5soE"
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAADu7ipEBQ6fneB0kw5Hc5VnHoGQr_1bJUx8"
     },
     {
-      "name": "Aravindh Vetri",
-      "title": "Senior Account Manager",
-      "co": "Freshworks",
+      "name": "Abhishek M.",
+      "title": "GTM Strategist",
+      "co": "Unboring GTM",
       "fn": "",
       "seniority": "",
       "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACDoUccBQZpxN2Sjw2ME3XAYHUZb_F_obLM"
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAEdMCgEBWn_h5XMhQkogd48h1giFu9EVaS0"
+    },
+    {
+      "name": "Chithra Krishnadasan",
+      "title": "Enterprise Account Executive",
+      "co": "Peoplebox.ai",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAChrj5IBM8iBhoP4vZ4U9EO55VD_kEL1yuo"
+    },
+    {
+      "name": "Olga Denisova",
+      "title": "CMO",
+      "co": "GotPhoto.com | fotograf.de",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAUeBHkBqBWeRiG__MKbeWPrGk6A9fukwkA"
+    },
+    {
+      "name": "Arindam Das",
+      "title": "Paid Marketing Specialist",
+      "co": "TripleDart",
+      "fn": "Demand Generation",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAACCSGXEBCtR8lCYfll6RbdKzWBLp9ydjs88"
     },
     {
       "name": "Niranjan Karnam",
@@ -1374,118 +1489,458 @@
       "fn": "",
       "seniority": "",
       "icp": false,
-      "on": "Sri",
+      "on": "Mansi",
       "url": "https://www.linkedin.com/in/ACoAAB2JgDEBz8khypTV4kJqbYbRWK-I2wCZSgM"
     },
     {
-      "name": "Mohit Sakhare",
-      "title": "Digital Marketing Specialist",
-      "co": "BLUEBENZ DIGITIZATIONS PVT. LTD.",
+      "name": "Nidhi Kulkarni",
+      "title": "Brand Manager",
+      "co": "ANSR",
+      "fn": "Brand",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAmMYZsBE8EgtOeku2Yrh3bwT-in2IkYdSQ"
+    },
+    {
+      "name": "Sharadha Srinivasan",
+      "title": "Client Solutions Manager, Linkedin Marketing Solutions",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "Manager",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABLPPvcBzY8LKV3y3Gk9oYZSVKv6lFh4BG8"
+    },
+    {
+      "name": "Shivakrithik Subramanian",
+      "title": "Video Marketer",
+      "co": "CloudSEK",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABBjcX4B89PIoRLoUfZaQNYwFueDuCxrhBk"
+    },
+    {
+      "name": "Sampath Kumar",
+      "title": "Assistant General Manager - Alumni Relations",
+      "co": "FLAME University",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAoxChwBCYq0JZKsNKTH7tFdS9iN_Sn9vnk"
+    },
+    {
+      "name": "Priya Bansal",
+      "title": "Senior Software Engineer",
+      "co": "Microsoft",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAiXGDMB8fw18bpQRFyfP6-h0brf1NL2Lgw"
+    },
+    {
+      "name": "Pavan Tulsija",
+      "title": "Regional Sales Manager",
+      "co": "Pidilite Industries Limited",
+      "fn": "",
+      "seniority": "Manager",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABnOgp0B8vpwS3d6gv1ZBpmMA5nZFTMktKc"
+    },
+    {
+      "name": "Girdhar Mirchandani",
+      "title": "GM - Tech",
+      "co": "Unique Industrial Handlers Pvt Ltd",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAH5ZJIBHoRY3P6kqg_GQCqeBFwq6kJ0dM8"
+    },
+    {
+      "name": "Nithya Krishnamurthy",
+      "title": "AVP, Investment Banking",
+      "co": "KPMG India",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAB-ArkgBx5PihNCZVEe40J1CwdvKDp9FGGo"
+    },
+    {
+      "name": "Shivani Bohare",
+      "title": "B2C SaaS Content Writer",
+      "co": "Fireflies.ai",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAA87SsIB3t0V7COcD8ZVP0lwN-vyhv60E-0"
+    },
+    {
+      "name": "Narayanan S.",
+      "title": "Host & Writer",
+      "co": "Whatever Matters",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAA5zC1kBgMAZcuqkZH7eZrnt118b1mSR4TA"
+    },
+    {
+      "name": "Kate Marshall",
+      "title": "Partner Sales Director APAC",
+      "co": "Microsoft",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAhJC1AB6tGkINsHqSAyrqDemlB3j7xXsUQ"
+    },
+    {
+      "name": "Hardik Gupta CLMP™",
+      "title": "US GTM and Marketing Head",
+      "co": "aiRA by Capillary",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAmXui4BypbUx4b6q2wwwGMnkgJHGIiLSrE"
+    },
+    {
+      "name": "Raveesh Motlani",
+      "title": "Co-Founder",
+      "co": "Stealth AI Startup",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABRfU2QBDfyI5Lli9fRtrQ7CcVAcwWV_uDc"
+    },
+    {
+      "name": "Ishani Bavavala",
+      "title": "Brand Marketer",
+      "co": "91Ninjas",
+      "fn": "Brand",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAE7gCYYBOnf4TLOz3lsdrdtnUJWwafKzvMU"
+    },
+    {
+      "name": "Sabahet Amjad",
+      "title": "Senior Product Marketing Manager",
+      "co": "Fuze Finance",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAemuhsBooaO43vJxFKNMKREfPwj9BAjvUw"
+    },
+    {
+      "name": "Muskan Hans",
+      "title": "Field Marketing (APAC IMEA)",
+      "co": "Cvent",
+      "fn": "Demand Generation",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAACWvSHkB-B2iTwYWPXWguGEBhROvfDZd8WM"
+    },
+    {
+      "name": "Viswanathan Nadarajah",
+      "title": "Growth Marketing Lead",
+      "co": "ThreatAware",
+      "fn": "Growth",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAACsrHJoB_KIJhz1wnMq6tsHrvQpBbJqmps4"
+    },
+    {
+      "name": "Ranjani Subramanian",
+      "title": "Marketing",
+      "co": "Prudent AI",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAB5Pk-4BXtVYzo82Ia_Y7wgOqV6aHFlVvVU"
+    },
+    {
+      "name": "Nayna Garg",
+      "title": "Senior Account Director",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "Director",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAUE5noBxZcezE63nQ8_PINbz9xWXN3XPoo"
+    },
+    {
+      "name": "Shrivarshini S.",
+      "title": "Marketing Manager",
+      "co": "SiftHub",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABlDAf8Bzmq9d2UQG9jeUXnw7ISWsyYcQgc"
+    },
+    {
+      "name": "Kamal 🔵🔵🔵🟡",
+      "title": "Community Growth Associate",
+      "co": "Tagshop AI",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAACLmHMsBK7c6aLAtaRXovqDMYO6RGAOUlnE"
+    },
+    {
+      "name": "Elina Saxena",
+      "title": "Content Team Lead",
+      "co": "Trackier",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/elinaaa"
+    },
+    {
+      "name": "Saheen C Najeeb",
+      "title": "Digital Strategist | Product Business Consultant",
+      "co": "Adobe",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/saheencn"
+    },
+    {
+      "name": "Kausar Borbhuyan",
+      "title": "Performance Marketing Manager",
+      "co": "Multiplier",
+      "fn": "ABM",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABlsI_gBa3xcNUnot-k8zKtBydjI02FdHc0"
+    },
+    {
+      "name": "Khushi Daruka",
+      "title": "Founder",
+      "co": "InConnect | Culture x Content x Commerce",
+      "fn": "Revenue",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAACvO_IwBqgSGrVq8pKXhGddFatUTVQnc04w"
+    },
+    {
+      "name": "Ravi Teja B",
+      "title": "Product Marketing",
+      "co": "i95Dev Inc.",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAABooRgYBf1p1x0VOPijFdIQHGrrqGJM5VYY"
+    },
+    {
+      "name": "Jacques Fischer",
+      "title": "CEO and Founder",
+      "co": "CulturalChange",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAACsqEoBcnO57pyjE1AQjuGacO53MI8fTPY"
+    },
+    {
+      "name": "Iain Eyre",
+      "title": "Founder",
+      "co": "LL&LI Founder | (Longevity, Life Design & Performance)",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAABdfS4BD-E_shVx9-GQspO_dQo5x7Y8yAA"
+    },
+    {
+      "name": "Kary Oberbrunner®",
+      "title": "Founder",
+      "co": "Instant IP®",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/ACoAAAKNJUsBM96vjyUx2oxq4f46MrSFqnWiyF0"
+    },
+    {
+      "name": "Vikram Chonkar",
+      "title": "Loyalty Consultant",
+      "co": "Cybint Solutions",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Mansi",
+      "url": "https://www.linkedin.com/in/vikram-chonkar-4774b9201"
+    },
+    {
+      "name": "Ayushi Mahato",
+      "title": "Lead - GTM Strategy & AI Operations",
+      "co": "SipraHub",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAC0ayVkBL0k7b2yyiq7V0HyyIzc9o37oVOM"
+    },
+    {
+      "name": "Venus Cadenas",
+      "title": "Capital Raising Associate",
+      "co": "Nassau Street Partners",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAB32igwBoF-lg0yDP2KQ6OdKYcIb8uSfk5o"
+    },
+    {
+      "name": "CA Ashutosh Khandelwal",
+      "title": "Partner",
+      "co": "PVA & Associates",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAANIPiEB9hEOioJWAQBW0O10HhiG6Y_fUw4"
+    },
+    {
+      "name": "Katya Rozenoer",
+      "title": "Co-founder and CEO",
+      "co": "Blastra",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAADYAxoBGE__lZOn2yxGKW5cNiSQ_gzQWhM"
+    },
+    {
+      "name": "Swapnil P.",
+      "title": "Senior Specialist, Trust & Safety",
+      "co": "G2",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAACX_zQEBTMA8uxeur88ZFj6bbjWUcZisyac"
+    },
+    {
+      "name": "Anushka Khare",
+      "title": "Software Engineer II",
+      "co": "Honeywell Technologies",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAADTlb6ABRK2P3QCZClLe9bOqhLpbRS8KR5s"
+    },
+    {
+      "name": "Syed Hadi",
+      "title": "Product Marketing & Partnerships Lead (Growth)",
+      "co": "AccuKnox",
       "fn": "Marketing",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAEVrSygBtQicXXgVql8-AUhNMRaGhj3Wgzg"
+      "url": "https://www.linkedin.com/in/ACoAACbTs5QBYISfl6E8vioNoQVk5NXJH9gsJ5Q"
     },
     {
-      "name": "Sriram Sankaran",
-      "title": "Deputy General Manager",
-      "co": "Chemplast Sanmar Limited",
+      "name": "Ananda Narasimhan",
+      "title": "Director of GTM and AI Enablement",
+      "co": "Transmission",
+      "fn": "",
+      "seniority": "Director",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAr72wcBqe_lTq90B1ZUccv06MZ5Dt-MHHQ"
+    },
+    {
+      "name": "Sachin S Shenoy",
+      "title": "Account Executive",
+      "co": "G2",
+      "fn": "Marketing Ops",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAADALC2kBv8w7iQh3_VYwIqpfwLrc5fiW8B4"
+    },
+    {
+      "name": "Heidi S.",
+      "title": "Research Fellow",
+      "co": "Integrated Management Student Fellowship",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAKI00cBOlIL0pUp70Gd_888QRJODuDy1q8"
+      "url": "https://www.linkedin.com/in/ACoAADXlYXEBNkSAT_PSO7yfluKq2Kt7YzgavsM"
     },
     {
-      "name": "Niraj Salot",
-      "title": "Chief Operations Officer",
-      "co": "NextGenSoft Technologies LLP",
-      "fn": "",
-      "seniority": "Chief",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAALwd2YBCA58XDx1VZ0DrvC9qLO9y4wg0hA"
-    },
-    {
-      "name": "Bharath J.",
-      "title": "AVP Customer Success",
-      "co": "Payatu",
+      "name": "Rob Jansen",
+      "title": "Directeur Qupra",
+      "co": "Qupra Datacenters",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAABCS1k8BDDGIeqDiTYXFYqWzJjIJxMw3lrk"
+      "url": "https://www.linkedin.com/in/ACoAAADluLEBdffi7dp0D07TvyaA8R_OaV8hx6k"
     },
     {
-      "name": "Rachit Sabharwal",
-      "title": "Partner - Corporate Finance & Investment Banking - Deloitte South Asia",
-      "co": "Deloitte",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAADqt14BZL-YLkklNN3MDrSuYZOmYc1klYY"
-    },
-    {
-      "name": "Devajit Roy",
-      "title": "Head of LMS India, Growth & Mid-Market - Marketing Solutions",
-      "co": "LinkedIn",
+      "name": "Nick Kouma",
+      "title": "Enterprise Account Manager",
+      "co": "G2",
       "fn": "",
       "seniority": "Head",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAARKPUgBJANsp0Jvz0BW1dVBhGRZlej24Ts"
+      "url": "https://www.linkedin.com/in/ACoAAAJk-tUBmCESo51Vag6ODtWbqoNGU87YmkI"
     },
     {
-      "name": "Rae Angelica D. Palma",
-      "title": "Founder & CEO",
-      "co": "Raecounting Solutions",
+      "name": "Jeremy Levin",
+      "title": "Enterprise Account Manager",
+      "co": "G2",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACuIusEBmNtTXFVD4kuEhJu4b4Mlf0kQ554"
+      "url": "https://www.linkedin.com/in/ACoAAAMu-90Ba3kClu4uLLNOsyZSkU8lIUUE77Y"
     },
     {
-      "name": "Vijay Damojipurapu",
-      "title": "Founder & CEO",
-      "co": "Stratyve",
+      "name": "Randall Zellers",
+      "title": "Sales Manager, Mid-Market",
+      "co": "G2",
+      "fn": "",
+      "seniority": "Head",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAZLFMMB2zC5_JCFwOKzSB3QTAerhbEvEig"
+    },
+    {
+      "name": "Colton Richardson",
+      "title": "Commercial Account Manager",
+      "co": "G2",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAAtujgBQymoqpmdqH4Zth7ZruP_s8DdkA4"
-    },
-    {
-      "name": "Ranga Kaliyur",
-      "title": "Product Marketing Lead",
-      "co": "Storylane",
-      "fn": "Marketing",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAC4e8TsB6i3phr-o8kAb1Ucd8PaQSaflJUc"
-    },
-    {
-      "name": "Aditya Dhanraj",
-      "title": "Software Engineer",
-      "co": "Qodex.ai | Autonomous QA & Security Engineer",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAADPVdJoBRz2nbP0UuIL7LQssjuYu3tBtF84"
-    },
-    {
-      "name": "Ashkar Gomez",
-      "title": "Founder & CEO",
-      "co": "7 Eagles",
-      "fn": "",
-      "seniority": "",
-      "icp": false,
-      "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAADGs4DMB9bCZ1sxKikYMOHYyczoPPMI3EBE"
+      "url": "https://www.linkedin.com/in/ACoAABWb2csBpT--lXmqTk0bo2TxLZTVuJdXfs0"
     },
     {
       "name": "Yogesh Pai",
@@ -1498,64 +1953,324 @@
       "url": "https://www.linkedin.com/in/ACoAACOk1f0B8RtUusNdhv8GiFNZDVnCJcSnw0s"
     },
     {
-      "name": "Florent CHAMBOISSIER",
-      "title": "Senior Customer Success Manager",
-      "co": "La Growth Machin𝐞",
+      "name": "Declan Jackman",
+      "title": "Business Development Representative",
+      "co": "G2",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAABAGjo8BHcKHgTif0OvH3h-PCGETMuoTzts"
+      "url": "https://www.linkedin.com/in/ACoAAEcR7yEBsamJyV8Q_GYZfqpskjgJwpKKAYI"
     },
     {
-      "name": "Akshaya Sankpal",
-      "title": "Integrated Marketing Manager",
-      "co": "Hiver",
+      "name": "G2",
+      "title": "137,032 followers",
+      "co": "",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAABqnAAIBt6DLNCg6lx8rtkQXlLsE4_TzGMM"
+      "url": "https://www.linkedin.com/company/g2dotcom/"
     },
     {
-      "name": "Siddhant Mohan",
-      "title": "CEO & Co-Founder",
-      "co": "Qodex.ai | Autonomous QA & Security Engineer",
+      "name": "Godard Abel",
+      "title": "Co-founder & CEO",
+      "co": "G2",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAfA0wwBG02GBN605w5Zc0MWaDG1CEqM9jE"
+      "url": "https://www.linkedin.com/in/ACoAAAABHwMBpbcY7pw4SRYTrbQjboxhDlSEq7g"
     },
     {
-      "name": "Mithun Chandran",
-      "title": "GTM Specialist",
-      "co": "Quantacus",
+      "name": "Daniel Macià",
+      "title": "Founder & CEO",
+      "co": "ASTRAD",
+      "fn": "ABM",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAACKbliwBIUuSByiR_5mEwvB7usV9S2XCMZU"
+    },
+    {
+      "name": "Priti Patel",
+      "title": "Chief People Officer",
+      "co": "G2",
+      "fn": "",
+      "seniority": "Chief",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAOXh-0BEQTpqA9GflJRKfOUQzAujA7ODpQ"
+    },
+    {
+      "name": "Prasad Hassan",
+      "title": "Founder/CEO",
+      "co": "Brandvelocity.ai",
       "fn": "Marketing",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAACNShK8BoQ3QUd2bnoyBSptMkZGhfzWXyaM"
+      "url": "https://www.linkedin.com/in/ACoAAAGKbN0BxNOKRUha3CDKOKYEpiF4gMzKEeM"
     },
     {
-      "name": "Krishna Sankar",
-      "title": "Senior Manager - Strategic Distribution Partnerships (Glance)",
-      "co": "InMobi",
+      "name": "Rick Rolbiecki",
+      "title": "Relationship Manager (Mid-Market)",
+      "co": "G2",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAABmf7iYBdY7APBN6QaOJ4uHfGHdU3WldGlU"
+      "url": "https://www.linkedin.com/in/ACoAABz1zhcBTJazWIB2Sk-9dAjJVtMT2vnhNnE"
     },
     {
-      "name": "Suhas Gujarathi",
-      "title": "Founder",
-      "co": "Medin Corp",
+      "name": "Vikas Pareek",
+      "title": "GTM Engineer",
+      "co": "Everstage",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Sri",
-      "url": "https://www.linkedin.com/in/ACoAAAA_wxIBbuZ3uRTo5pSoG_wCeXah1Zr-tB8"
+      "url": "https://www.linkedin.com/in/ACoAAB5DcAUBuikScs5vZm-_3TGi1mDxqeFlCwM"
+    },
+    {
+      "name": "Bhuvi Gaikwad",
+      "title": "SDR - EMEA & APAC",
+      "co": "G2",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAADGHC3kBoh_TiwslksMdETSiHNwAS7YBivY"
+    },
+    {
+      "name": "Sriram Swaminathan",
+      "title": "Regional Sales Manager - APAC & ANZ",
+      "co": "SurveySparrow",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAABCadfwBn9W_jq5stnvxA5JUoIsH_V6f-98"
+    },
+    {
+      "name": "Ashkar Gomez",
+      "title": "Founder & CEO",
+      "co": "7 Eagles",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAADGs4DMB9bCZ1sxKikYMOHYyczoPPMI3EBE"
+    },
+    {
+      "name": "Ashmita Das",
+      "title": "Account Manager",
+      "co": "G2",
+      "fn": "Growth",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAiEDbcB2_lX_DN_sK9V2LbCMpxTjsfUZk0"
+    },
+    {
+      "name": "Aditi Nafde",
+      "title": "Senior Account Director",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "Director",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAB6t6XQBt1uhBcvJx99mFA66eASlP_htWFY"
+    },
+    {
+      "name": "Tripp Smith",
+      "title": "Strategic Account Manager",
+      "co": "G2",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/trippsmith"
+    },
+    {
+      "name": "Lauren McGrath",
+      "title": "Partner Success Manager",
+      "co": "G2",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/mcgrath-lauren"
+    },
+    {
+      "name": "YouLynq.me US",
+      "title": "2,247 followers",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/company/youlynq-me-us/"
+    },
+    {
+      "name": "Mktg.Tech",
+      "title": "821 followers",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/company/mktg-tech/"
+    },
+    {
+      "name": "ProspectSocial",
+      "title": "8,535 followers",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/company/revtree/"
+    },
+    {
+      "name": "Hudhayfah M.",
+      "title": "Founder & CEO",
+      "co": "Faymad",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAF1hNdMBZLsP8JIVV2-2yAHWOfUr7SHLiYg"
+    },
+    {
+      "name": "MarketerFirst, LLC",
+      "title": "1,655 followers",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/company/marketerfirst/"
+    },
+    {
+      "name": "Shivanshu Sharma",
+      "title": "Marketing Manager",
+      "co": "Axtria - Ingenious Insights",
+      "fn": "Demand Generation",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAABQc2eIBmARXfMfegH1RYUj_qb9k0tuqv5Q"
+    },
+    {
+      "name": "Rose Aldeza",
+      "title": "Capital Raising Associate",
+      "co": "Nassau Street Partners",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAADiFfZEBCAsKwy-bsbEtl9Cwx97CW6OEof4"
+    },
+    {
+      "name": "Chandni Wadera",
+      "title": "Global Client Executive, APAC- Strategic Accounts",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAA9Su-oBFkJIP5kIwPhSFczs9kaHf0e2R9w"
+    },
+    {
+      "name": "Kamil Bednarski",
+      "title": "Co-Founder",
+      "co": "IntentBid",
+      "fn": "ABM",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAADM11vYBYaQqD1CdgzyjskKosnURWWUju18"
+    },
+    {
+      "name": "Sam Karkhanis",
+      "title": "Freelance Contractor",
+      "co": "Upwork, Fiverr, PeoplePerHour",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAushRcBGtGJMlFn8okQ2NiSNbpoMEgzH5w"
+    },
+    {
+      "name": "Abhishek Jha",
+      "title": "Marketing Science Strategist APAC",
+      "co": "LinkedIn",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAi2HhgB_PHmSRD3MvGswDOw4h8IZUbkCrI"
+    },
+    {
+      "name": "Nikhil Bhogaraju",
+      "title": "Co-founder & Chief Operating Officer",
+      "co": "Accredian",
+      "fn": "Growth",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAABLq1ygBIsCl1lmpHnC3e4KhvWIvwrBmn30"
+    },
+    {
+      "name": "Karishma Pal",
+      "title": "Enterprise Account Executive",
+      "co": "LinkedIn",
+      "fn": "Growth",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAABHHkMIBgCldXkbxyWVS-TfP0BX8FRgQGio"
+    },
+    {
+      "name": "Srinath Ramachandra",
+      "title": "Head of Marketing Science & Technology (Analytics) LinkedIn Marketing Solutions APAC",
+      "co": "LinkedIn",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAFq7XwBOqAcM03qTfskEzu8CeslUaCftzs"
+    },
+    {
+      "name": "Nawaf Ghansar",
+      "title": "Account Director",
+      "co": "LinkedIn",
+      "fn": "Revenue",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAANkwdMBi9chy6PMU41narBkUopy-GnH5_s"
+    },
+    {
+      "name": "Dinakar Venkata",
+      "title": "Senior Manager Strategy Operations",
+      "co": "Darwinbox",
+      "fn": "Marketing Ops",
+      "seniority": "",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAABbq_EUBHImc2scdxuoPVI3ELOAQ14v-SEg"
+    },
+    {
+      "name": "Sneha Bansal",
+      "title": "Account Director",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "Director",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAB3iGvsB1J1gb7yL_F2n10yoIWOa6Yr5soE"
     },
     {
       "name": "Drisya Sunil",
@@ -1568,24 +2283,214 @@
       "url": "https://www.linkedin.com/in/ACoAACKK2rIB2stNSZUx8GE-NAd9Cv4Jvicq7PI"
     },
     {
-      "name": "Shiv Kampani",
-      "title": "Co-founder, CTO",
-      "co": "Autumn (YC W26)",
-      "fn": "",
-      "seniority": "",
+      "name": "Tania Gupta",
+      "title": "Senior Manager, Marketing Science and Technology",
+      "co": "LinkedIn",
+      "fn": "Marketing",
+      "seniority": "Senior Manager",
       "icp": false,
-      "on": "Praveen",
-      "url": "https://www.linkedin.com/in/ACoAAC26oXgB50GEIJmsOft7ZiXq2TGTWrAvwxk"
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAAZ-F9sBChB8QZMIR4pnjRlKnDL-k8ywwe8"
     },
     {
-      "name": "Jesper Wind",
-      "title": "Chief Executive Officer, North America",
-      "co": "Qbit ApS",
+      "name": "Devajit Roy",
+      "title": "Head of LMS India, Growth & Mid-Market - Marketing Solutions",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "Head",
+      "icp": false,
+      "on": "Sri",
+      "url": "https://www.linkedin.com/in/ACoAAARKPUgBJANsp0Jvz0BW1dVBhGRZlej24Ts"
+    },
+    {
+      "name": "Kanishk Kumar Singh",
+      "title": "Analog Design Engineer",
+      "co": "Synopsys Inc",
       "fn": "",
       "seniority": "",
       "icp": false,
       "on": "Praveen",
-      "url": "https://www.linkedin.com/in/ACoAAAAMLDwB1k187CAMlEESW4aDhayWW_M3_LQ"
+      "url": "https://www.linkedin.com/in/ACoAADv6c6wBsK6EKP70ieC-z18VHCAwiGvFCEE"
+    },
+    {
+      "name": "Brian Shaw",
+      "title": "Business Development Executive",
+      "co": "ASP-RCM Solutions",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAESAzkcBTJE3mm07Jd__AjBHN2JgxnOCzJk"
+    },
+    {
+      "name": "Marketing Engine",
+      "title": "10 followers",
+      "co": "",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/company/fractional-marketing-engine/"
+    },
+    {
+      "name": "JUAN O.",
+      "title": "Chief Operating Officer",
+      "co": "Nationwide Elite Media",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAo1oc0BilPXSaglT-qgHrfsoMy_WNwZBns"
+    },
+    {
+      "name": "Garima Pandey",
+      "title": "Vice President Marketing",
+      "co": "AISquared",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAABO9PdwBQoIUjPx3pqFtVCHgwjXVp_rOVOY"
+    },
+    {
+      "name": "Dr.Shadi Mahyari Zand",
+      "title": "Member of the Board of IESE  Business Schooll",
+      "co": "IESE Business School",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAABzkdPYB4IOChyPD1YIS3g77yMMl9r-SMic"
+    },
+    {
+      "name": "Georgey Jacob",
+      "title": "Head of Growth- Dental RCM",
+      "co": "Needletail AI",
+      "fn": "Growth",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAMnxgUBEbRI_cU-caTUIK0I8zcHNPA_qkE"
+    },
+    {
+      "name": "Akshaya Sankpal",
+      "title": "Integrated Marketing Manager",
+      "co": "Hiver",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAABqnAAIBt6DLNCg6lx8rtkQXlLsE4_TzGMM"
+    },
+    {
+      "name": "Aman Gandhi",
+      "title": "Senior Client Solutions Manager",
+      "co": "LinkedIn",
+      "fn": "",
+      "seniority": "Manager",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAABmtJkAB92AQo3IJwOWlh7PRkqY_zwbg5yY"
+    },
+    {
+      "name": "Amit Verma",
+      "title": "Founder | Owner",
+      "co": "Digitup Solutions Pvt. Ltd.",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/amit82"
+    },
+    {
+      "name": "Sy Nitti",
+      "title": "Chief Architect & Co-Founder",
+      "co": "ADG Precision",
+      "fn": "",
+      "seniority": "Chief",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/synitti"
+    },
+    {
+      "name": "Branko Boro",
+      "title": "Founder",
+      "co": "Dragonweaver Media Worldwide",
+      "fn": "ABM",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAPHjrwBZm5FVhlFrmoB-fN2psRkQ8EZWNA"
+    },
+    {
+      "name": "Tanvi M.",
+      "title": "Product Marketing Consultant",
+      "co": "NeonTrumpet",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAACxrhLYBibLn2gDEYpfsoBwgX8gtSpp7vGI"
+    },
+    {
+      "name": "Meghana Bhate",
+      "title": "Member",
+      "co": "Pavilion",
+      "fn": "Demand Generation",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAA_UqNgB5dF57DD3JxhgPTS-wvj6Pvq0L4c"
+    },
+    {
+      "name": "◽️ Olga Bialkovich ◽️",
+      "title": "Chief Executive Officer",
+      "co": "U [in] AI",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAxyTfMBFFoq1KrmtwjwZBsWcMZ5my-bb04"
+    },
+    {
+      "name": "Adechina D. ODJO",
+      "title": "Chef produit marketing | CRM & Lifecycle Marketing - Acquisition, Engagement, & Fidélisation",
+      "co": "Groupe NGPA",
+      "fn": "Marketing",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAChCuSAB0uW1ToWyqHySAm5wXwpI4xGz9Cg"
+    },
+    {
+      "name": "Eswari Sankaranarayanan",
+      "title": "Personal Branding Strategist",
+      "co": "Self Employed",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAACz6NUABeLwrC6XDvDalnR7r0-HSp22ppLg"
+    },
+    {
+      "name": "Vladimir Blagojević",
+      "title": "Co-founder",
+      "co": "FullFunnel.io",
+      "fn": "Demand Generation",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAA1ouEBUmT_-q_eNNVBwNWETyvlW84Roto"
+    },
+    {
+      "name": "Ronak Bhojak",
+      "title": "Research Analyst",
+      "co": "Decimal Point Analytics",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAB0E2MwBImvMv7O3CxBCfAr7zdN5z-Vs7WI"
     },
     {
       "name": "Nicholas Laub",
@@ -1596,11 +2501,41 @@
       "icp": false,
       "on": "Praveen",
       "url": "https://www.linkedin.com/in/ACoAACWBg-cBtliLLhSVpuIdkwH78bY3pkf2jPk"
+    },
+    {
+      "name": "Andrei Zinkevich",
+      "title": "Co-founder",
+      "co": "FullFunnel.io",
+      "fn": "ABM",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/ACoAAAgppRcBD_L2M4QSKojfpa8CmZN8MVunz4g"
+    },
+    {
+      "name": "Yaznaia Jaramillo",
+      "title": "Co-Founder & Director of Expansion",
+      "co": "ExpansionOS",
+      "fn": "",
+      "seniority": "",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/yaznaia-jaramillo"
+    },
+    {
+      "name": "Timothy Habif, MBA",
+      "title": "Founder",
+      "co": "AI First Producers",
+      "fn": "",
+      "seniority": "Director",
+      "icp": false,
+      "on": "Praveen",
+      "url": "https://www.linkedin.com/in/timothy-habif"
     }
   ],
   "totals": {
-    "engagements": 55,
-    "icp": 8,
-    "uniqueEngagers": 46
+    "engagements": 156,
+    "icp": 25,
+    "uniqueEngagers": 133
   }
 }
